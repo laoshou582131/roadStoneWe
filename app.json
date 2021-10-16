@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/Home/Home",
+    "pages/index/index",
+    "pages/logs/logs"
+   
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "路石书屋借书系统",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/Home/Home",
+        "text": "Home"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "log"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
