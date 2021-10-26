@@ -1,0 +1,62 @@
+<!--pages/UserInfo/UserInfo.wxml-->
+
+<view class="PersonalInfo">
+  <view class="personalIcon">
+    <image class="pIconType" src="../../images/icons/Picon.png" mode="aspectFit"></image>
+  </view>
+  <view class="nameAndPhone">
+    <text class="textPType">星川莉莉</text>
+    <text class="textPType">131313131313</text>
+  </view>
+  <view class="editPInfo">
+    <image class="editPType" src="../../images/icons/editP1.png" mode="aspectFit"></image>
+  </view>
+</view>
+
+<view class="showFourBasicInfo">
+  <button class="buttonType" type="default" bindtap="goReturning">
+  <text>2</text>
+  <text>借阅</text>
+  </button>
+  <button class="buttonType" type="default" bindtap="goReturning" >
+    <text>0</text>
+    <text>待还</text>
+  </button>
+  <button class="buttonType" type="default">
+    <text>21</text>
+    <text>捐书</text>
+  </button>
+  <button class="buttonType" type="default" bindtap="goDonate">
+    <text>500</text>
+    <text>资助</text>
+  </button>
+</view>
+
+<view class="fourMine">
+  <button class="buttonMType" type="default" plain="true" style="border: none;">
+    <image class="imagesMType" src="../../images/Mines/certificate1.png"></image>
+    <text>我的证书</text>
+  </button>
+  <button class="buttonMType" type="default" plain="true" style="border: none;">
+    <image class="imagesMType"  src="../../images/Mines/myReading.png"></image>
+    <text>我的阅读</text>
+  </button>
+  <button class="buttonMType" type="default" plain="true" style="border: none;">
+    <image class="imagesMType" src="../../images/Mines/collect.png"></image>
+    <text>我的收藏</text>
+  </button>
+  <button class="buttonMType" type="default" plain="true" style="border: none;">
+    <image class="imagesMType" src="../../images/Mines/vip1.png"></image>
+    <text>会员权益</text>
+  </button>
+  <button class="buttonMType" type="default" plain="true" style="border: none;">
+    <image class="imagesMType" src="../../images/Mines/contact1.png"></image>
+    <text>联系我们</text>
+  </button>
+  <button class="buttonMType" type="default" plain="true" style="border: none;">
+    <image class="imagesMType" src="../../images/Mines/declaration1.png"></image>
+    <text>借阅声明</text>
+  </button>
+
+</view>
+<myTabBar style="position: fixed; bottom: 0;"></myTabBar>

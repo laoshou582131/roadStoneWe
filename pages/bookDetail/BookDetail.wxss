@@ -1,0 +1,117 @@
+/* pages/bookDetail/BookDetail.wxss */
+.bookPicContainer{
+  padding: 20rpx;
+  margin: 15rpx;
+  border-radius: 35rpx;
+  background-color: rgb(209, 219, 209,0.2);
+  /* opacity: 1; */
+
+}
+.bookPicType{
+  width: 100%;
+  /* height: 200rpx; */
+  /* border: 1px solid red; */
+}
+
+.bookInfoContainer{
+  margin: 35rpx 15rpx 15rpx 15rpx;
+  padding: 20rpx;
+  border-radius: 35rpx;
+  box-shadow: 0 0 15rpx 3rpx rgb(202, 202, 202);
+  background-color: rgb(209, 219, 209,0.5);
+  /* width: 100%; */
+  height: 725rpx;
+
+  
+}
+.bookDetailInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.collectImageType{
+  width: 100rpx;
+  height: 100rpx;
+  /* border: 1px solid red; */
+  margin: 0;
+  padding: 0;
+}
+.firstRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid rgb(43, 255, 0); */
+  
+  height: 120rpx;
+  flex-grow: 0;
+}
+.collectBtn{
+  width: 100rpx;
+  height: 100rpx;
+  margin: 0;
+  padding:0;
+}
+
+.publishRow{
+  height: 75rpx;
+  flex-grow: 0;
+  /* border: 1px solid rgb(0, 225, 255); */
+
+  /*作者名与出版社内容排版*/
+  display: flex;
+  /* justify-content: flex-start; */
+  align-items: center;
+}
+.author{
+  width: 300rpx;
+  flex-grow: 0;
+  /* border: 1px solid rgb(185, 183, 46); */
+}
+.publisher{
+  width: 125rpx;
+  flex-grow: 1;
+  /* border: 1px solid rgb(46, 185, 173); */
+}
+.bookBriefIntro{
+  height: 425rpx;
+  flex-grow: 1;
+  /* border: 1px solid rgb(185, 183, 46); */
+}
+.relativeBtn{
+  height: 100rpx;
+  flex-grow: 0;
+  /* border: 1px solid rgb(255, 0, 200); */
+  margin: 0;
+  padding: 0;
+
+  /*内部button的排列*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btnType{
+  margin: 0;
+  /* border: 1px solid rgb(94, 255, 0); */
+  border-radius: 25rpx;
+  box-shadow: 0 0 10rpx 2rpx rgb(206, 206, 206);
+  
+  width: 90rpx;
+  height: 90rpx;
+
+  text-align: center;
+  
+}
+.btnType1{
+  margin: 0;
+  padding-top: 10rpx;
+  /* border: 1px solid rgb(184, 13, 147); */
+  border-radius: 25rpx;
+  box-shadow: 0 0 10rpx 2rpx rgb(206, 206, 206);
+  
+  width: 200rpx;
+  height: 90rpx;
+
+  text-align: center;
+  font-size: 28rpx;
+  text-align: center;
+}

@@ -19,35 +19,43 @@
 
   <view class="fourButtonArea">
     <!-- <text>我是四个buttons</text> -->
-    <button class="buttonType" type="default">
+    <button class="buttonType" type="default" bindtap="goScan">
       <view class="dotContainer">
-        <image class="dotType" src="/images/icons/图片5.png" mode="aspectFit"></image>
+        <image class="dotType" src="../../images/icons/page5.png" mode="aspectFit"></image>
       </view>
       <!-- <icon type="success" size="40rpx" color="green"></icon> -->
-      <image class="iconType" src="/images/icons/图片2.png" mode="aspectFit"></image>
-      <text>借书</text>
-    </button>
-    <button class="buttonType" type="default">
-      <view class="dotContainer">
-        <image class="dotType" src="/images/icons/图片6.png" mode="aspectFit"></image>
+      <image class="iconType" src="../../images/icons/page2.png" mode="aspectFit"></image>
+      <view>
+        <text>借书</text>
+        <text class="badge">11</text>
       </view>
-      <image class="iconType" src="/images/icons/图片1.png" mode="aspectFit"></image>
+    </button>
+
+    <button class="buttonType" type="default" bindtap="goReturning">
+      <view class="dotContainer">
+        <image class="dotType" src="../../images/icons/page6.png" mode="aspectFit"></image>
+      </view>
+      <image class="iconType" src="../../images/icons/page1.png" mode="aspectFit"></image>
       <text>还书</text>
     </button>
+
     <button class="buttonType" type="default">
       <view class="dotContainer">
-        <image class="dotType" src="/images/icons/图片7.png" mode="aspectFit"></image>
+        <image class="dotType" src="../../images/icons/page7.png" mode="aspectFit"></image>
       </view>
-      <image class="iconType" src="/images/icons/图片3.png" mode="aspectFit"></image>
+      <image class="iconType" src="../../images/icons/page3.png" mode="aspectFit"></image>
       <text>捐书</text>
     </button>
-    <button class="buttonType" type="default">
+
+    <button class="buttonType" type="default" bindtap="goDonate">
       <view class="dotContainer">
-        <image class="dotType" src="/images/icons/图片8.png" mode="aspectFit"></image>
+        <image class="dotType" src="../../images/icons/page8.png" mode="aspectFit"></image>
       </view>
-      <image class="iconType" src="/images/icons/图片4.png" mode="aspectFit"></image>
+      <image class="iconType" src="../../images/icons/page4.png" mode="aspectFit"></image>
       <text>资助</text>
     </button>
+
   </view>
 </view>
+<myTabBar style="position: fixed; bottom: 0;"></myTabBar>
 

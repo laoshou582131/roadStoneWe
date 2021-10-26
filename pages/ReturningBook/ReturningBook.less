@@ -1,0 +1,144 @@
+/* pages/BorrowingBook/BorrowingBooks.wxss */
+@mainColor:#B1C280;
+.container{
+    margin: 20rpx;
+    padding: 15rpx;
+    // border: 1px solid black;
+    background-color: @mainColor;
+    border-radius: 25rpx;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: center;
+
+    .titleBar{
+        // border: 1px solid rgb(218, 35, 157);
+        display: flex;
+        align-items: center;
+
+        color: white;
+
+        .bookTitle{
+            width: 320rpx;
+            flex-grow: 0;
+            // border: 1px solid rgb(218, 35, 157);
+            text-align: end;
+        }
+        .borTimeTitle{
+            width: 100rpx;
+            flex-grow: 1;
+            // border: 1px solid rgb(218, 35, 157);
+            text-align: center;
+        }
+    }
+
+    scroll-view{
+        height: 1200rpx;
+        padding-top: 0rpx;
+        // border: 1px solid rgb(218, 35, 157);
+    }
+
+
+    .borrowingBooksTop{
+        // border: 1px solid red;
+        margin: 10rpx 15rpx 0rpx 15rpx;
+        height: 120rpx;
+        background-color: white;
+
+        //内部内容展示
+        display: flex;
+        align-items: center;
+
+        border-radius: 25rpx 25rpx 0 0;
+        border-bottom: 1px solid rgb(224, 224, 224);
+    }
+    .borrowingBooksMiddle{
+        // border: 1px solid rgb(48, 207, 56);
+        margin: 0rpx 15rpx 0rpx 15rpx;
+        height: 120rpx;
+        background-color: white;
+
+        //内部内容展示
+        display: flex;
+        align-items: center;
+
+        border-radius: 0rpx 0rpx 0 0;
+        // box-shadow: 0 0 10px 2px rgb(223, 223, 223);
+        border-bottom: 1px solid rgb(224, 224, 224);
+    }
+    .borrowingBooksBottom{
+        // border: 1px solid rgb(235, 21, 199);
+        margin: 0rpx 15rpx 0rpx 15rpx;
+        height: 120rpx;
+        background-color: white;
+
+        //内部内容展示
+        display: flex;
+        align-items: center;
+
+        border-radius: 0rpx 0rpx 25rpx 25rpx;
+        // box-shadow: 0 0 10px 2px rgb(223, 223, 223);
+    }
+    .itemIndex{
+        width: 50rpx;
+        flex-grow: 0;
+        // border: 1px solid rgb(51, 212, 132);
+
+        text-align: center;
+    }
+    .bookPic{
+        width: 125rpx;
+        flex-grow: 0;
+        // border: 1px solid rgb(0, 255, 42);
+
+        .bookPicType{
+            width: 100rpx;
+        }
+    }
+    .timeType{
+        font-size: 16rpx;
+        width: 100rpx;
+        flex-grow: 1;
+        // border: 1px solid rgb(59, 177, 224);
+
+    }
+
+    .bookNameType{
+        width: 200rpx;
+        flex-grow: 1;   
+        // border: 1px solid rgb(0, 68, 255);
+    }
+    .checkBoxType{
+        width: 75rpx;
+        flex-grow: 0; 
+        // border: 1px solid rgb(255, 0, 221); 
+    }
+
+    //borrowBtnArea
+    .borrowBtnArea{
+        margin: 15rpx 0 0 0;
+        padding: 0;
+        
+        // border: 1px solid black;
+        // box-shadow: 0 5rpx 2px 2px rgb(209, 209, 209);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        height: 120rpx;
+
+        .btnOK{
+            margin: 0;
+            padding: 15rpx 0 0 0;
+            width: 255rpx;
+            height: 120rpx;
+            // border: 1px solid rgb(24, 230, 24);
+            background-color: rgb(220, 255, 206);
+
+            border-radius: 0;
+
+            text-align: center;
+        }
+    }
+}

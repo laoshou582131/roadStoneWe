@@ -1,0 +1,59 @@
+<view class="container">
+  <!--捐款记录bar-->
+  <view class="accumulationBar">
+    <view class="accumulationRecord">
+      <text>我的捐款累计（元）</text>
+      <text class="recordAmountType">200888.00</text>
+    </view>
+    <button class="checkRecordBtn" plain="true" style="border: none;">捐赠记录 ></button>
+  </view>
+
+  <!--捐赠选择-->
+  <view class="donationBar">
+    <view class="donationChoices">
+      <button>200元</button>
+      <button>500元</button>
+      <button>1000元</button>
+    </view>
+    <view class="otherDChoices">
+      <text class="otherAmountLabel">其他金额 :</text>
+      <input class="inputType" type="digit" />
+    </view>
+  </view>
+
+  <!--捐赠者信息-->
+  <view class="userInfoBar">
+    <view class="name">
+      <text class="textType">您的姓名：</text>
+      <input class="inputType" type="text" />
+    </view>
+    <view class="phone">
+      <text class="textType">您的电话：</text>
+      <input class="inputType" type="number" />
+    </view>
+    <view class="email">
+      <text class="textType">您的邮箱：</text>
+      <input class="inputType" type="text" />
+    </view>
+    <view class="receipt">
+      <text class="textType">是否需要电子票据：</text>
+      <radio-group>
+        <radio> 是</radio>
+        <radio> 否</radio>
+      </radio-group>
+    </view>
+  </view>
+
+  <!--捐赠说明-->
+  <view class="declarationBar">
+    <text>捐赠说明</text>
+    <rich-text>
+      湖北省刘道玉教育基金会将为捐赠满100元及以上的爱心人士开具捐赠电子发票，请您仔细检查填写姓名、电话、邮箱。
+    </rich-text>
+  </view>
+
+  <!--捐赠按钮-->
+  <view class="donateBtn">
+    <button>立即捐赠爱心</button>
+  </view>
+</view>

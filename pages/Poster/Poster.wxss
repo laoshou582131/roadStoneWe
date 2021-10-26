@@ -1,0 +1,50 @@
+/* pages/Poster/Poster.wxss */
+.container {
+  padding: 109rpx;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container text {
+  display: inline-block;
+}
+.picContainer {
+  border: 1px solid #59dd64;
+  padding: 45rpx;
+  height: 500rpx;
+}
+.picContainer image {
+  width: 450rpx;
+}
+.contactSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.contactSection .textCType {
+  color: #65be65;
+  font-weight: bold;
+}
+.contactSection .phone {
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.contactSection .email {
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.contactSection .address {
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -12,8 +12,15 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+
+  },
+  onShow:function(){
+    //隐藏小程序自己的tabBar
+    wx.hideTabBar()
   },
   globalData: {
     userInfo: null
   }
 })
+
+

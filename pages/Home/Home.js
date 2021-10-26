@@ -7,6 +7,34 @@ Page({
   data: {
 
   },
+  //自定义导航方法
+  //还书
+  goReturning:function(){
+    wx.navigateTo({
+      url: '../ReturningBook/ReturningBook',
+    })
+  },
+  //捐书
+
+  //资助
+  goDonate:function(){
+    wx.navigateTo({
+      url: '../Donation/Donation',
+    })
+  },
+
+
+  //定义扫码方法
+  goScan:function(){
+    var that=this
+    wx.scanCode(
+      {
+        success:function(res){
+          that.setData({res:res})
+        }
+      }
+    )
+  },
 
   /**
    * 生命周期函数--监听页面加载
