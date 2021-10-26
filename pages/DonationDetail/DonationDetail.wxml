@@ -1,0 +1,17 @@
+<view class="container">
+  <scroll-view scroll-y="true"> 
+    <!--月度sections-->
+    <view wx:for="{{3}}" wx:key="index" class="monthlySection">
+      <text class="bigDate">2021-10</text>
+      <view wx:for="{{5}}" wx:key="index" class="DonationItems">
+        <view class="monthlyDescribe">
+          <text>捐赠金额</text>
+          <text class="dateD">2021年10月23日</text>
+        </view>
+        <view class="Money">
+          <text>300</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

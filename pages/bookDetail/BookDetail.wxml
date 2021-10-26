@@ -1,0 +1,29 @@
+<!--pages/bookDetail/BookDetail.wxml-->
+<!-- <text>pages/bookDetail/BookDetail.wxml</text> -->
+<view class="bookPicContainer">
+  <image class="bookPicType" src="../../images/pictures/pic1.png" mode="aspectFit"></image>
+</view>
+
+
+<view class="bookInfoContainer">
+  <view class="bookDetailInfo">
+    <view class="firstRow">
+      <view class="bookName">BookName</view>
+      <button class="collectBtn" type="default" plain="true" style="border:none">
+        <image class="collectImageType" src="../../images/icons/collect1.png" mode="aspectFit"></image>
+      </button>
+      
+    </view>
+    <view class="publishRow">
+      <text class="author">author</text>
+      <text class="publisher">publisher</text>
+    </view>
+    <view class="bookBriefIntro">
+      <rich-text nodes="{{nodes}}"></rich-text>
+    </view>
+    <view class="relativeBtn">
+      <button class="btnType" type="default"><text style="font-size: 36rpx;">+</text></button>
+      <button class="btnType1" type="default"><text>借阅书籍</text></button>
+    </view>
+  </view>
+</view>
