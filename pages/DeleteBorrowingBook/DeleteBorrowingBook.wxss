@@ -1,0 +1,74 @@
+/* pages/BorrowingBook/BorrowingBooks.wxss */
+.container {
+  margin: 20rpx;
+  padding: 15rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: center;
+}
+.container .management {
+  position: relative;
+  height: 100rpx;
+}
+.container .management .managementBtn {
+  border-radius: 25rpx;
+  width: 200rpx;
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #B0C080;
+}
+.container scroll-view {
+  height: 1100rpx;
+  padding-top: 0rpx;
+}
+.container .borrowingBooks {
+  margin: 10rpx 15rpx 15rpx 15rpx;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 25rpx;
+  box-shadow: 0 0 10px 2px #dfdfdf;
+}
+.container .borrowingBooks .itemIndex {
+  width: 100rpx;
+  flex-grow: 0;
+  text-align: center;
+}
+.container .borrowingBooks .bookPic {
+  width: 125rpx;
+  flex-grow: 0;
+}
+.container .borrowingBooks .bookPic .bookPicType {
+  width: 100rpx;
+}
+.container .borrowingBooks .bookNameType {
+  width: 100rpx;
+  flex-grow: 1;
+}
+.container .borrowingBooks .checkBoxType {
+  width: 75rpx;
+  flex-grow: 0;
+}
+.container .borrowBtnArea {
+  margin: 15rpx 0 0 0;
+  padding: 0;
+  box-shadow: 0 5rpx 2px 2px #d1d1d1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120rpx;
+}
+.container .borrowBtnArea .btnOK {
+  margin: 0;
+  padding: 15rpx 0 0 0;
+  width: 255rpx;
+  height: 120rpx;
+  background-color: #e75123;
+  color: white;
+  border-radius: 0;
+  text-align: center;
+}
