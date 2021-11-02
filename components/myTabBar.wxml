@@ -1,8 +1,9 @@
 <view class="barContainer">
   <view class="barItems" wx:for="{{tabBar.list}}" wx:key="index">
     <!--中间的扫码按钮-->
-    <button class="middle" wx:if="{{item.isSpecial==true}}" open-type="navigate" bindtap="goBorrow" style="border: none;" plain="true">
+    <button class="middle" wx:if="{{item.isSpecial==true}}" open-type="navigate" style="border: none;" bindtap="goBorrow" plain="true">
       <image class="plusIcon" src="{{item.iconPath}}" mode="widthFix" style="width: 100rpx;"></image>
+      <text class="badge">11</text>
       <!-- {{item.text}} -->
     </button>
     <navigator class="naviItemType" wx:else url="{{item.pagePath}}" open-type="switchTab">
