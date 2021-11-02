@@ -99,3 +99,12 @@
 .right-col .scroller .booksTempContainer .bookName {
   font-size: 24rpx;
 }
+.naviContainer {
+  position: fixed;
+  bottom: 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}

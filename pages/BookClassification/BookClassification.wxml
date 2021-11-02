@@ -33,4 +33,7 @@
     </scroll-view>
   </view>
 </view>
-<myTabBar style="position: fixed; bottom: 0;"></myTabBar>
+
+<view class="naviContainer">
+  <myTabBar></myTabBar>
+</view>

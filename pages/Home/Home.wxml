@@ -27,7 +27,7 @@
       <image class="iconType" src="../../images/icons/page2.png" mode="aspectFit"></image>
       <view>
         <text>借书</text>
-        <text class="badge">11</text>
+        
       </view>
     </button>
 
@@ -56,6 +56,12 @@
     </button>
 
   </view>
+
+  
 </view>
-<myTabBar style="position: fixed; bottom: 0;"></myTabBar>
+<view class="naviContainer">
+  <myTabBar></myTabBar>
+</view>
+
+
 

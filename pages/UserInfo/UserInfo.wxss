@@ -1,19 +1,18 @@
 /* pages/UserInfo/UserInfo.wxss */
 .PersonalInfo {
   display: flex;
+  align-items: center;
 }
-.personalIcon {
-  /* border: 1px solid red; */
+.PersonalInfo .personalIcon {
   width: 150rpx;
   flex-grow: 0;
   padding-left: 25rpx;
 }
-.pIconType {
+.PersonalInfo .personalIcon .pIconType {
   width: 150rpx;
   height: 150rpx;
 }
-.nameAndPhone {
-  /* border: 1px solid rgb(81, 187, 20); */
+.PersonalInfo .nameAndPhone {
   width: 150rpx;
   flex-grow: 2;
   padding-left: 25rpx;
@@ -22,19 +21,30 @@
   flex-direction: column;
   justify-content: center;
 }
-.textPType {
-  padding-top: 10rpx;
-  /* border: 1px solid rgb(224, 28, 110); */
-  display: block;
+.PersonalInfo .nameAndPhone text {
+  display: inline-block;
 }
-.editPInfo {
-  /* border: 1px solid rgb(83, 20, 165); */
+.PersonalInfo .nameAndPhone .textPType {
+  padding-top: 10rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.PersonalInfo .nameAndPhone .textPType image {
+  margin-left: 15rpx;
+}
+.PersonalInfo .vip text {
+  display: block;
+  font-size: 18rpx;
+  margin-bottom: 5rpx;
+}
+.PersonalInfo .editPInfo {
   width: 100rpx;
   flex-grow: 1;
   /* display: flex;
-  justify-content: center; */
+    justify-content: center; */
 }
-.editPType {
+.PersonalInfo .editPInfo .editPType {
   width: 125rpx;
   height: 125rpx;
   float: right;
@@ -81,4 +91,13 @@
   width: 35rpx;
   height: 35rpx;
   margin-right: 35rpx;
+}
+.naviContainer {
+  position: fixed;
+  bottom: 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }

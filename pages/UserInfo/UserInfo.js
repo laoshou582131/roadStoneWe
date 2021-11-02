@@ -19,6 +19,12 @@ Page({
       url: '../ReturningBook/ReturningBook',
     })
   },
+  //我的证书
+  goCertification:function(){
+    wx.navigateTo({
+      url: '../myCertification/myCertification',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
