@@ -1,6 +1,10 @@
 <view class="container">
   <view class="management">
+<<<<<<< HEAD
     <button class="managementBtn" bindtap="deleteManage"><image src="../BorrowingBook/images/Setting2.png" mode="widthFix" style="width: 50rpx;"></image><text style="color: white;">管理</text></button>
+=======
+    <button class="managementBtn"><image src="../BorrowingBook/images/Setting2.png" mode="widthFix" style="width: 50rpx;"></image><text style="color: white;">管理</text></button>
+>>>>>>> 35887e4c91dc92df8bfa37d44502335484dc0c3a
   </view>
   <checkbox-group class="ItemsGroup">
     <scroll-view scroll-y="true">

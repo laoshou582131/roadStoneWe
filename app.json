@@ -1,5 +1,6 @@
 {
   "pages": [
+<<<<<<< HEAD
     "pages/Home/Home",
     "pages/DeleteBorrowingBook/DeleteBorrowingBook",
     
@@ -8,12 +9,21 @@
     
     "pages/BorrowingBook/BorrowingBooks",
     
+=======
+    
+    "pages/Home/Home",
+>>>>>>> 35887e4c91dc92df8bfa37d44502335484dc0c3a
     "pages/Test/Test",
     "pages/UserInfo/UserInfo",
     "pages/myCertification/myCertification",
     "pages/ReturningBook/ReturningBook",
+<<<<<<< HEAD
     
     
+=======
+    "pages/DeleteBorrowingBook/DeleteBorrowingBook",
+    "pages/BorrowingBook/BorrowingBooks",
+>>>>>>> 35887e4c91dc92df8bfa37d44502335484dc0c3a
     "pages/Ranking/Ranking",
     "pages/Poster/Poster",
     "pages/DonationDetail/DonationDetail",
