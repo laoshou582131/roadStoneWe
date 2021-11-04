@@ -1,170 +1,159 @@
 /* pages/Ranking/Ranking.wxss */
-.personalInfo{
+.personalInfo {
   margin: 0;
   padding: 25rpx;
   /* border: 1px solid red; */
-
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 }
-.iconType{
+.iconType {
   width: 150rpx;
   height: 150rpx;
   display: block;
-
   /* border: 1px solid rgb(0, 255, 234); */
 }
-.pName{
+.pName {
   display: block;
   /* border: 1px solid rgb(0, 255, 0); */
   text-align: center;
 }
-
-.pCredictContainer{
+.pCredictContainer {
   display: flex;
   align-items: center;
-
   /* border: 1px solid rgb(171, 34, 199); */
   width: 100%;
   height: 150rpx;
   margin-top: 20rpx;
   border-radius: 25rpx;
-  box-shadow: 0 5px 10px 2px rgb(209, 209, 209);
-
+  box-shadow: 0 5px 10px 2px #d1d1d1;
   /* position: relative; */
 }
-.myCredit{
+.myCredit {
   width: 200rpx;
   height: 75rpx;
   flex-grow: 0;
   /* border: 1px solid rgb(94, 199, 34); */
-
   padding: 20rpx;
   display: flex;
   justify-content: center;
   align-items: center;
-
   position: relative;
 }
-.picBType{
+.picBType {
   width: 200rpx;
   /* height: 100rpx; */
 }
-.TextMyCredit{
+.TextMyCredit {
   position: absolute;
   left: 65rpx;
   top: 35rpx;
 }
-.creditPoint{
+.creditPoint {
   width: 200rpx;
   flex-grow: 1;
   /* border: 1px solid rgb(34, 147, 199); */
 }
-.sharePoster{
+.sharePoster {
   width: 200rpx;
   flex-grow: 0;
-  
-
   font-size: 24rpx;
 }
-
 /*排行榜*/
-.ranking{
+.ranking {
   margin: 0;
   padding: 20rpx;
   /* border: 1px solid rgb(171, 34, 199); */
-
   /* width: 100%; */
   height: 850rpx;
-
   display: flex;
   flex-direction: column;
   align-items: stretch;
   align-content: center;
   /* justify-content: space-evenly; */
 }
-.rankName{
+.rankName {
   /* width: 100%; */
   height: 50rpx;
   flex-grow: 0;
   /* margin-right: 20rpx; */
-
   /* border: 1px solid rgb(40, 199, 34); */
 }
-.rankingDifC{
+.rankingDifC {
   /* width: 100%; */
   height: 75rpx;
   flex-grow: 0;
   padding: 0;
-
   /* border: 1px solid rgb(34, 72, 199); */
-
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-
 }
-.rankBtnType{
+.rankBtnType {
   margin: 0;
   padding: 0 20rpx 0 20rpx;
-
   height: 55rpx;
   width: 125rpx;
   font-size: 22rpx;
 }
-.rankingList{
+.rankingList {
   /* width: 100%; */
   height: 150rpx;
   flex-grow: 1;
   /* border: 1px solid rgb(199, 34, 89); */
   border-radius: 25rpx;
-  box-shadow: 0 5rpx 10px 2rpx rgb(216, 216, 216);
+  box-shadow: 0 5rpx 10px 2rpx #d8d8d8;
   padding: 35rpx;
   margin-top: 25rpx;
-
   /*用户内容排列*/
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 }
-.scrollerRank{
+.scrollerRank {
   height: 650rpx;
 }
-.rankListUserType{
+.rankListUserType {
   /* width: 100%; */
   height: 75rpx;
   /* border: 1px solid rgb(8, 201, 8); */
-
   /*用户列表内部内容排序模式*/
   display: flex;
   align-items: center;
   margin-bottom: 10rpx;
-
 }
-.rankIndex{
+.rankIndex {
   width: 75rpx;
   flex-grow: 0;
   /* border: 1px solid rgb(201, 156, 8); */
   text-align: center;
 }
-.imageRankType{
+.imageRankType {
   width: 75rpx;
   height: 75rpx;
   flex-grow: 0;
   /* border: 1px solid rgb(8, 69, 201); */
 }
-.rankUserName{
+.rankUserName {
   width: 75rpx;
   flex-grow: 1;
   /* border: 1px solid rgb(201, 8, 169); */
   text-align: center;
 }
-.rankUserDonate{
+.rankUserDonate {
   width: 75rpx;
   flex-grow: 2;
   /* border: 1px solid rgb(8, 172, 201); */
   text-align: right;
+}
+.naviContainer {
+  position: fixed;
+  bottom: 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }

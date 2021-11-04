@@ -7,6 +7,12 @@ Page({
   data: {
 
   },
+  //前往删除页面
+  deleteManage:function(){
+    wx.navigateTo({
+      url: '/pages/DeleteBorrowingBook/DeleteBorrowingBook',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

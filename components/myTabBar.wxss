@@ -5,7 +5,7 @@
   justify-content: center;
   border-radius: 25rpx;
   margin: 55rpx 0 0 0;
-  box-shadow: 0 0 2rpx #c4c4c4;
+  box-shadow: 0 0 5rpx 2rpx #c4c4c4;
   padding-top: 10rpx;
 }
 .barItems {
@@ -27,9 +27,26 @@
 .middle {
   margin: 0;
   padding: 0;
-  height: 110rpx;
+  height: 150rpx;
   width: 110rpx;
   position: absolute;
-  top: -30rpx;
+  top: -50rpx;
   left: 20rpx;
+}
+.middle image {
+  position: absolute;
+  left: 5rpx;
+  top: 30rpx;
+}
+.badge {
+  position: absolute;
+  margin: 0;
+  padding: 0 0 0rpx 0;
+  border-radius: 60rpx;
+  width: 55rpx;
+  height: 55rpx;
+  font-size: 22rpx;
+  right: 0rpx;
+  top: 0rpx;
+  background-color: #c1f1a1;
 }

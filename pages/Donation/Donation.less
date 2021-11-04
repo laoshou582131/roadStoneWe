@@ -58,6 +58,7 @@
 
         //内部排序
         .donationChoices{
+            // border: 1px solid rgb(0, 255, 0);
             display: flex;
             flex-direction: row;
             justify-content: space-around;
@@ -65,25 +66,31 @@
         }
 
         .otherDChoices{
+            // border: 1px solid red;
             display: flex;
             align-items: center;
+            justify-content: flex-start;
 
-            margin: 35rpx 0 0 35rpx;
+            margin: 35rpx 0 0 0rpx;
+            padding-left: 35rpx;
 
             .otherAmountLabel{
-                width: 150rpx;
-                flex-grow: 0;
+                // width: 150rpx;
+                // flex-grow: 0;
+                display: inline-block;
+                
             }
             .inputType{
-                width: 350rpx;
+                display: inline-block;
+                // margin-top: 25rpx;
                 height: 60rpx;
-                flex-grow: 0;
-                border: 1px solid rgb(204, 204, 204);
-
-                border-radius: 25rpx;
-                box-shadow: 0 0 10rpx 2rpx rgb(211, 211, 211);
+                width: 350rpx;
                 margin-left: 25rpx;
                 padding-left: 15rpx;
+
+                border: 1px solid rgb(204, 204, 204);
+                border-radius: 25rpx;
+                box-shadow: 0 0 10rpx 2rpx rgb(211, 211, 211);
             }
         }
     }

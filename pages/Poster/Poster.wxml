@@ -1,6 +1,6 @@
 <view class="container">
   <view class="picContainer">
-    <image src="../../images/poster/boy1.png" mode="widthFix"></image>
+    <!-- <image src="../../images/poster/boy1.png" mode="widthFix"></image> -->
   </view>
   <view class="contactSection">
     <view class="phone">

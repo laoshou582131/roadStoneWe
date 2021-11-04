@@ -46,21 +46,22 @@
 .container .donationBar .otherDChoices {
   display: flex;
   align-items: center;
-  margin: 35rpx 0 0 35rpx;
+  justify-content: flex-start;
+  margin: 35rpx 0 0 0rpx;
+  padding-left: 35rpx;
 }
 .container .donationBar .otherDChoices .otherAmountLabel {
-  width: 150rpx;
-  flex-grow: 0;
+  display: inline-block;
 }
 .container .donationBar .otherDChoices .inputType {
-  width: 350rpx;
+  display: inline-block;
   height: 60rpx;
-  flex-grow: 0;
+  width: 350rpx;
+  margin-left: 25rpx;
+  padding-left: 15rpx;
   border: 1px solid #cccccc;
   border-radius: 25rpx;
   box-shadow: 0 0 10rpx 2rpx #d3d3d3;
-  margin-left: 25rpx;
-  padding-left: 15rpx;
 }
 .container .userInfoBar {
   height: 370rpx;

@@ -1,49 +1,82 @@
 /* pages/UserInfo/UserInfo.wxss */
 .PersonalInfo{
   display: flex;
+  // border: 1px solid red;
+  align-items: center;
+
+  .personalIcon{
+    // border: 1px solid red;
+    width: 150rpx;
+    flex-grow: 0;
+    padding-left: 25rpx;
+  
+    .pIconType{
+      width: 150rpx;
+      height: 150rpx;
+    }
+  
+  }
+
+  .nameAndPhone{
+    // border: 1px solid rgb(81, 187, 20);
+    width: 150rpx;
+    flex-grow: 2;
+    padding-left: 25rpx;
+
+    text{
+      display: inline-block;
+    }
+  
+    /*电话与内容的排列*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+    .textPType{
+      padding-top: 10rpx;
+      // border: 1px solid rgb(224, 28, 110);
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      image{
+        margin-left: 15rpx;
+      }
+    }
+  }
+
+  .vip{
+    // border: 1px solid red;
+    text{
+      display: block;
+      font-size: 18rpx;
+      
+      margin-bottom: 5rpx;
+    }
+  }
+
+  .editPInfo{
+    // border: 1px solid rgb(83, 20, 165);
+    width: 100rpx;
+    flex-grow: 1;
+    /* display: flex;
+    justify-content: center; */
+    .editPType{
+      width: 125rpx;
+      height: 125rpx;
+      float:right;
+    }
+  }
 
 }
-.personalIcon{
-  /* border: 1px solid red; */
-  width: 150rpx;
-  flex-grow: 0;
-  padding-left: 25rpx;
 
-}
-.pIconType{
-  width: 150rpx;
-  height: 150rpx;
-}
 
-.nameAndPhone{
-  /* border: 1px solid rgb(81, 187, 20); */
-  width: 150rpx;
-  flex-grow: 2;
-  padding-left: 25rpx;
 
-  /*电话与内容的排列*/
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.textPType{
-  padding-top: 10rpx;
-  /* border: 1px solid rgb(224, 28, 110); */
-  display: block;
-}
 
-.editPInfo{
-  /* border: 1px solid rgb(83, 20, 165); */
-  width: 100rpx;
-  flex-grow: 1;
-  /* display: flex;
-  justify-content: center; */
-}
-.editPType{
-  width: 125rpx;
-  height: 125rpx;
-  float:right;
-}
+
+
+
+
 
 /*四个基本信息button*/
 .showFourBasicInfo{
@@ -101,3 +134,15 @@
 }
 
 
+.naviContainer{
+  // border: 1px solid blue;
+  position: fixed;
+  bottom: 20rpx;
+  width: 100%;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items:center;
+}

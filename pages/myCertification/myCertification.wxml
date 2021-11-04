@@ -1,0 +1,41 @@
+<view class="container">
+    <view class="titleBar">
+      <text class="bookTitle">证书名</text>
+      <text class="borTimeTitle">获得时间</text>
+    </view>
+    <scroll-view scroll-y="true">
+      <!--头部条目渲染方式-->
+      <view class="temp" wx:for="{{length}}" wx:key="index">
+        <view wx:if="{{index==0}}" class="borrowingBooksTop" >
+          <text class="itemIndex">{{index+1}}</text>
+          <view class="bookPic"><image class="bookPicType" src="../../images/pictures/pic1.png" mode="widthFix"></image></view>
+          <text class="bookNameType">CertificateName</text>
+          <text class="timeType">2021年10月23日 16:57:23 </text>
+          <button class="btnType"><text>查看</text></button>
+
+        </view>
+        <!--中间条目渲染方式-->
+        <view wx:elif="{{index>0 && index<length-1}}" class="borrowingBooksMiddle" >
+          <text class="itemIndex">{{index+1}}</text>
+          <view class="bookPic"><image class="bookPicType" src="../../images/pictures/pic1.png" mode="widthFix"></image></view>
+          <text class="bookNameType">CertificateName</text>
+          <text class="timeType">2021年10月23日 16:57:23 </text>
+          <button class="btnType"><text>查看</text></button>
+        </view>
+        <!--底部条目渲染方式-->
+        <view wx:else class="borrowingBooksBottom" >
+          <text class="itemIndex">{{index+1}}</text>
+          <view class="bookPic"><image class="bookPicType" src="../../images/pictures/pic1.png" mode="widthFix"></image></view>
+          <text class="bookNameType">CertificateName</text>
+          <text class="timeType">2021年10月23日 16:57:23 </text>
+          <button class="btnType"><text>查看</text></button>
+        </view>
+      </view>
+      
+    </scroll-view>
+
+    <!-- <view class="borrowBtnArea">
+      <text>Books' number</text>
+      <button class="btnOK">选好了</button>
+    </view> -->
+</view>

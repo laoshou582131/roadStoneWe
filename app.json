@@ -1,20 +1,26 @@
 {
   "pages": [
-    "pages/UserInfo/UserInfo",
     "pages/Home/Home",
+    "pages/DeleteBorrowingBook/DeleteBorrowingBook",
+    
+    "pages/Donation/Donation",
+    
+    
     "pages/BorrowingBook/BorrowingBooks",
-    "pages/ReturningBook/ReturningBook",
-    "pages/Ranking/Ranking",
     
     "pages/Test/Test",
+    "pages/UserInfo/UserInfo",
+    "pages/myCertification/myCertification",
+    "pages/ReturningBook/ReturningBook",
+    
+    
+    "pages/Ranking/Ranking",
     "pages/Poster/Poster",
     "pages/DonationDetail/DonationDetail",
-    "pages/Donation/Donation",
+    
     "pages/BookClassification/BookClassification",
     
     "pages/bookDetail/BookDetail",
-
-    
     "pages/index/index",
     "pages/logs/logs"
     
