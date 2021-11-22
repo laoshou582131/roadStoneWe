@@ -1,42 +1,51 @@
-<!--pages/Ranking/Ranking.wxml-->
-<!-- <text>pages/Ranking/Ranking.wxml</text> -->
-
-<view class="personalInfo">
-  <view class="picon">
-    <image class="iconType" src="../../images/icons/Picon.png" mode="aspectFit"></image>
-    <text class="pName">星川莉莉</text>
-  </view>
-  <view class="pCredictContainer">
-    <view class="myCredit">
-      <image class="picBType" src="../../images/icons/backP.png" mode="widthFix"></image>
-      <text class="TextMyCredit">我的积分</text>
+<!--用户的个人信息-->
+<view class="container">
+  <view class="personalInfo">
+    <view class="picon">
+      <!--用户头像和用户名称-->
+      <image class="iconType" src="../../images/icons/Picon.png" mode="aspectFit"></image>
+      <text class="pName">星川莉莉</text>
+      <image class="dots" src="../../images/icons/dots2.png" mode="aspectFit"></image>
     </view>
-    <text class="creditPoint">X 11</text>
-    <button class="sharePoster" type="default" plain="true" style="border: none;">分享海报</button>
-  </view>
-</view>
-
-<view class="ranking">
-  <view class="rankName">
-    <text>排行榜</text>
-  </view>
-  <view class="rankingDifC">
-    <button class="rankBtnType" type="default">阅读榜</button>
-    <button class="rankBtnType" type="default">捐书榜</button>
-    <button class="rankBtnType" type="default">资助榜</button>
-  </view>
-  <view class="rankingList">
-    <scroll-view class="scrollerRank" scroll-y="true">
-      <view class="rankListUserType" wx:for="{{12}}" wx:key="index">
-        <text class="rankIndex">{{index}}</text>
-        <image class="imageRankType" src="../../images/icons/Picon.png" mode="aspectFit"></image>
-        <text class="rankUserName">PName</text>
-        <text class="rankUserDonate">捐书4000本</text>
+    <view class="pCredictContainer">
+      <!--用户积分-->
+      <view class="myCredit">
+        <image class="picBType" src="../../images/icons/backP.png" mode="widthFix"></image>
+        <text class="TextMyCredit">我的积分</text>
       </view>
-    </scroll-view>
+      <text class="creditPoint">X 11</text>
+      <!--分享海报button-->
+      <button class="sharePoster" type="default" plain="true" style="border: none;">分享海报</button>
+    </view>
   </view>
-  
+
+  <view class="ranking">
+    <view class="rankName">
+      <text>排行榜</text>
+    </view>
+    <!--三个不同种类的button-->
+    <view class="rankingDifC">
+      <button class="rankBtnType"><text>阅读榜</text></button>
+      <button class="rankBtnType" ><text>捐书榜</text></button>
+      <button class="rankBtnType" ><text>资助榜</text></button>
+    </view>
+
+    <view class="rankingList">
+      <scroll-view class="scrollerRank" scroll-y="true">
+        <!--分别显示的排行榜列表-->
+        <view class="rankListUserType" wx:for="{{12}}" wx:key="index">
+          <text class="rankIndex">{{index+1}}</text>
+          <image class="imageRankType" src="../../images/icons/Picon.png" mode="aspectFit"></image>
+          <text class="rankUserName">PName</text>
+          <text class="rankUserDonate">捐书4000本</text>
+        </view>
+      </scroll-view>
+    </view>
+    
+  </view>
 </view>
+ <!--底部导航栏-->
 <view class="naviContainer">
   <myTabBar></myTabBar>
 </view>
+

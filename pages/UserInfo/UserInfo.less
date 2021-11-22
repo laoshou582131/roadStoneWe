@@ -1,5 +1,23 @@
 /* pages/UserInfo/UserInfo.wxss */
+@mainColor:#B1C280;
+@itemColor:#f7fceb;
+@textColor:#494e3a;//#494e3a
+
+.container{
+  padding: 0rpx;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  color: @textColor;
+
+}
+
 .PersonalInfo{
+  margin-top: 25rpx;
   display: flex;
   // border: 1px solid red;
   align-items: center;
@@ -70,14 +88,6 @@
 
 }
 
-
-
-
-
-
-
-
-
 /*四个基本信息button*/
 .showFourBasicInfo{
   // border: 1px solid rgb(83, 20, 165);
@@ -99,6 +109,10 @@
     flex-direction: column;
     justify-content: space-evenly;
     font-size: 36rpx;
+
+    text{
+      color: @textColor;
+    }
   }
 }
 
@@ -106,7 +120,7 @@
 
 /*四个我的*/
 .fourMine{
-  margin: 0rpx 15rpx 15rpx 15rpx;
+  margin: 0rpx 35rpx 15rpx 35rpx;
   padding:25rpx;
   // border: 1px solid rgb(19, 226, 209); 
   /* display: flex;
@@ -124,6 +138,10 @@
     line-height: 72rpx;
 
     margin-bottom: 5rpx;
+
+    text{
+      color: @textColor;
+    }
   }
   .imagesMType{
     width: 35rpx;

@@ -1,72 +1,94 @@
 <!--pages/UserInfo/UserInfo.wxml-->
 
-<view class="PersonalInfo">
-  <view class="personalIcon">
-    <image class="pIconType" src="../../images/icons/Picon.png" mode="aspectFit"></image>
-  </view>
-  <view class="nameAndPhone">
-    <view class="textPType">
-      <text>星川莉莉</text>
-      <image src="../UserInfo/images/vip.png" mode="widthFix" style="width: 50rpx;"></image>
+<view class="container">
+
+  <!--顶部个人信息栏-->
+  <view class="PersonalInfo">
+    <view class="personalIcon">
+      <!--用户头像-->
+      <image class="pIconType" src="../../images/icons/Picon.png" mode="aspectFit"></image>
     </view>
-    <text>131313131313</text>
+    <view class="nameAndPhone">
+      <view class="textPType">
+        <!--用户名字-->
+        <text>星川莉莉</text>
+        <!--vip的标识，若是则显示金色王冠，若否则显示为灰色王冠-->
+        <image wx:if="{{isVip==true}}" src="../UserInfo/images/vip.png" mode="widthFix" style="width: 50rpx;"></image>
+        <image wx:else src="../UserInfo/images/nonVip.png" mode="widthFix" style="width: 50rpx;"></image>
+      </view>
+      <!--用户电话号码-->
+      <text>131313131313</text>
+    </view>
+    <view class="vip">
+      <text>会员有效期至</text>
+      <!--用户会员有效期-->
+      <text>2021年11月2日</text>
+    </view>
+    <!--暂时无-->
+    <view class="editPInfo">
+      <image class="editPType" src="../../images/icons/editP1.png" mode="aspectFit"></image>
+    </view>
   </view>
-  <view class="vip">
-    <text>会员有效期至</text>
-    <text>2021年11月2日</text>
+
+  <view class="showFourBasicInfo">
+    <!--借阅button，显示合法借书期限内的书籍列表-->
+    <button class="buttonType" type="default" bindtap="goReturningInDate">
+    <text>2</text>
+    <text>借阅</text>
+    </button>
+    <!--待还button，显示所有借书逾期的书籍列表-->
+    <button class="buttonType" type="default" bindtap="goReturningOutDate" >
+      <text>0</text>
+      <text>待还</text>
+    </button>
+    <!--捐书button，显示捐书页面，展示海报，目前还没有-->
+    <button class="buttonType" type="default">
+      <text>21</text>
+      <text>捐书</text>
+    </button>
+    <!--资助button，显示资助页面-->
+    <button class="buttonType" type="default" bindtap="goDonate">
+      <text>500</text>
+      <text>资助</text>
+    </button>
   </view>
-  <view class="editPInfo">
-    <image class="editPType" src="../../images/icons/editP1.png" mode="aspectFit"></image>
+
+  <view class="fourMine">
+    <!--证书button，显示自己获得的证书-->
+    <button class="buttonMType" type="default" plain="true" style="border: none;" bindtap="goCertification">
+      <image class="imagesMType" src="../../images/Mines/certificate1.png"></image>
+      <text>我的证书</text>
+    </button>
+    <!--阅读button，显示借过但已归还的书籍-->
+    <button class="buttonMType" type="default" plain="true" style="border: none;" bindtap="goMyReading">
+      <image class="imagesMType"  src="../../images/Mines/myReading.png"></image>
+      <text>我的阅读</text>
+    </button>
+    <!--暂时没有-->
+    <button class="buttonMType" type="default" plain="true" style="border: none;">
+      <image class="imagesMType" src="../../images/Mines/collect.png"></image>
+      <text>我的收藏</text>
+    </button>
+    <!--暂时没有-->
+    <button class="buttonMType" type="default" plain="true" style="border: none;">
+      <image class="imagesMType" src="../../images/Mines/vip1.png"></image>
+      <text>会员权益</text>
+    </button>
+    <!--暂时没有-->
+    <button class="buttonMType" type="default" plain="true" style="border: none;">
+      <image class="imagesMType" src="../../images/Mines/contact1.png"></image>
+      <text>联系我们</text>
+    </button>
+    <!--暂时没有-->
+    <button class="buttonMType" type="default" plain="true" style="border: none;">
+      <image class="imagesMType" src="../../images/Mines/declaration1.png"></image>
+      <text>借阅声明</text>
+    </button>
+
   </view>
 </view>
 
-<view class="showFourBasicInfo">
-  <button class="buttonType" type="default" bindtap="goReturning">
-  <text>2</text>
-  <text>借阅</text>
-  </button>
-  <button class="buttonType" type="default" bindtap="goReturning" >
-    <text>0</text>
-    <text>待还</text>
-  </button>
-  <button class="buttonType" type="default">
-    <text>21</text>
-    <text>捐书</text>
-  </button>
-  <button class="buttonType" type="default" bindtap="goDonate">
-    <text>500</text>
-    <text>资助</text>
-  </button>
-</view>
-
-<view class="fourMine">
-  <button class="buttonMType" type="default" plain="true" style="border: none;" bindtap="goCertification">
-    <image class="imagesMType" src="../../images/Mines/certificate1.png"></image>
-    <text>我的证书</text>
-  </button>
-  <button class="buttonMType" type="default" plain="true" style="border: none;">
-    <image class="imagesMType"  src="../../images/Mines/myReading.png"></image>
-    <text>我的阅读</text>
-  </button>
-  <button class="buttonMType" type="default" plain="true" style="border: none;">
-    <image class="imagesMType" src="../../images/Mines/collect.png"></image>
-    <text>我的收藏</text>
-  </button>
-  <button class="buttonMType" type="default" plain="true" style="border: none;">
-    <image class="imagesMType" src="../../images/Mines/vip1.png"></image>
-    <text>会员权益</text>
-  </button>
-  <button class="buttonMType" type="default" plain="true" style="border: none;">
-    <image class="imagesMType" src="../../images/Mines/contact1.png"></image>
-    <text>联系我们</text>
-  </button>
-  <button class="buttonMType" type="default" plain="true" style="border: none;">
-    <image class="imagesMType" src="../../images/Mines/declaration1.png"></image>
-    <text>借阅声明</text>
-  </button>
-
-</view>
-
+<!--底部导航栏-->
 <view class="naviContainer">
   <myTabBar></myTabBar>
 </view>

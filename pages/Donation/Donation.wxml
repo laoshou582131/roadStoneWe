@@ -11,9 +11,9 @@
   <!--捐赠选择-->
   <view class="donationBar">
     <view class="donationChoices">
-      <button>200元</button>
-      <button>500元</button>
-      <button>1000元</button>
+      <button><text>200元</text></button>
+      <button><text>500元</text></button>
+      <button><text>1000元</text></button>
     </view>
     <view class="otherDChoices">
       <text class="otherAmountLabel">其他金额：</text>

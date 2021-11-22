@@ -1,0 +1,43 @@
+<view class="container">
+    <view class="titleBar">
+      <text class="bookTitle">书名</text>
+      <text class="borTimeTitle">书籍状态</text>
+    </view>
+    <checkbox-group>
+      <scroll-view scroll-y="true">
+        
+        <view class="temp" wx:for="{{length}}" wx:key="index">
+          <!--头部条目渲染方式-->
+          <view wx:if="{{index==0}}" class="borrowingBooksTop" >
+            <text class="itemIndex">{{index+1}}</text>
+            <view class="bookPic"><image class="bookPicType" src="../../images/pictures/pic1.png" mode="widthFix"></image></view>
+            <text class="bookNameType">bookName</text>
+            <text class="timeType">借阅逾期，需归还</text>
+            <checkbox class="checkBoxType" value="1"></checkbox>
+          </view>
+          <!--中间条目渲染方式-->
+          <view wx:elif="{{index>0 && index<length-1}}" class="borrowingBooksMiddle" >
+            <text class="itemIndex">{{index+1}}</text>
+            <view class="bookPic"><image class="bookPicType" src="../../images/pictures/pic1.png" mode="widthFix"></image></view>
+            <text class="bookNameType">bookName</text>
+            <text class="timeType">借阅逾期，需归还</text>
+            <checkbox class="checkBoxType" value="1"></checkbox>
+          </view>
+          <!--底部条目渲染方式-->
+          <view wx:else class="borrowingBooksBottom" >
+            <text class="itemIndex">{{index+1}}</text>
+            <view class="bookPic"><image class="bookPicType" src="../../images/pictures/pic1.png" mode="widthFix"></image></view>
+            <text class="bookNameType">bookName</text>
+            <text class="timeType">借阅逾期，需归还</text>
+            <checkbox class="checkBoxType" value="1"></checkbox>
+          </view>
+        </view>
+        
+      </scroll-view>
+    </checkbox-group>
+
+    <view class="borrowBtnArea">
+      <text>Books' number</text>
+      <button class="btnOK">还书</button>
+    </view>
+</view>

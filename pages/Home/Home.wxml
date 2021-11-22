@@ -1,7 +1,7 @@
 <!--pages/Home/Home.wxml-->
 <!-- <text>pages/Home/Home.wxml</text> -->
 <view class="mainContainer">
-  <view><text>2021年10月16日</text></view>
+  <!-- <view><text>2021年10月16日</text></view> -->
   <view class="slideShow">
     <!-- <text>我是轮播图</text> -->
     <swiper class="swiper" indicator-dots autoplay interval="5000" duration="2000">
@@ -18,7 +18,7 @@
   </view>
 
   <view class="fourButtonArea">
-    <!-- <text>我是四个buttons</text> -->
+    <!-- 扫码button-->
     <button class="buttonType" type="default" bindtap="goScan">
       <view class="dotContainer">
         <image class="dotType" src="../../images/icons/page5.png" mode="aspectFit"></image>
@@ -27,10 +27,9 @@
       <image class="iconType" src="../../images/icons/page2.png" mode="aspectFit"></image>
       <view>
         <text>借书</text>
-        
       </view>
     </button>
-
+    <!--还书button-->
     <button class="buttonType" type="default" bindtap="goReturning">
       <view class="dotContainer">
         <image class="dotType" src="../../images/icons/page6.png" mode="aspectFit"></image>
@@ -39,6 +38,7 @@
       <text>还书</text>
     </button>
 
+    <!--捐书button-->
     <button class="buttonType" type="default">
       <view class="dotContainer">
         <image class="dotType" src="../../images/icons/page7.png" mode="aspectFit"></image>
@@ -47,6 +47,7 @@
       <text>捐书</text>
     </button>
 
+    <!--资助button-->
     <button class="buttonType" type="default" bindtap="goDonate">
       <view class="dotContainer">
         <image class="dotType" src="../../images/icons/page8.png" mode="aspectFit"></image>
@@ -54,13 +55,12 @@
       <image class="iconType" src="../../images/icons/page4.png" mode="aspectFit"></image>
       <text>资助</text>
     </button>
-
   </view>
 
-  
 </view>
+<!--底部导航栏-->
 <view class="naviContainer">
-  <myTabBar></myTabBar>
+  <myTabBar id="middleNum"></myTabBar>
 </view>
 
 

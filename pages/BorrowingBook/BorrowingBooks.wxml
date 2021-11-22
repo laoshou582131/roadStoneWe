@@ -1,10 +1,7 @@
 <view class="container">
   <view class="management">
-<<<<<<< HEAD
-    <button class="managementBtn" bindtap="deleteManage"><image src="../BorrowingBook/images/Setting2.png" mode="widthFix" style="width: 50rpx;"></image><text style="color: white;">管理</text></button>
-=======
-    <button class="managementBtn"><image src="../BorrowingBook/images/Setting2.png" mode="widthFix" style="width: 50rpx;"></image><text style="color: white;">管理</text></button>
->>>>>>> 35887e4c91dc92df8bfa37d44502335484dc0c3a
+    <button class="managementBtn" bindtap="goDeleteManage"><image src="../BorrowingBook/images/Setting2.png" mode="widthFix" style="width: 50rpx;"></image><text style="color: white;">管理</text></button>
+    
   </view>
   <checkbox-group class="ItemsGroup">
     <scroll-view scroll-y="true">
@@ -18,7 +15,8 @@
   </checkbox-group>
 
   <view class="borrowBtnArea">
+    <!--显示当前选了多少本书-->
     <text>Books' number</text>
-    <button class="btnOK">选好了</button>
+    <button class="btnOK">借阅</button>
   </view>
 </view>

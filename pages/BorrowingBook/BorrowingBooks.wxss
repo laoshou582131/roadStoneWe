@@ -26,7 +26,7 @@
   padding-top: 0rpx;
 }
 .container .ItemsGroup {
-  border: 1px solid #00ffea;
+  /* border: 1px solid #00ffea; */
 }
 .container .borrowingBooks {
   margin: 10rpx 15rpx 15rpx 15rpx;

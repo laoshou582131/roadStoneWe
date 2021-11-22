@@ -1,6 +1,7 @@
 .container {
   padding: 35rpx;
   margin: 0rpx;
+  color: #494e3a;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -42,6 +43,9 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+.container .donationBar .donationChoices text {
+  color: #494e3a;
 }
 .container .donationBar .otherDChoices {
   display: flex;
@@ -131,6 +135,9 @@
 }
 .container .donateBtn {
   height: 100rpx;
+}
+.container .donateBtn text {
+  color: #494e3a;
 }
 .container .donateBtn button {
   border-radius: 45rpx;

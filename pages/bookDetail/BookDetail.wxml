@@ -1,29 +1,39 @@
 <!--pages/bookDetail/BookDetail.wxml-->
 <!-- <text>pages/bookDetail/BookDetail.wxml</text> -->
-<view class="bookPicContainer">
-  <image class="bookPicType" src="../../images/pictures/pic1.png" mode="aspectFit"></image>
-</view>
 
+<view class="container">
+  <view class="bookPicContainer">
+    <!--书籍图片-->
+    <image class="bookPicType" src="../../images/pictures/pic1.png" mode="aspectFit"></image>
+  </view>
 
-<view class="bookInfoContainer">
-  <view class="bookDetailInfo">
-    <view class="firstRow">
-      <view class="bookName">BookName</view>
-      <button class="collectBtn" type="default" plain="true" style="border:none">
-        <image class="collectImageType" src="../../images/icons/collect1.png" mode="aspectFit"></image>
-      </button>
-      
-    </view>
-    <view class="publishRow">
-      <text class="author">author</text>
-      <text class="publisher">publisher</text>
-    </view>
-    <view class="bookBriefIntro">
-      <rich-text nodes="{{nodes}}"></rich-text>
-    </view>
-    <view class="relativeBtn">
-      <button class="btnType" type="default"><text style="font-size: 36rpx;">+</text></button>
-      <button class="btnType1" type="default"><text>借阅书籍</text></button>
+  <view class="bookInfoContainer">
+    <!--书籍的简单介绍-->
+    <view class="bookDetailInfo">
+      <view class="firstRow">
+      <!--书籍名称-->
+        <view class="bookName">BookName</view>
+        <!--书籍的收藏，目前没有该功能，不用理会-->
+        <button class="collectBtn" type="default" plain="true" style="border:none">
+          <image class="collectImageType" src="../../images/icons/collect1.png" mode="aspectFit"></image>
+        </button>
+        
+      </view>
+      <!--书籍作者介绍-->
+      <view class="publishRow">
+        <text class="author">author</text>
+        <text class="publisher">publisher</text>
+      </view>
+      <!--书籍内容介绍-->
+      <view class="bookBriefIntro">
+        <rich-text nodes="{{nodes}}"></rich-text>
+      </view>
+      <view class="relativeBtn">
+        <!--加入到待借阅列表中-->
+        <button class="btnType" type="default"><text style="font-size: 36rpx;">+</text></button>
+        <!--若点击借阅则直接借阅，展示出该书的二维码-->
+        <button class="btnType1" type="default"><text>借阅书籍</text></button>
+      </view>
     </view>
   </view>
 </view>

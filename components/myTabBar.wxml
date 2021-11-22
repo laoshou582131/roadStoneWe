@@ -3,9 +3,12 @@
     <!--中间的扫码按钮-->
     <button class="middle" wx:if="{{item.isSpecial==true}}" open-type="navigate" style="border: none;" bindtap="goBorrow" plain="true">
       <image class="plusIcon" src="{{item.iconPath}}" mode="widthFix" style="width: 100rpx;"></image>
-      <text class="badge">11</text>
+       <!--中间按钮右上角的数字，显示当前借阅栏中有多少书籍-->
+      <text class="badge">{{borrowingBookNum}}</text>
       <!-- {{item.text}} -->
     </button>
+
+     <!--除了中间按钮的其他导航选择-->
     <navigator class="naviItemType" wx:else url="{{item.pagePath}}" open-type="switchTab">
       <image class="naviItemIcon" src="{{item.iconPath}}" mode="widthFix"></image>
       <text>{{item.text}}</text>

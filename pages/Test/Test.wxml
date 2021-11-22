@@ -1,1 +1,10 @@
-<myTabBar style="margin-top: 50rpx;"></myTabBar>
+<!-- <myTabBar style="margin-top: 50rpx;"></myTabBar> -->
+<!-- <button open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">获取用户信息</button> -->
+
+<text>测试</text>
+<scroll-view scroll-y="true" scroll-into-view="{{toView}}" lower-threshold="50" bindscrolltolower="paging"
+scroll-with-animation="true" scroll-anchoring="true">
+  <view id="red" class="scroll-item-red" wx:for="{{list}}" wx:key="index">{{index+1}}</view>
+</scroll-view>
+
+<!-- <button bindtap="getSearch">hello</button> -->

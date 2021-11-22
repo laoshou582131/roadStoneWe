@@ -1,6 +1,11 @@
 /* pages/BorrowingBook/BorrowingBooks.wxss */
 @mainColor:#B1C280;
+@itemColor:#f7fceb;
+@textColor:#494e3a;
 .container{
+    //字体颜色
+    color: @textColor;
+
     margin: 20rpx;
     padding: 15rpx;
     // border: 1px solid black;
@@ -17,7 +22,7 @@
         display: flex;
         align-items: center;
 
-        color: white;
+        color: @itemColor;
 
         .bookTitle{
             width: 320rpx;
@@ -44,7 +49,7 @@
         // border: 1px solid red;
         margin: 10rpx 15rpx 0rpx 15rpx;
         height: 120rpx;
-        background-color: white;
+        background-color: @itemColor;
 
         //内部内容展示
         display: flex;
@@ -57,7 +62,7 @@
         // border: 1px solid rgb(48, 207, 56);
         margin: 0rpx 15rpx 0rpx 15rpx;
         height: 120rpx;
-        background-color: white;
+        background-color: @itemColor;
 
         //内部内容展示
         display: flex;
@@ -71,7 +76,7 @@
         // border: 1px solid rgb(235, 21, 199);
         margin: 0rpx 15rpx 0rpx 15rpx;
         height: 120rpx;
-        background-color: white;
+        background-color: @itemColor;
 
         //内部内容展示
         display: flex;
@@ -118,7 +123,7 @@
     //borrowBtnArea
     .borrowBtnArea{
         margin: 15rpx 0 0 0;
-        padding: 0;
+        padding: 0 15rpx 0 15rpx;
         
         // border: 1px solid black;
         // box-shadow: 0 5rpx 2px 2px rgb(209, 209, 209);
@@ -128,13 +133,18 @@
 
         height: 120rpx;
 
+        text{
+            color: @itemColor;
+        }
+
         .btnOK{
             margin: 0;
             padding: 15rpx 0 0 0;
             width: 255rpx;
             height: 120rpx;
             // border: 1px solid rgb(24, 230, 24);
-            background-color: rgb(220, 255, 206);
+            background-color:@itemColor;
+            
 
             border-radius: 0;
 

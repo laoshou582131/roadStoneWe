@@ -1,8 +1,25 @@
 /* pages/BookClassification/BookClassification.wxss */
+@mainColor:#B1C280;
+@itemColor:#f7fceb;
+@textColor:#494e3a;
+
+.container{
+  margin: 0;
+  padding: 25rpx;
+  
+  color: @textColor;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
 .searchBarContainer{
   margin: 0;
   padding: 20rpx 45rpx 20rpx 45rpx;
   // border: 1px solid rgb(0, 81, 255); 
+  // width: 100%;
 
   display:flex;
   justify-content: center;
@@ -55,11 +72,14 @@
   display:flex;
   justify-content: flex-start;
   align-content: stretch;
+  padding: 0;
 
-  margin-top: 35rpx;
+  margin-top: 25rpx;
+  // border: 1px solid rgb(30, 228, 119);
+  width: 100%;
 }
 .left-col{
-  /* border: 1px solid rgb(30, 228, 119); */
+  /*  */
   width: 150rpx;
   height: auto;
   flex-grow: 0;
@@ -78,32 +98,51 @@
   }
 }
 .right-col{
-  /* border: 1px solid rgb(252, 12, 92); */
+  border: 1px solid rgb(252, 12, 92);
+  padding: 0;
+  margin: 0;
   width: 150rpx;
-  height: 100%;
   flex-grow: 1;
 
   .scroller{
-    /* border: 1px solid rgb(180, 252, 12); */
-    width: 100%;
+    // border: 1px solid rgb(180, 252, 12);
     height: 1150rpx;
-    /* white-space: nowrap; */
+    padding: 0;
+    margin: 0;
 
     .booksTempContainer{  
-      width: 100%;
+      width: 600rpx;
       height: auto;
+      border: 1px solid rgb(27, 168, 224);
+      margin: 0;
+      padding: 0;
     
       /*书籍栏目的排列*/
       display: flex;
-      justify-content: space-evenly;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-content: flex-start;
       flex-wrap: wrap;
-      align-content: space-around;
+      // align-content: space-around;
+      align-items: flex-start;
+
+      .bookItems{
+        width: 250rpx;
+        border: 1px solid rgb(224, 178, 27);
+
+        display: flex;
+        flex-direction: column;
+
+        margin-left: 15rpx;
+        margin-top: 10rpx;
+
+      }
 
       /*bookType*/
       .bookType{
-        width: 225rpx;
+        width: 235rpx;
         height: 200rpx;
-        margin: 30rpx 0 5rpx 0;
+        // margin: 30rpx 0 5rpx 0;
 
         display: flex;
         justify-content: center;
@@ -119,6 +158,8 @@
       
       .bookName{
         font-size: 24rpx;
+        text-align: center;
+        border: 1px solid red;
       }
     }
 

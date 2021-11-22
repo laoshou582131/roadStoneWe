@@ -1,6 +1,12 @@
+@mainColor:#B1C280;
+@itemColor:#f7fceb;
+@textColor:#494e3a;
+@donationColor:rgb(219, 162, 57);
 .container{
     padding: 35rpx;
     margin: 0rpx;
+
+    color: @textColor;
 
     //内部排序
     display: flex;
@@ -32,7 +38,7 @@
                 font-size: 48rpx;
                 margin-top: 20rpx;
 
-                color: rgb(219, 162, 57);
+                color: @donationColor;
             }
         }
         .checkRecordBtn{
@@ -63,6 +69,10 @@
             flex-direction: row;
             justify-content: space-around;
             align-items: center;
+
+            text{
+                color: @textColor;
+            }
         }
 
         .otherDChoices{
@@ -73,6 +83,8 @@
 
             margin: 35rpx 0 0 0rpx;
             padding-left: 35rpx;
+            
+            
 
             .otherAmountLabel{
                 // width: 150rpx;
@@ -201,6 +213,10 @@
     .donateBtn{
         height: 100rpx;
         // border: 1px solid rgb(255, 0, 221);
+
+        text{
+            color: @textColor;
+        }
 
         button{
             border-radius: 45rpx;

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isVip:false
   },
    //资助
    goDonate:function(){
@@ -13,16 +13,33 @@ Page({
       url: '../Donation/Donation',
     })
   },
-  //还书
+  //正常还书
   goReturning:function(){
     wx.navigateTo({
       url: '../ReturningBook/ReturningBook',
+    })
+  },
+  //期限内的借阅的书籍列表
+  goReturningInDate:function(){
+    wx.navigateTo({
+      url: '../ReturningBookInDate/ReturningBookInDate',
+    })
+  },
+   //过期的借阅的书籍列表
+  goReturningOutDate:function(){
+    wx.navigateTo({
+      url: '../ReturningBookOutDate/ReturningBookOutDate',
     })
   },
   //我的证书
   goCertification:function(){
     wx.navigateTo({
       url: '../myCertification/myCertification',
+    })
+  },
+  goMyReading:function(){
+    wx.navigateTo({
+      url: '../MyReading/MyReading',
     })
   },
 

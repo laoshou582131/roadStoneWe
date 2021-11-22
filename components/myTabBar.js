@@ -27,8 +27,8 @@ Component({
           },
           {
             "pagePath": "/pages/BookClassification/BookClassification",
-            "iconPath": "../images/tabBarIcon/book.png",
-            "selectedIconPath": "../images/tabBarIcon/book.png",
+            "iconPath": "../images/tabBarIcon/books.png",
+            "selectedIconPath": "../images/tabBarIcon/books.png",
             "text": "书籍"
           },
           {
@@ -46,7 +46,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    borrowingBookNum:0
   },
 
   /**
@@ -67,6 +67,30 @@ Component({
       wx.navigateTo({
         url: '/pages/BorrowingBook/BorrowingBooks',
       })
-    }
+    },
+    //获取当前准备借阅的图书数量
+    getBorrowingBookNum(){
+      const that=this
+      console.log("This is from component")
+      wx.request({
+        url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getBorrowingBookNum',
+        method:"POST",
+        data:{
+          open_id:"wxid_6j6ff0aaplne11"
+        },
+        success:function(res){
+          console.log(res.data.data) //结果为{book_count: 0}
+          //设置目前待借阅的书籍数量
+          that.setData({
+            borrowingBookNum:res.data.data.book_count
+            // borrowingBookNum:5
+          })
+          console.log("传进来的值为:"+that.data.borrowingBookNum)
+          
+          
+        }
+      })
+    },
+      
   }
 })

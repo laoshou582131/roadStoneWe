@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="phoneCerBox">
+    <view class="theText"><text>手机号验证</text></view>
+    <view class="phoneNumber">
+      <text>手机号：</text>
+      <input class="inputPhoneNum" type="number" confirm-type="next" />
+    </view>
+    <view class="certificater">
+      <text>验证码：</text>
+      <input class="inputCode" type="text" confirm-type="done" />
+      <button class="getCode"><text>获取验证码</text></button>
+    </view>
+    <view class="Btns">
+      <button class="confirmBtn">确定</button>
+      <button>取消</button>
+    </view>
+  </view>
+</view>

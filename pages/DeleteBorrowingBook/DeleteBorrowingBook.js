@@ -7,14 +7,11 @@ Page({
   data: {
 
   },
-<<<<<<< HEAD
   finishDeletion:function(){
     wx.navigateBack({
       delta: 1,
     })
   },
-=======
->>>>>>> 35887e4c91dc92df8bfa37d44502335484dc0c3a
 
   /**
    * 生命周期函数--监听页面加载

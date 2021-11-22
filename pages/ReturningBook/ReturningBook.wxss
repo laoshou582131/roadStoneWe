@@ -1,5 +1,6 @@
 /* pages/BorrowingBook/BorrowingBooks.wxss */
 .container {
+  color: #494e3a;
   margin: 20rpx;
   padding: 15rpx;
   background-color: #B1C280;
@@ -12,7 +13,7 @@
 .container .titleBar {
   display: flex;
   align-items: center;
-  color: white;
+  color: #f7fceb;
 }
 .container .titleBar .bookTitle {
   width: 320rpx;
@@ -31,7 +32,7 @@
 .container .borrowingBooksTop {
   margin: 10rpx 15rpx 0rpx 15rpx;
   height: 120rpx;
-  background-color: white;
+  background-color: #f7fceb;
   display: flex;
   align-items: center;
   border-radius: 25rpx 25rpx 0 0;
@@ -40,7 +41,7 @@
 .container .borrowingBooksMiddle {
   margin: 0rpx 15rpx 0rpx 15rpx;
   height: 120rpx;
-  background-color: white;
+  background-color: #f7fceb;
   display: flex;
   align-items: center;
   border-radius: 0rpx 0rpx 0 0;
@@ -49,7 +50,7 @@
 .container .borrowingBooksBottom {
   margin: 0rpx 15rpx 0rpx 15rpx;
   height: 120rpx;
-  background-color: white;
+  background-color: #f7fceb;
   display: flex;
   align-items: center;
   border-radius: 0rpx 0rpx 25rpx 25rpx;
@@ -81,18 +82,21 @@
 }
 .container .borrowBtnArea {
   margin: 15rpx 0 0 0;
-  padding: 0;
+  padding: 0 15rpx 0 15rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 120rpx;
+}
+.container .borrowBtnArea text {
+  color: #f7fceb;
 }
 .container .borrowBtnArea .btnOK {
   margin: 0;
   padding: 15rpx 0 0 0;
   width: 255rpx;
   height: 120rpx;
-  background-color: #dcffce;
+  background-color: #f7fceb;
   border-radius: 0;
   text-align: center;
 }

@@ -1,36 +1,54 @@
 {
   "pages": [
-<<<<<<< HEAD
+    "pages/BookClassification/BookClassification",
+    "pages/Test/Test",
+    
     "pages/Home/Home",
-    "pages/DeleteBorrowingBook/DeleteBorrowingBook",
+    
+    
+    
+    
+    
+    
+    "pages/Ranking/Ranking",
+    
+    "pages/ReturningBookOutDate/ReturningBookOutDate",
+    "pages/ReturningBookInDate/ReturningBookInDate",
+    
+    "pages/UserInfo/UserInfo",
+    
+    
+    "pages/bookDetail/BookDetail",
+    
+    
+    
+    "pages/ReturningBook/ReturningBook",
+    
+    "pages/phoneCertification/phoneCertification",
+    
+    
+    
+    
+    
+    "pages/BorrowingBook/BorrowingBooks",
+    
+    "pages/MyReading/MyReading",
+    
+    
+    
+    
+    
+    
     
     "pages/Donation/Donation",
-    
-    
-    "pages/BorrowingBook/BorrowingBooks",
-    
-=======
-    
-    "pages/Home/Home",
->>>>>>> 35887e4c91dc92df8bfa37d44502335484dc0c3a
-    "pages/Test/Test",
-    "pages/UserInfo/UserInfo",
-    "pages/myCertification/myCertification",
-    "pages/ReturningBook/ReturningBook",
-<<<<<<< HEAD
-    
-    
-=======
     "pages/DeleteBorrowingBook/DeleteBorrowingBook",
-    "pages/BorrowingBook/BorrowingBooks",
->>>>>>> 35887e4c91dc92df8bfa37d44502335484dc0c3a
-    "pages/Ranking/Ranking",
+    "pages/myCertification/myCertification",
+    
     "pages/Poster/Poster",
     "pages/DonationDetail/DonationDetail",
     
-    "pages/BookClassification/BookClassification",
-    
-    "pages/bookDetail/BookDetail",
+
+
     "pages/index/index",
     "pages/logs/logs"
     
@@ -38,9 +56,9 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "路石书屋借书系统",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#B1C280",
+    "navigationBarTitleText": "路石书屋借书小程序",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "list": [

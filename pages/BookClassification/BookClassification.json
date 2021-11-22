@@ -1,5 +1,7 @@
 {
   "usingComponents": {
     "myTabBar":"../../components/myTabBar"
-  }
+  }, 
+  "backgroundTextStyle": "light",
+  "navigationBarTitleText": "书籍类型"  
 }

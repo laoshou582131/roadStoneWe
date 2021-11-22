@@ -8,7 +8,7 @@ Page({
 
   },
   //前往删除页面
-  deleteManage:function(){
+  goDeleteManage:function(){
     wx.navigateTo({
       url: '/pages/DeleteBorrowingBook/DeleteBorrowingBook',
     })
