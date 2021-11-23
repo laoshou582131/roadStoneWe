@@ -1,3 +1,4 @@
+@reminderTextColor:#a3a3a3;
 /* pages/BorrowingBook/BorrowingBooks.wxss */
 .container{
     margin: 20rpx;
@@ -38,7 +39,18 @@
     }
 
     .ItemsGroup{
-        border: 1px solid rgb(0, 255, 234);
+        // border: 1px solid rgb(0, 255, 234);
+    }
+
+    .borrowingNoBook{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-top: 50rpx;
+        text{
+            color: @reminderTextColor
+        }
     }
 
     .borrowingBooks{
@@ -93,6 +105,10 @@
         align-items: center;
 
         height: 120rpx;
+
+        text{
+            margin-left: 25rpx;
+        }
 
 
         .btnOK{

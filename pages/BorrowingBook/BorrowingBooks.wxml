@@ -3,20 +3,21 @@
     <button class="managementBtn" bindtap="goDeleteManage"><image src="../BorrowingBook/images/Setting2.png" mode="widthFix" style="width: 50rpx;"></image><text style="color: white;">管理</text></button>
     
   </view>
-  <checkbox-group class="ItemsGroup">
+  <checkbox-group class="ItemsGroup" bindchange="getSelectedBook">
+    <view class="borrowingNoBook" wx:if="{{booksList.length==0}}"><text>暂无待借书籍</text></view>
     <scroll-view scroll-y="true">
-      <view class="borrowingBooks" wx:for="{{15}}" wx:key="index">
+      <view class="borrowingBooks" wx:for="{{booksList}}" wx:key="index">
         <text class="itemIndex">{{index+1}}</text>
-        <view class="bookPic"><image class="bookPicType" src="../../images/pictures/pic1.png" mode="widthFix"></image></view>
-        <text class="bookNameType">bookName</text>
-        <checkbox class="checkBoxType" value="1"></checkbox>
+        <view class="bookPic"><image class="bookPicType" src="{{item.book_url}}" mode="widthFix"></image></view>
+        <text class="bookNameType">{{item.book_main_title}}</text>
+        <checkbox class="checkBoxType" value="{{item.book_id}}"></checkbox>
       </view>
     </scroll-view>
   </checkbox-group>
 
   <view class="borrowBtnArea">
     <!--显示当前选了多少本书-->
-    <text>Books' number</text>
+    <text>选了 {{selectedBookList.length}} 本</text>
     <button class="btnOK">借阅</button>
   </view>
 </view>

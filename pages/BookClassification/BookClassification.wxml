@@ -27,7 +27,7 @@
       lower-threshold="10" bindscrolltolower="paging" scroll-anchoring="true">
         <view class="booksTempContainer">
           <view class="bookItems" wx:for="{{currentBookItems}}" wx:key="index">
-            <button class="bookType" bindtap="goDetail">
+            <button class="bookType" bindtap="goDetail" data-bookid="{{item.book_id}}">
               <image class="pictureType" src="{{item.book_url}}" mode="aspectFill"></image>
             </button>
             <text class="bookName">{{item.book_main_title}}</text>

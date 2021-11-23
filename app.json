@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/BorrowingBook/BorrowingBooks",
+    "pages/Home/Home",
     "pages/BookClassification/BookClassification",
     "pages/Test/Test",
     
-    "pages/Home/Home",
+    
     
     
     
@@ -30,7 +32,7 @@
     
     
     
-    "pages/BorrowingBook/BorrowingBooks",
+    
     
     "pages/MyReading/MyReading",
     

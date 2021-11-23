@@ -10,6 +10,7 @@ Page({
     currentPage:1,//当前页面
     limit:10, //每一页的所要的书籍数量
     currentBookItems:[],//当前所获得的书籍信息列表
+    bookid:"",//书籍的id
 
 
     value:[0], //picker默认下从选择第几个元素
@@ -73,36 +74,38 @@ Page({
     })
   },
 
-
+  //前往该书籍的详情页面
   goDetail:function(e){
-    wx.navigateTo({
-      url: '../../pages/bookDetail/BookDetail',
-    })
+    try{
+      let bookId=e.currentTarget.dataset.bookid
+      console.log(bookId)
+      if(bookId!=null){
+        wx.navigateTo({
+          url: '../../pages/bookDetail/BookDetail?bookId='+bookId,
+        })
+      }
+    }catch(err){
+      console.log("goBookDetail's error: "+err)
+    }
+    
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //获得书籍分类数据
+    this.getBooksClasses()
+    //获取所选分类的书籍内容
+    console.log("Hello")
+    // this.getClassBooks(this.data.currentClass,this.data.page,this.data.limit)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    //获得书籍分类数据
-    this.getBooksClasses()
-    //获取所选分类的书籍内容
-    console.log("Hello")
-    // this.getClassBooks(this.data.currentClass,this.data.page,this.data.limit)
     
   },
   //获取书籍分类数据
@@ -148,6 +151,13 @@ Page({
 
       }
     })
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    
   },
   
 

@@ -25,8 +25,14 @@
   height: 1100rpx;
   padding-top: 0rpx;
 }
-.container .ItemsGroup {
-  /* border: 1px solid #00ffea; */
+.container .borrowingNoBook {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50rpx;
+}
+.container .borrowingNoBook text {
+  color: #a3a3a3;
 }
 .container .borrowingBooks {
   margin: 10rpx 15rpx 15rpx 15rpx;
@@ -64,6 +70,9 @@
   justify-content: space-between;
   align-items: center;
   height: 120rpx;
+}
+.container .borrowBtnArea text {
+  margin-left: 25rpx;
 }
 .container .borrowBtnArea .btnOK {
   margin: 0;
