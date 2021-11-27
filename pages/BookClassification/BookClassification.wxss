@@ -10,21 +10,24 @@
 }
 .searchBarContainer {
   margin: 0;
-  padding: 20rpx 45rpx 20rpx 45rpx;
+  padding: 20rpx 0rpx 20rpx 0rpx;
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: stretch;
 }
 .searchBarContainer .tempContainer {
   display: flex;
   justify-content: space-evenly;
-  align-content: center;
   align-items: center;
-  width: 100%;
   /* margin: 0 50rpx 0 25rpx; */
+  width: 550rpx;
   border-radius: 20rpx;
   box-shadow: 0 8px 5px 1px #e0e0e0;
   padding: 0 15rpx 0 35rpx;
+}
+.searchBarContainer .tempContainer .formSearch {
+  margin: 0;
+  padding: 0;
 }
 .searchBarContainer .tempContainer .searchBar {
   display: inline-block;
@@ -36,7 +39,7 @@
   display: inline-block;
   margin: 10rpx 0 0 0;
   padding: 0;
-  width: 70rpx;
+  width: 90rpx;
   height: 70rpx;
 }
 .searchBarContainer .tempContainer .searchBtn .searchIcon {

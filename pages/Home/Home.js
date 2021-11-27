@@ -27,6 +27,7 @@ Page({
 
   //定义扫码方法
   goScan:function(){
+    //判断是否可以借书
     this.checkUserBorrowingRight()
   },
   //判断用户是否能够借书

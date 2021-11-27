@@ -1,0 +1,27 @@
+<view class="container">
+  <!--搜索框-->
+  <view class="searchBarContainer">
+    <form class="formSearch" bindsubmit="onSubmitSearch">
+      <view class="tempContainer">
+        <input class="searchBar" name="searchContent" type="text" confirm-type="search" placeholder="搜索书名，作者" />
+        <button class="searchBtn" plain="true" style="border:none" form-type="submit">
+          <image class="searchIcon" src="../../images/searchC/search1.png" mode="aspectFit"></image>
+        </button>
+      </view>
+  </form>
+  </view>
+  <!--分类信息展示-->
+  <view class="bookItemsContainer">
+    <scroll-view scroll-y="true">
+      <view wx:for="{{5}}" wx:key="index" class="bookItem">
+        <text class="bookIndex">{{index+1}}</text>
+        <image src="../../images/pictures/pic1.png" mode="widthFix"></image>
+        <view class="briefContent">
+          <text>BookName</text>
+          <text>author</text>
+        </view>
+        
+      </view>
+    </scroll-view>
+  </view>
+</view>

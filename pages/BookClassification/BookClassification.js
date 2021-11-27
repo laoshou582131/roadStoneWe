@@ -12,9 +12,40 @@ Page({
     currentBookItems:[],//当前所获得的书籍信息列表
     bookid:"",//书籍的id
 
+    //搜索
+    searchPage:1,
+    searchLimit:10,
+    showSearchPage:false, //是否展示搜索页面
+
 
     value:[0], //picker默认下从选择第几个元素
     // menu:[]
+  },
+  //搜索
+  onSubmitSearch:function(e){
+    console.log(e.detail.value)
+    if(e.detail.value!=""){
+      //去搜索
+      const that=this
+      wx.request({
+        url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getSearchBookName',
+        method:"GET",
+        data:{
+          //传递bookID 或bookCode给后台
+          //未完成
+        },
+        success:function(res){
+          //获得该书的详情信息。
+          //未完成
+        }
+      })
+    }
+  },
+  //前往搜索页面
+  goSearchPage:function(){
+    wx.navigateTo({
+      url: '../searchPage/searchPage',
+    })
   },
   
   //左边Picker的选择后变动方法
@@ -119,7 +150,8 @@ Page({
       },
 
       success:function(res){
-        console.log(res.data) 
+        console.log("获取书籍分类数据,") 
+        console.log(res.data)
         that.setData({
           bookClassification:res.data.data.book_type_list,
           currentClass:res.data.data.book_type_list[0], //设置当前所选的默认分类类型
@@ -128,6 +160,9 @@ Page({
         //获取当前书籍类型的书本信息
         that.getClassBooks(that.data.currentClass,that.data.currentPage,that.data.limit)
         
+      },
+      fail:function(res){
+        console.log("获取书籍分类数据失败。")
       }
     })
   },
@@ -144,11 +179,20 @@ Page({
         limit:limit //默认10个
       },
       success:function(res){
+        console.log("获得所选书籍类型的书籍信息：")
         console.log(res.data)
-        that.setData({
-          currentBookItems:res.data.data.book_list
-        })
-
+        if(res.data.code==1){
+          that.setData({
+            currentBookItems:res.data.data.book_list
+          })
+        }else if(res.data.code==2){
+          console.log("获取书籍信息失败")
+        }else{
+          console.log("获取书籍信息失败")
+        }
+      },
+      fail:function(res){
+        console.log("获取所选类型书籍信息失败")
       }
     })
   },
