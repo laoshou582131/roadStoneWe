@@ -6,13 +6,75 @@ Page({
    */
   data: {
     length:8,
+    //基本信息
+    openID:"wxid_6j6ff0aaplne11",
+    page:1,
+    limit:10,
+    bookItemList:[]
+  },
+  //翻页
+  paging:function(){
+    console.log("paging")
+    var tempPage=this.data.page+1
+    this.setData({
+      page:tempPage
+    })
+    console.log(this.data.page)
+    //获得更多有关搜索内容的信息
+    this.getMoreBooks(this.data.openID,this.data.page,this.data.limit)
+  },
+  getMoreBooks(openID,page,limit){
+    console.log("getMoreBooks:"+openID+","+page+","+limit)
+    // console.log(searchContent)
+    //去访问后端获取更多书籍
+    const that=this
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getAllLegalBorrowingBooks',
+      method:"POST",
+      data:{
+        // open_id:"wxid_6j6ff0aaplne11"
+        open_id:openID,
+        page:page, //新的页面
+        limit:limit //默认10个
+      },
+      success:function(res){
+        console.log(res.data)
+        //将第新页的内容给加进来
+        // var newBookItems=res.data.data.book_list
+        // var tempCurrentBookItems=that.data.searchReturnContent
+        // tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
+        // // console.log(tempCurrentBookItems)
+        // that.setData({
+        //   searchReturnContent:tempCurrentBookItems
+        // })
+
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //获取用户的合法借书列表
+    this.getUserBorrowInDate(this.data.openID,this.data.page,this.data.limit)
+  },
+  //获取用户的合法借书列表
+  getUserBorrowInDate(openID,page,limit){
+    //获取基本信息
+    const that=this
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getAllLegalBorrowingBooks',
+      method:"POST",
+      data:{
+        open_id:openID,
+        page:page,
+        limit:limit
+      },
+      success:function(res){
+        console.log(res.data)
+      }
+    })
   },
 
   /**

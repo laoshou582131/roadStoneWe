@@ -6,18 +6,18 @@
   <view class="PersonalInfo">
     <view class="personalIcon">
       <!--用户头像-->
-      <image class="pIconType" src="../../images/icons/Picon.png" mode="aspectFit"></image>
+      <image class="pIconType" src="{{userPicUrl}}" mode="aspectFit"></image>
     </view>
     <view class="nameAndPhone">
       <view class="textPType">
         <!--用户名字-->
-        <text>星川莉莉</text>
+        <text>{{userNickName}}</text>
         <!--vip的标识，若是则显示金色王冠，若否则显示为灰色王冠-->
-        <image wx:if="{{isVip==true}}" src="../UserInfo/images/vip.png" mode="widthFix" style="width: 50rpx;"></image>
+        <image wx:if="{{userVipState==1}}" src="../UserInfo/images/vip.png" mode="widthFix" style="width: 50rpx;"></image>
         <image wx:else src="../UserInfo/images/nonVip.png" mode="widthFix" style="width: 50rpx;"></image>
       </view>
       <!--用户电话号码-->
-      <text>131313131313</text>
+      <text>{{userPhoneNumber}}</text>
     </view>
     <view class="vip">
       <text>会员有效期至</text>
@@ -33,22 +33,22 @@
   <view class="showFourBasicInfo">
     <!--借阅button，显示合法借书期限内的书籍列表-->
     <button class="buttonType" type="default" bindtap="goReturningInDate">
-    <text>2</text>
+    <text>{{borrowBookCount}}</text>
     <text>借阅</text>
     </button>
     <!--待还button，显示所有借书逾期的书籍列表-->
     <button class="buttonType" type="default" bindtap="goReturningOutDate" >
-      <text>0</text>
+      <text>{{returnBookCount}}</text>
       <text>待还</text>
     </button>
     <!--捐书button，显示捐书页面，展示海报，目前还没有-->
     <button class="buttonType" type="default">
-      <text>21</text>
+      <text>{{donateBookCount}}</text>
       <text>捐书</text>
     </button>
     <!--资助button，显示资助页面-->
     <button class="buttonType" type="default" bindtap="goDonate">
-      <text>500</text>
+      <text>{{donateSumMoney}}</text>
       <text>资助</text>
     </button>
   </view>

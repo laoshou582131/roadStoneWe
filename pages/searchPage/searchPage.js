@@ -8,28 +8,38 @@ Page({
     //搜索的基本信息
     searchContent:"",
     searchPage:1,
-    limit:10
+    limit:10,
+    searchReturnContent:[],
+    haveReturnContent:false
 
   },
   //搜索
   onSubmitSearch:function(e){
+    console.log("按下搜索按钮")
     console.log(e.detail.value)
     var searchContent1=e.detail.value
-    if(searchContent1==null)
-    {
+    if(searchContent1!=null)
+      {
+        if(searchContent1!="")
+        {
+          this.goSearching(searchContent1,this.data.searchPage,this.data.limit)
+        }else{
+          wx.showToast({
+            title: '搜索不能为空...',
+          })
+          this.setData({
+            searchContent:""
+          })
+        }
+      }
+    else{
       wx.showToast({
         title: '搜索不能为空...',
       })
       this.setData({
         searchContent:""
       })
-    }else{
-      this.setData({
-        searchContent:searchContent1
-      })
-      this.goSearching(searchContent1,this.data.searchPage,this.data.limit)
     }
-    // console.log(this.data.searchContent)
   },
   goSearching(search,page,limit){
     const that=this
@@ -44,7 +54,55 @@ Page({
       },
       success:function(res){
         console.log(res.data)
-        
+        //给searchReturnContent和haveReturnContent赋值
+      },
+      fail:function(res){
+        //searchReturnContent赋空值
+        that.setData({
+          searchReturnContent:[],
+          haveReturnContent:false
+        })
+      }
+    })
+  },
+
+  //翻页
+  paging:function(){
+    console.log("paging")
+    var tempPage=this.data.searchPage+1
+    this.setData({
+      searchPage:tempPage
+    })
+    console.log(this.data.searchPage)
+    //获得更多有关搜索内容的信息
+    this.getMoreBooks(this.data.searchContent,this.data.searchPage,this.data.limit)
+  },
+  //获得更多有关搜索内容的信息
+  getMoreBooks(searchContent,page,limit){
+    console.log("getMoreBooks:"+searchContent+","+page+","+limit)
+    console.log(searchContent)
+    //去访问后端获取更多书籍
+    const that=this
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getSearchBookName',
+      method:"GET",
+      data:{
+        // open_id:"wxid_6j6ff0aaplne11"
+        search:searchContent,
+        page:page, //新的页面
+        limit:limit //默认10个
+      },
+      success:function(res){
+        console.log(res.data)
+        //将第新页的内容给加进来
+        // var newBookItems=res.data.data.book_list
+        // var tempCurrentBookItems=that.data.searchReturnContent
+        // tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
+        // // console.log(tempCurrentBookItems)
+        // that.setData({
+        //   searchReturnContent:tempCurrentBookItems
+        // })
+
       }
     })
   },

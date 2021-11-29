@@ -11,17 +11,19 @@
   </form>
   </view>
   <!--分类信息展示-->
-  <view class="bookItemsContainer">
-    <scroll-view scroll-y="true">
-      <view wx:for="{{5}}" wx:key="index" class="bookItem">
+  <view  class="bookItemsContainer">
+    <scroll-view wx:if="{{haveReturnContent}}" scroll-y="true"
+    lower-threshold="10" bindscrolltolower="paging" scroll-anchoring="true">
+      <view wx:for="{{10}}" wx:key="index" class="bookItem">
         <text class="bookIndex">{{index+1}}</text>
         <image src="../../images/pictures/pic1.png" mode="widthFix"></image>
         <view class="briefContent">
           <text>BookName</text>
           <text>author</text>
         </view>
-        
       </view>
+      
     </scroll-view>
+    <view wx:else><text>无此搜索内容</text></view>
   </view>
 </view>
