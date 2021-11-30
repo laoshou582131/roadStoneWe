@@ -1,54 +1,38 @@
 {
   "pages": [
-    "pages/ReturningBookOutDate/ReturningBookOutDate",
-    "pages/ReturningBookInDate/ReturningBookInDate",
     "pages/UserInfo/UserInfo",
+    "pages/DonationDetail/DonationDetail",
+    "pages/ReturningBookInDate/ReturningBookInDate",
+    "pages/DonationBookDetail/DonationBookDetail",
+    
+    
+    "pages/ReturningBookOutDate/ReturningBookOutDate",
+    
+    
+
     "pages/Home/Home",
     "pages/searchPage/searchPage",
     "pages/BookClassification/BookClassification",
-
-    
     "pages/BorrowingBook/BorrowingBooks",
-    
-    
+
     "pages/Test/Test",
 
     "pages/Ranking/Ranking",
-    
-    
-    
-    
-    
-    
-    
+
     "pages/bookDetail/BookDetail",
-    
-    
-    
+
     "pages/ReturningBook/ReturningBook",
     
     "pages/phoneCertification/phoneCertification",
-    
-    
-    
-    
-    
-    
-    
+
     "pages/MyReading/MyReading",
-    
-    
-    
-    
-    
-    
-    
+
     "pages/Donation/Donation",
     "pages/DeleteBorrowingBook/DeleteBorrowingBook",
     "pages/myCertification/myCertification",
     
     "pages/Poster/Poster",
-    "pages/DonationDetail/DonationDetail",
+    
     
 
 

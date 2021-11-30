@@ -4,7 +4,7 @@
       <text class="borTimeTitle">借阅时间</text>
     </view>
     <checkbox-group>
-      <scroll-view wx:if="{{bookItemList.length==0}}" scroll-y="true"
+      <scroll-view wx:if="{{bookItemList.length!=0}}" scroll-y="true"
       bindscrolltolower="paging" scroll-anchoring="true">
         
         <view class="temp" wx:for="{{length}}" wx:key="index">
@@ -35,7 +35,7 @@
         </view>
         
       </scroll-view>
-      <view wx:else><text>无借阅书籍</text></view>
+      <view class="showNone"wx:else><text>无借阅书籍</text></view>
     </checkbox-group>
 
     <view class="borrowBtnArea">

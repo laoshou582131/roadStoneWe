@@ -22,7 +22,7 @@
     <view class="vip">
       <text>会员有效期至</text>
       <!--用户会员有效期-->
-      <text>2021年11月2日</text>
+      <text>{{userInvalidityTime}}</text>
     </view>
     <!--暂时无-->
     <view class="editPInfo">

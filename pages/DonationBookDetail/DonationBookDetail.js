@@ -1,4 +1,4 @@
-// pages/ReturningBookOutDate/ReturningBookOutDate.js
+// pages/DonationBookDetail/DonationBookDetail.js
 Page({
 
   /**
@@ -6,11 +6,11 @@ Page({
    */
   data: {
     length:7,
-    //基本的书籍信息
+    //基本信息
     openID:"wxid_6j6ff0aaplne11",
     page:1,
     limit:10,
-    bookItemList:[]//书
+    bookItemList:[]
   },
   //翻页
   paging:function(){
@@ -23,14 +23,13 @@ Page({
     //获得更多有关搜索内容的信息
     this.getMoreBooks(this.data.openID,this.data.page,this.data.limit)
   },
-  //获得更多有关搜索内容的信息
   getMoreBooks(openID,page,limit){
     console.log("getMoreBooks:"+openID+","+page+","+limit)
     // console.log(searchContent)
     //去访问后端获取更多书籍
     const that=this
     wx.request({
-      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getWholeIlLegalBorrowingBooks',
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getAllDonatedBooks',
       method:"POST",
       data:{
         // open_id:"wxid_6j6ff0aaplne11"
@@ -39,7 +38,6 @@ Page({
         limit:limit //默认10个
       },
       success:function(res){
-        console.log("getMoreBooksInfo:")
         console.log(res.data)
         //将第新页的内容给加进来
         // var newBookItems=res.data.data.book_list
@@ -53,6 +51,7 @@ Page({
       }
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -60,15 +59,16 @@ Page({
     //重置参数
     //1获取openID
     //2，设置初始页面page=1
-    
-    this.getUserBorrowOutDate(this.data.openID,this.data.page,this.data.limit)
+
+    //获取用户捐赠的书籍信息
+    this.getUserBookDonation(this.data.openID,this.data.page,this.data.limit)
   },
-  //获取用户的合法借书列表
-  getUserBorrowOutDate(openID,page,limit){
+  //获取用户捐赠的书籍信息
+  getUserBookDonation(openID,page,limit){
     //获取基本信息
     const that=this
     wx.request({
-      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getAllLegalBorrowingBooks',
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getAllDonatedBooks',
       method:"POST",
       data:{
         open_id:openID,
@@ -77,18 +77,13 @@ Page({
       },
       success:function(res){
         console.log(res.data)
-        var BookList=res.data.data.book_list
-        console.log(BookList)
-        //赋值给bookItemList
+        var donateBookList=res.data.data.donate_book_list
         that.setData({
-          bookItemList:BookList
+          bookItemList:donateBookList
         })
       }
     })
   },
-  
-
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

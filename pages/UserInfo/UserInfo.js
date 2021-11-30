@@ -12,6 +12,7 @@ Page({
     donateBookCount:0,
     borrowBookCount:0,
     returnBookCount:0,
+    userInvalidityTime:"",
     userNickName:"",
     userPhoneNumber:"",
     userPicUrl:"",
@@ -77,10 +78,11 @@ Page({
         var donateBookCount=res.data.data.user_info.donate_book_count
         var donateSumMoney=res.data.data.user_info.donate_sum_money
         var returnBookCount=res.data.data.user_info.return_book_count
+        var userInvalidityTime=res.data.data.user_info.user_invalidity_time
         var userNickName=res.data.data.user_info.user_nickname
         var userPhoneNumber=res.data.data.user_info.user_phonenumber
         var userPicUrl=res.data.data.user_info.user_pic_url
-        var userVipState=res.data.data.user_info.user_vipState
+        var userVipState=res.data.data.user_info.user_vip_state
         // console.log(borrowBookCount,donateBookCount,donateSumMoney,returnBookCount,userNickName,userPhoneNumber,userPicUrl,userVipState)
         //赋值
         that.setData({
@@ -88,6 +90,7 @@ Page({
           donateBookCount:donateBookCount,
           donateSumMoney:donateSumMoney,
           returnBookCount:returnBookCount,
+          userInvalidityTime:userInvalidityTime,
           userNickName:userNickName,
           userPhoneNumber:userPhoneNumber,
           userPicUrl:userPicUrl,

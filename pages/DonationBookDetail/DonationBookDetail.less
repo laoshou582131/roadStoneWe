@@ -1,15 +1,19 @@
-/* pages/ReturningBookInDate/ReturningBookInDate.wxss */
-/* pages/BorrowingBook/BorrowingBooks.wxss */
+/* pages/DonationBookDetail/DonationBookDetail.wxss */
+@mainColor:#B1C280;
+@itemColor:#f7fceb;
+@textColor:#494e3a;
+
 .container {
   margin: 20rpx;
   padding: 15rpx;
-  background-color: #B1C280;
+  background-color: @mainColor;
   border-radius: 25rpx;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   align-content: center;
-  color: #494e3a;
+
+  color: @textColor;
 }
 .container .titleBar {
   display: flex;
@@ -33,7 +37,7 @@
 .container .borrowingBooksTop {
   margin: 10rpx 15rpx 0rpx 15rpx;
   height: 120rpx;
-  background-color: #f7fceb;
+  background-color: @itemColor;
   display: flex;
   align-items: center;
   border-radius: 25rpx 25rpx 0 0;
@@ -42,7 +46,7 @@
 .container .borrowingBooksMiddle {
   margin: 0rpx 15rpx 0rpx 15rpx;
   height: 120rpx;
-  background-color: #f7fceb;
+  background-color:  @itemColor;
   display: flex;
   align-items: center;
   border-radius: 0rpx 0rpx 0 0;
@@ -51,7 +55,7 @@
 .container .borrowingBooksBottom {
   margin: 0rpx 15rpx 0rpx 15rpx;
   height: 120rpx;
-  background-color: #f7fceb;
+  background-color:  @itemColor;
   display: flex;
   align-items: center;
   border-radius: 0rpx 0rpx 25rpx 25rpx;
@@ -66,16 +70,19 @@
   flex-grow: 0;
 }
 .container .bookPic .bookPicType {
-  width: 100rpx;
+  width: 110rpx;
 }
 .container .timeType {
   font-size: 16rpx;
   width: 100rpx;
   flex-grow: 1;
+//   border: 1px solid rgb(136, 211, 37);
 }
 .container .bookNameType {
-  width: 200rpx;
+  width: 100rpx;
   flex-grow: 1;
+//   border: 1px solid red;
+  text-align: center;
 }
 .container .checkBoxType {
   width: 75rpx;
@@ -84,26 +91,46 @@
 .container .borrowBtnArea {
   margin: 15rpx 0 0 0;
   padding: 0 25rpx 0 25rpx;
+  // border: 1px solid red;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 120rpx;
-}
-.container .borrowBtnArea text {
-  color: #f7fceb;
+
+  text{
+    color: @itemColor;
+  }
 }
 .container .borrowBtnArea .btnOK {
   margin: 0;
   padding: 15rpx 0 0 0;
   width: 255rpx;
   height: 120rpx;
-  background-color: #f7fceb;
+  background-color: @itemColor;
   border-radius: 0;
   text-align: center;
+
 }
-.showNone {
-  color: #f7fceb;
+
+.showNone{
+  // border: 1px solid red;
+  color: @itemColor;
   margin-top: 45rpx;
   margin-bottom: 45rpx;
   text-align: center;
+}
+
+.oneItem{
+    margin: 0;
+    padding: 0;
+    .borrowingBooksMiddle1{
+        margin: 15rpx 15rpx 0rpx 15rpx;
+        height: 120rpx;
+        background-color:  @itemColor;
+        display: flex;
+        align-items: center;
+        border-radius: 25rpx;
+        border-bottom: 1px solid #e0e0e0;
+    }
 }

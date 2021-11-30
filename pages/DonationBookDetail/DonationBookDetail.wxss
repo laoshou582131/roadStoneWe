@@ -1,5 +1,4 @@
-/* pages/ReturningBookInDate/ReturningBookInDate.wxss */
-/* pages/BorrowingBook/BorrowingBooks.wxss */
+/* pages/DonationBookDetail/DonationBookDetail.wxss */
 .container {
   margin: 20rpx;
   padding: 15rpx;
@@ -66,7 +65,7 @@
   flex-grow: 0;
 }
 .container .bookPic .bookPicType {
-  width: 100rpx;
+  width: 110rpx;
 }
 .container .timeType {
   font-size: 16rpx;
@@ -74,8 +73,9 @@
   flex-grow: 1;
 }
 .container .bookNameType {
-  width: 200rpx;
+  width: 100rpx;
   flex-grow: 1;
+  text-align: center;
 }
 .container .checkBoxType {
   width: 75rpx;
@@ -106,4 +106,17 @@
   margin-top: 45rpx;
   margin-bottom: 45rpx;
   text-align: center;
+}
+.oneItem {
+  margin: 0;
+  padding: 0;
+}
+.oneItem .borrowingBooksMiddle1 {
+  margin: 15rpx 15rpx 0rpx 15rpx;
+  height: 120rpx;
+  background-color: #f7fceb;
+  display: flex;
+  align-items: center;
+  border-radius: 25rpx;
+  border-bottom: 1px solid #e0e0e0;
 }

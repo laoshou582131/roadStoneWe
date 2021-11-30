@@ -100,3 +100,9 @@
   border-radius: 0;
   text-align: center;
 }
+.showNone {
+  color: #f7fceb;
+  margin-top: 45rpx;
+  margin-bottom: 45rpx;
+  text-align: center;
+}

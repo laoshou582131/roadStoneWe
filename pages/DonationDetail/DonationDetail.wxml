@@ -1,15 +1,16 @@
 <view class="container">
-  <scroll-view scroll-y="true"> 
+  <scroll-view wx:if="{{DonateItemList.length!=0}}" scroll-y="true"
+  bindscrolltolower="paging" scroll-anchoring="true"> 
     <!--月度sections-->
-    <view wx:for="{{3}}" wx:key="index" class="monthlySection">
+    <view wx:for="{{1}}" wx:key="index" class="monthlySection">
       <text class="bigDate">2021-10</text>
-      <view wx:for="{{5}}" wx:key="index" class="DonationItems">
+      <view wx:for="{{DonateItemList}}" wx:key="index" class="DonationItems">
         <view class="monthlyDescribe">
           <text>捐赠金额</text>
           <text class="dateD">2021年10月23日</text>
         </view>
         <view class="Money">
-          <text>300</text>
+          <text>{{item.donate_money_value}}</text>
         </view>
       </view>
     </view>
