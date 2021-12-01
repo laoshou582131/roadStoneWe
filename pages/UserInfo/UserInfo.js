@@ -18,6 +18,25 @@ Page({
     userPicUrl:"",
     userVipState:0
   },
+  //获得用户的openID
+  getUserOpenID:function(e){
+    const that =this
+    wx.cloud.callFunction({
+      name:"login",
+      success:res=>{
+        console.log("云函数调用成功")
+        that.setData({
+          openID:res.result.openid,
+        })
+        console.log("获取到OpenID: "+this.data.openID)
+        //获得用户基本信息
+        this.getUserBasicInfo(this.data.openID)
+      },
+      fail:res=>{
+        console.log("云函数调用失败")
+      }
+    })
+  },
    //资助
    goDonate:function(){
     wx.navigateTo({
@@ -58,8 +77,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获得用户基本信息
-    this.getUserBasicInfo(this.data.openID)
+    //获取用户的openID
+    this.getUserOpenID()
+    // //获得用户基本信息
+    // this.getUserBasicInfo(this.data.openID)
   },
   //获取用户的基本信息
   getUserBasicInfo(openID){
@@ -69,33 +90,45 @@ Page({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getPersonalInfo',
       method:"POST",
       data:{
-        open_id:openID
+        open_id:openID//"wxid_6j6ff0aaplne11",
+        // open_id:"wxid_6j6ff0aaplne11"
       },
       success:function(res){
-        console.log(res.data)
-        // console.log(donateSumMoney)
-        var borrowBookCount=res.data.data.user_info.borrow_book_count
-        var donateBookCount=res.data.data.user_info.donate_book_count
-        var donateSumMoney=res.data.data.user_info.donate_sum_money
-        var returnBookCount=res.data.data.user_info.return_book_count
-        var userInvalidityTime=res.data.data.user_info.user_invalidity_time
-        var userNickName=res.data.data.user_info.user_nickname
-        var userPhoneNumber=res.data.data.user_info.user_phonenumber
-        var userPicUrl=res.data.data.user_info.user_pic_url
-        var userVipState=res.data.data.user_info.user_vip_state
-        // console.log(borrowBookCount,donateBookCount,donateSumMoney,returnBookCount,userNickName,userPhoneNumber,userPicUrl,userVipState)
-        //赋值
-        that.setData({
-          borrowBookCount:borrowBookCount,
-          donateBookCount:donateBookCount,
-          donateSumMoney:donateSumMoney,
-          returnBookCount:returnBookCount,
-          userInvalidityTime:userInvalidityTime,
-          userNickName:userNickName,
-          userPhoneNumber:userPhoneNumber,
-          userPicUrl:userPicUrl,
-          userVipState:userVipState
-        })
+        if(res.data.code==1){
+          console.log(res.data)
+          // console.log(donateSumMoney)
+          var borrowBookCount=res.data.data.user_info.borrow_book_count
+          var donateBookCount=res.data.data.user_info.donate_book_count
+          var donateSumMoney=res.data.data.user_info.donate_sum_money
+          var returnBookCount=res.data.data.user_info.return_book_count
+          var userInvalidityTime=res.data.data.user_info.user_invalidity_time
+          var userNickName=res.data.data.user_info.user_nickname
+          var userPhoneNumber=res.data.data.user_info.user_phonenumber
+          var userPicUrl=res.data.data.user_info.user_pic_url
+          var userVipState=res.data.data.user_info.user_vip_state
+          // console.log(borrowBookCount,donateBookCount,donateSumMoney,returnBookCount,userNickName,userPhoneNumber,userPicUrl,userVipState)
+          //赋值
+          that.setData({
+            borrowBookCount:borrowBookCount,
+            donateBookCount:donateBookCount,
+            donateSumMoney:donateSumMoney,
+            returnBookCount:returnBookCount,
+            userInvalidityTime:userInvalidityTime,
+            userNickName:userNickName,
+            userPhoneNumber:userPhoneNumber,
+            userPicUrl:userPicUrl,
+            userVipState:userVipState
+          })
+        }else if(res.data.code==2){
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }else{
+          wx.showToast({
+            title: '信息错误',
+          })
+        }
+        
         
       }
     })

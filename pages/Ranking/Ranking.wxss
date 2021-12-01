@@ -112,13 +112,24 @@
 .rankBtnType {
   margin: 0;
   padding: 0 20rpx 0 20rpx;
-  background-color: #B1C280;
+  background-color: #afc276;
   height: 55rpx;
   width: 125rpx;
   font-size: 22rpx;
 }
 .rankBtnType text {
-  color: #f7fceb;
+  color: #494e3a;
+}
+.rankBtnTypeNs {
+  margin: 0;
+  padding: 0 20rpx 0 20rpx;
+  background-color: #d3e4a3;
+  height: 55rpx;
+  width: 125rpx;
+  font-size: 22rpx;
+}
+.rankBtnTypeNs text {
+  color: #494e3a;
 }
 .rankingList {
   /* width: 100%; */

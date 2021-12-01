@@ -3,13 +3,16 @@
   padding: 25rpx;
   margin: 0;
   color: #494e3a;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 .bookPicContainer {
   padding: 20rpx;
   margin: 25rpx 15rpx 0rpx 15rpx;
   border-radius: 35rpx;
-  background-color: #f7fceb;
-  border: 1px solid red;
+  background-color: #f7fceb5e;
   /* opacity: 1; */
 }
 .bookPicType {
@@ -21,9 +24,7 @@
   margin: 25rpx 15rpx 15rpx 15rpx;
   padding: 20rpx;
   border-radius: 35rpx;
-  border: 1px solid green;
-  background-color: #f7fceb;
-  /* width: 100%; */
+  background-color: #f7fceb5e;
   height: 725rpx;
 }
 .bookDetailInfo {

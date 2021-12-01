@@ -6,8 +6,27 @@ Page({
    */
   data: {
     UserBorrowingState:"",
-    res:""
+    res:"",
+    openID:"wxid_6j6ff0aaplne11"
   },
+  //获得用户的openID
+  getUserOpenID:function(e){
+    const that =this
+    wx.cloud.callFunction({
+      name:"login",
+      success:res=>{
+        console.log("云函数调用成功")
+        that.setData({
+          openID:res.result.openid,
+        })
+        console.log("获取到OpenID: "+this.data.openID)
+      },
+      fail:res=>{
+        console.log("云函数调用失败")
+      }
+    })
+  },
+
   //自定义导航方法
   //还书
   goReturning:function(){
@@ -28,16 +47,16 @@ Page({
   //定义扫码方法
   goScan:function(){
     //判断是否可以借书
-    this.checkUserBorrowingRight()
+    this.checkUserBorrowingRight(this.data.openID)
   },
   //判断用户是否能够借书
-  checkUserBorrowingRight(){
+  checkUserBorrowingRight(openID){
     var that=this
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkUserBorrowingStatus',
       method:"POST",
       data:{
-        open_id:"wxid_6j6ff0aaplne11"
+        open_id:openID
       },
       success:function(res){
         console.log(res.data)
@@ -97,6 +116,8 @@ Page({
   onLoad: function (options) {
     // console.log("hello")
     this.myTabBar=this.selectComponent("#middleNum");
+    //获取openID
+    this.getUserOpenID()
   },
 
   /**

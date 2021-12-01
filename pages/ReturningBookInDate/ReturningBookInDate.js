@@ -12,6 +12,25 @@ Page({
     limit:10,
     bookItemList:[]
   },
+  //获得用户的openID
+  getUserOpenID:function(e){
+    const that =this
+    wx.cloud.callFunction({
+      name:"login",
+      success:res=>{
+        console.log("云函数调用成功")
+        that.setData({
+          openID:res.result.openid,
+        })
+        console.log("获取到OpenID: "+this.data.openID)
+        //获取用户的合法借书列表
+        this.getUserBorrowInDate(this.data.openID,this.data.page,this.data.limit)   
+      },
+      fail:res=>{
+        console.log("云函数调用失败")
+      }
+    })
+  },
   //翻页
   paging:function(){
     console.log("paging")
@@ -56,8 +75,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获取用户的合法借书列表
-    this.getUserBorrowInDate(this.data.openID,this.data.page,this.data.limit)
+    //获取user的openID
+    this.getUserOpenID()
+    //因为onLoad函数里面是异步的，所以最好将获取的书籍信息放在getUserOpenID中的success函数中。
+    // //获取用户的合法借书列表
+    // this.getUserBorrowInDate(this.data.openID,this.data.page,this.data.limit)
   },
   //获取用户的合法借书列表
   getUserBorrowInDate(openID,page,limit){

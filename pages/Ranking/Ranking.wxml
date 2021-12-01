@@ -25,13 +25,14 @@
     </view>
     <!--三个不同种类的button-->
     <view class="rankingDifC">
-      <button class="rankBtnType"><text>阅读榜</text></button>
-      <button class="rankBtnType" ><text>捐书榜</text></button>
-      <button class="rankBtnType" ><text>资助榜</text></button>
+      <button class="{{isSelectedReading?'rankBtnType':'rankBtnTypeNs'}}" data-rankType="rank_reading" bindtap="selectReading"><text>阅读榜</text></button>
+      <button class="{{isSelectedDBook?'rankBtnType':'rankBtnTypeNs'}}" data-rankType="rank_donate_book" bindtap="selectDonateBook"><text>捐书榜</text></button>
+      <button class="{{isSelectedDMoney?'rankBtnType':'rankBtnTypeNs'}}" data-rankType="rank_donate_money" bindtap="selectDonateMoney"><text>资助榜</text></button>
     </view>
 
     <view class="rankingList">
-      <scroll-view class="scrollerRank" scroll-y="true">
+      <scroll-view class="scrollerRank" scroll-y="true"
+      bindscrolltolower="paging" scroll-anchoring="true">
         <!--分别显示的排行榜列表-->
         <view class="rankListUserType" wx:for="{{12}}" wx:key="index">
           <text class="rankIndex">{{index+1}}</text>

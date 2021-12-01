@@ -18,6 +18,6 @@
   <view class="borrowBtnArea">
     <!--显示当前选了多少本书-->
     <text>选了 {{selectedBookList.length}} 本</text>
-    <button class="btnOK">借阅</button>
+    <button class="btnOK" bindtap="goBorrowTheseBook">借阅</button>
   </view>
 </view>

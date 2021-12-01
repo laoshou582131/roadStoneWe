@@ -17,24 +17,24 @@ Page({
     scrollTop:0
   },
   //获取用户openID
-  // onGotUserInfo:function(e){
-  //   const that =this
-  //   //调用云函数，因为openID属于比较私密的内容，只能通过云函数来获得
-  //   wx.cloud.callFunction({
-  //     name:"login",
-  //     success:res=>{
-  //       console.log("云函数调用成功")
-  //       that.setData({
-  //         openid:res.result.openid,
-  //         userinfo:e.detail.userInfo
-  //       })
-  //       console.log("openid",that.data.openid)
-  //     },
-  //     fail:res=>{
-  //       console.log("云函数调用失败")
-  //     }
-  //   })
-  // },
+  onGotUserInfo:function(e){
+    const that =this
+    //调用云函数，因为openID属于比较私密的内容，只能通过云函数来获得
+    wx.cloud.callFunction({
+      name:"login",
+      success:res=>{
+        console.log("云函数调用成功")
+        that.setData({
+          openid:res.result.openid,
+          userinfo:e.detail.userInfo
+        })
+        console.log("openid",that.data.openid)
+      },
+      fail:res=>{
+        console.log("云函数调用失败")
+      }
+    })
+  },
 
   //默认传入第一页内容
   getData(page){

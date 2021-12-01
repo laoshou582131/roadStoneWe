@@ -32,7 +32,7 @@
         <!--加入到待借阅列表中-->
         <button class="btnType" type="default"><text style="font-size: 36rpx;">+</text></button>
         <!--若点击借阅则直接借阅，展示出该书的二维码-->
-        <button class="btnType1" type="default"><text>借阅书籍</text></button>
+        <button class="btnType1" type="default" bindtap="goBorrowTheBook"><text>借阅书籍</text></button>
       </view>
     </view>
   </view>
