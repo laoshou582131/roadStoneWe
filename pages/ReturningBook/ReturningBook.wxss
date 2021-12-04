@@ -75,6 +75,8 @@
 .container .bookNameType {
   width: 200rpx;
   flex-grow: 1;
+  font-size: 24rpx;
+  color: #494e3a;
 }
 .container .checkBoxType {
   width: 75rpx;
@@ -98,5 +100,12 @@
   height: 120rpx;
   background-color: #f7fceb;
   border-radius: 0;
+  text-align: center;
+  color: #494e3a;
+}
+.showNone {
+  color: #f7fceb;
+  margin-top: 45rpx;
+  margin-bottom: 45rpx;
   text-align: center;
 }

@@ -56,7 +56,9 @@ Page({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkUserBorrowingStatus',
       method:"POST",
       data:{
-        open_id:openID
+        //"wxid_6j6ff0aaplne11"
+        // open_id:openID
+        open_id:"wxid_6j6ff0aaplne11"
       },
       success:function(res){
         console.log(res.data)

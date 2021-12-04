@@ -10,7 +10,8 @@ Page({
     openID:"wxid_6j6ff0aaplne11",
     page:1,
     limit:10,
-    bookItemList:[]//书
+    bookItemList:[],//书
+    selectToReturnBooksList:[]//选择要选择还书的list
   },
   //获得用户的openID
   getUserOpenID:function(e){
@@ -72,6 +73,37 @@ Page({
       }
     })
   },
+
+  //选择要还的书籍
+  selectReadyToReturnBooks:function(e){
+    console.log(e.detail.value) //checkBox的所选的数组，其元素为value.
+    var readyToReturnList=e.detail.value
+    this.setData({
+      selectToReturnBooksList:readyToReturnList
+    })
+  },
+  //点击还书按钮
+  returnTheBook:function(e){
+    const that=this
+    var openID=this.data.openID
+    var selectToReturnBooksList=this.data.selectToReturnBooksList.toString()
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/returnBooks',
+      method:"POST",
+      data:{
+        open_id:openID,//用户的id
+        book_list:selectToReturnBooksList
+      },
+      success:function(res){
+        console.log(res.data)
+      },
+      fail:function(res){
+        console.log("fail, "+res.data)
+      }
+    })
+  },
+
+  
   /**
    * 生命周期函数--监听页面加载
    */

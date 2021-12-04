@@ -10,7 +10,8 @@ Page({
     openID:"wxid_6j6ff0aaplne11",
     page:1,
     limit:10,
-    bookItemList:[]
+    bookItemList:[],
+    selectToReturnBooksList:[]//选择要选择还书的list
   },
   //获得用户的openID
   getUserOpenID:function(e){
@@ -24,7 +25,8 @@ Page({
         })
         console.log("获取到OpenID: "+this.data.openID)
         //获取用户的合法借书列表
-        this.getUserBorrowInDate(this.data.openID,this.data.page,this.data.limit)   
+        this.getUserBorrowInDate(this.data.openID,this.data.page,this.data.limit) //"wxid_6j6ff0aaplne11",
+        // this.getUserBorrowInDate("wxid_6j6ff0aaplne11",this.data.page,this.data.limit) 
       },
       fail:res=>{
         console.log("云函数调用失败")
@@ -67,6 +69,35 @@ Page({
         //   searchReturnContent:tempCurrentBookItems
         // })
 
+      }
+    })
+  },
+
+  //选择要还的书籍
+  selectReadyToReturnBooks:function(e){
+    console.log(e.detail.value) //checkBox的所选的数组，其元素为value.
+    var readyToReturnList=e.detail.value
+    this.setData({
+      selectToReturnBooksList:readyToReturnList
+    })
+  },
+  //点击还书按钮
+  returnTheBook:function(e){
+    const that=this
+    var openID=this.data.openID
+    var selectToReturnBooksList=this.data.selectToReturnBooksList.toString()
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/returnBooks',
+      method:"POST",
+      data:{
+        open_id:openID,//用户的id
+        book_list:selectToReturnBooksList
+      },
+      success:function(res){
+        console.log(res.data)
+      },
+      fail:function(res){
+        console.log("fail, "+res.data)
       }
     })
   },

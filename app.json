@@ -1,12 +1,18 @@
 {
   "pages": [
+    "pages/ReturningBookInDate/ReturningBookInDate",
+    "pages/ReturningBook/ReturningBook",
+    "pages/ReturningBookOutDate/ReturningBookOutDate",
+    
+    
+    "pages/Home/Home",
+
     "pages/UserInfo/UserInfo",
     "pages/DonationDetail/DonationDetail",
-    "pages/ReturningBookOutDate/ReturningBookOutDate",
-    "pages/ReturningBookInDate/ReturningBookInDate",
+    
+    
     "pages/BorrowingBook/BorrowingBooks",
     "pages/bookDetail/BookDetail",
-    "pages/Home/Home",
     "pages/Test/Test",
     "pages/Donation/Donation",
     
@@ -21,7 +27,7 @@
     "pages/searchPage/searchPage",
     "pages/BookClassification/BookClassification",
     
-    "pages/ReturningBook/ReturningBook",
+    
     
     "pages/phoneCertification/phoneCertification",
 
