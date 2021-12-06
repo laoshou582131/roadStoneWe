@@ -128,13 +128,21 @@ Page({
         limit:limit
       },
       success:function(res){
-        console.log(res.data)
-        var BookList=res.data.data.book_list
-        console.log(BookList)
-        //赋值给bookItemList
-        that.setData({
-          bookItemList:BookList
-        })
+        if(res.data.code==1){
+          console.log(res.data)
+          var BookList=res.data.data.book_list
+          console.log(BookList)
+          //赋值给bookItemList
+          that.setData({
+            bookItemList:BookList
+          })
+        }else if(res.data.code==2){
+          console.log(res.data.msg)
+        }else
+        {
+          console.log("获取待还书籍内容错误")
+        }
+        
       }
     })
   },

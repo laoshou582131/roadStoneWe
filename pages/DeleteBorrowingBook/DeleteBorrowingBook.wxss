@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: stretch;
   align-content: center;
+  color: #494e3a;
 }
 .container .management {
   position: relative;
@@ -70,5 +71,11 @@
   background-color: #e75123;
   color: white;
   border-radius: 0;
+  text-align: center;
+}
+.showNone {
+  color: #494e3a;
+  margin-top: 45rpx;
+  margin-bottom: 45rpx;
   text-align: center;
 }

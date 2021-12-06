@@ -2,20 +2,22 @@
   <view class="management">
     <button class="managementBtn" bindtap="finishDeletion"><image src="../DeleteBorrowingBook/images/Ok.png" mode="widthFix" style="width: 50rpx;"></image><text style="color: white;">完成</text></button>
   </view>
-  <checkbox-group class="ItemsGroup">
-    <scroll-view scroll-y="true">
-      <view class="borrowingBooks" wx:for="{{15}}" wx:key="index">
+  <checkbox-group class="ItemsGroup" bindchange="selectReadyToDeleteBooks">
+    <scroll-view wx:if="{{booksList.length>=1}}" scroll-y="true"
+    bindscrolltolower="paging" scroll-anchoring="true">
+      <view class="borrowingBooks" wx:for="{{booksList}}" wx:key="index">
         <text class="itemIndex">{{index+1}}</text>
         <view class="bookPic"><image class="bookPicType" src="../../images/pictures/pic1.png" mode="widthFix"></image></view>
         <text class="bookNameType">bookName</text>
         <checkbox class="checkBoxType" value="1"></checkbox>
       </view>
     </scroll-view>
+    <view class="showNone"wx:else><text>无借阅书籍</text></view>
   </checkbox-group>
 
   <view class="borrowBtnArea">
     <!--显示当前选了多少本书-->
-    <text>Books' number</text>
-    <button class="btnOK">删除</button>
+    <text>数量： {{booksList.length}}</text>
+    <button class="btnOK" bindtap="deleteTheseBooks">删除</button>
   </view>
 </view>

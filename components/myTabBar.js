@@ -23,7 +23,7 @@ Component({
           {
             "isSpecial":true,
             "iconPath":"../images/tabBarIcon/plus3.png",
-            "text":"扫码"
+            "text":"待借阅书单"
           },
           {
             "pagePath": "/pages/BookClassification/BookClassification",
@@ -63,6 +63,7 @@ Component({
         }
       })
     },
+    //前往借阅书籍的页面
     goBorrow:function(){
       wx.navigateTo({
         url: '/pages/BorrowingBook/BorrowingBooks',

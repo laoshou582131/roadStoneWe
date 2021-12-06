@@ -99,6 +99,46 @@ Page({
       }
     })
   },
+  //scroll-view的paging方法
+  paging:function(){
+    console.log("paging")
+    var tempPage=this.data.page+1
+    this.setData({
+      page:tempPage
+    })
+    console.log(this.data.page)
+    //获得更多有关搜索内容的信息
+    this.getMoreBooks(this.data.openID,this.data.page,this.data.limit)
+  },
+  getMoreBooks(openID,page,limit){
+    console.log("getMoreBooks:"+openID+","+page+","+limit)
+    // console.log(searchContent)
+    //去访问后端获取更多书籍
+    const that=this
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getWholeReadyBorrowingBook',
+      method:"POST",
+      data:{
+        // open_id:"wxid_6j6ff0aaplne11"
+        open_id:openID,
+        page:page, //新的页面
+        limit:limit //默认10个
+      },
+      success:function(res){
+        console.log(res.data)
+        //将第新页的内容给加进来
+        // var newBookItems=res.data.data.book_list
+        // var tempCurrentBookItems=that.data.searchReturnContent
+        // tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
+        // // console.log(tempCurrentBookItems)
+        // that.setData({
+        //   searchReturnContent:tempCurrentBookItems
+        // })
+
+      }
+    })
+  },
+
   //前往删除页面
   goDeleteManage:function(){
     wx.navigateTo({

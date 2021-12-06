@@ -1,4 +1,7 @@
 /* pages/BorrowingBook/BorrowingBooks.wxss */
+@mainColor:#B1C280;
+@itemColor:#f7fceb;
+@textColor:#494e3a;
 .container{
     margin: 20rpx;
     padding: 15rpx;
@@ -8,6 +11,8 @@
     flex-direction: column;
     align-items: stretch;
     align-content: center;
+
+    color: @textColor;
 
     //管理按钮
     .management{
@@ -27,6 +32,8 @@
             justify-content: space-around;
             align-items: center;
             background-color: #B0C080;
+
+            // color: @textColor;
         }
     }
     
@@ -109,4 +116,11 @@
             text-align: center;
         }
     }
+}
+
+.showNone{
+    color:@textColor ;
+    margin-top: 45rpx;
+    margin-bottom: 45rpx;
+    text-align: center;
 }

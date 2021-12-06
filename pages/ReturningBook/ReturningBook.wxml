@@ -14,7 +14,8 @@
             <checkbox class="checkBoxType" value="{{booksList[0].book_id}}"></checkbox>
           </view>
     </view>
-      <scroll-view wx:elif="{{bookItemList.length>1}}" scroll-y="true">
+      <scroll-view wx:elif="{{bookItemList.length>1}}" scroll-y="true"
+        bindscrolltolower="paging" scroll-anchoring="true">
         
         <view class="temp" wx:for="{{booksList}}" wx:key="index">
           <!--头部条目渲染方式-->
