@@ -126,14 +126,21 @@ Page({
       },
       success:function(res){
         console.log(res.data)
-        //将第新页的内容给加进来
-        // var newBookItems=res.data.data.book_list
-        // var tempCurrentBookItems=that.data.searchReturnContent
-        // tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
-        // // console.log(tempCurrentBookItems)
-        // that.setData({
-        //   searchReturnContent:tempCurrentBookItems
-        // })
+        if(res.data.code==1){
+          //将第新页的内容给加进来
+          var newBookItems=res.data.data.book_list
+          var tempCurrentBookItems=that.data.booksList
+          tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
+          // console.log(tempCurrentBookItems)
+          that.setData({
+            booksList:tempCurrentBookItems
+          })
+        }else if(res.data.code==2){
+          console.log(res.data.msg)
+        }else{
+          console.log(res.data.msg)
+        }
+        
 
       }
     })

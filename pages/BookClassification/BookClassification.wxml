@@ -7,7 +7,7 @@
     <form class="formSearch" bindsubmit="onSubmitSearch">
       <view class="tempContainer">
         <input class="searchBar" name="searchContent" bindfocus="goSearchPage" type="text" confirm-type="search" placeholder="搜索书名，作者" />
-        <button class="searchBtn" plain="true" form-type="submit">
+        <button class="searchBtn" plain="true" form-type="submit" style="border: none;">
           <image class="searchIcon" src="../../images/searchC/search1.png" mode="aspectFit"></image>
         </button>
       </view>

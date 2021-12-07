@@ -21,7 +21,9 @@ Page({
       success:res=>{
         console.log("云函数调用成功")
         that.setData({
-          openID:res.result.openid,
+          //
+          // openID:res.result.openid,
+          openID:"wxid_6j6ff0aaplne11",
         })
         console.log("获取到OpenID: "+this.data.openID)
         //获取用户的合法借书列表
@@ -61,13 +63,13 @@ Page({
       success:function(res){
         console.log(res.data)
         //将第新页的内容给加进来
-        // var newBookItems=res.data.data.book_list
-        // var tempCurrentBookItems=that.data.searchReturnContent
-        // tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
-        // // console.log(tempCurrentBookItems)
-        // that.setData({
-        //   searchReturnContent:tempCurrentBookItems
-        // })
+        var newBookItems=res.data.data.book_list
+        var tempCurrentBookItems=that.data.bookItemList
+        tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
+        // console.log(tempCurrentBookItems)
+        that.setData({
+          bookItemList:tempCurrentBookItems
+        })
 
       }
     })
@@ -109,8 +111,6 @@ Page({
     //获取user的openID
     this.getUserOpenID()
     //因为onLoad函数里面是异步的，所以最好将获取的书籍信息放在getUserOpenID中的success函数中。
-    // //获取用户的合法借书列表
-    // this.getUserBorrowInDate(this.data.openID,this.data.page,this.data.limit)
   },
   //获取用户的合法借书列表
   getUserBorrowInDate(openID,page,limit){
@@ -126,6 +126,13 @@ Page({
       },
       success:function(res){
         console.log(res.data)
+        if(res.data.code==1){
+          console.log(res.data.msg)
+        }else if(res.data.code==2){
+          console.log(res.data.msg)
+        }else{
+          console.log(res.data.msg)
+        }
       }
     })
   },

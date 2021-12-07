@@ -120,6 +120,22 @@ Page({
     this.myTabBar=this.selectComponent("#middleNum");
     //获取openID
     this.getUserOpenID()
+    //获取轮播图
+    // this.getPics()
+  },
+  //获取轮播图的图片
+  getPics:function(){
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getPicURL',
+      method:"GET",
+      data:{
+
+      },
+      success:function(res){
+        console.log(res.data)
+      }
+    })
+    
   },
 
   /**

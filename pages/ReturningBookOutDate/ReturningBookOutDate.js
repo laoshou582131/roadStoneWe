@@ -62,13 +62,13 @@ Page({
         console.log("getMoreBooksInfo:")
         console.log(res.data)
         //将第新页的内容给加进来
-        // var newBookItems=res.data.data.book_list
-        // var tempCurrentBookItems=that.data.searchReturnContent
-        // tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
-        // // console.log(tempCurrentBookItems)
-        // that.setData({
-        //   searchReturnContent:tempCurrentBookItems
-        // })
+        var newBookItems=res.data.data.book_list
+        var tempCurrentBookItems=that.data.bookItemList
+        tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
+        // console.log(tempCurrentBookItems)
+        that.setData({
+          bookItemList:tempCurrentBookItems
+        })
 
       }
     })

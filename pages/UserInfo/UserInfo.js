@@ -26,7 +26,9 @@ Page({
       success:res=>{
         console.log("云函数调用成功")
         that.setData({
-          openID:res.result.openid,
+          //"wxid_6j6ff0aaplne11"
+          // openID:res.result.openid,
+          openID:"wxid_6j6ff0aaplne11"
         })
         console.log("获取到OpenID: "+this.data.openID)
         //获得用户基本信息

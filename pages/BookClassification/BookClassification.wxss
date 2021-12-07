@@ -75,7 +75,6 @@
   /* background-color: rgb(253, 214, 214); */
 }
 .right-col {
-  border: 1px solid #fc0c5c;
   padding: 0;
   margin: 0;
   width: 150rpx;
@@ -89,7 +88,6 @@
 .right-col .scroller .booksTempContainer {
   width: 600rpx;
   height: auto;
-  border: 1px solid #1ba8e0;
   margin: 0;
   padding: 0;
   /*书籍栏目的排列*/
@@ -103,7 +101,6 @@
 }
 .right-col .scroller .booksTempContainer .bookItems {
   width: 250rpx;
-  border: 1px solid #e0b21b;
   display: flex;
   flex-direction: column;
   margin-left: 15rpx;
@@ -125,7 +122,6 @@
 .right-col .scroller .booksTempContainer .bookName {
   font-size: 24rpx;
   text-align: center;
-  border: 1px solid red;
 }
 .naviContainer {
   position: fixed;
