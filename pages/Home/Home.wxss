@@ -6,7 +6,6 @@
   align-content: center;
 }
 .slideShow {
-  /* border: 1rpx solid red; */
   /* height: 500rpx; */
   width: auto;
   padding: 35rpx 60rpx 0 60rpx;
@@ -17,6 +16,13 @@
   height: 450rpx;
   /*轮播图的装饰*/
   box-shadow: 0 5px 10px 1px #bbbbbb;
+}
+.slideShow .swiper swiper-item {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 0;
+  margin: 0;
 }
 .fourButtonArea {
   /* border: 1rpx solid rgb(83, 209, 24); */

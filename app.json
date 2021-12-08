@@ -1,6 +1,9 @@
 {
   "pages": [
+    "pages/phoneCertification/phoneCertification",
     "pages/Home/Home",
+    "pages/BookClassification/BookClassification",
+    
     "pages/DeleteBorrowingBook/DeleteBorrowingBook",
     "pages/ReturningBookInDate/ReturningBookInDate",
     "pages/ReturningBook/ReturningBook",
@@ -27,11 +30,11 @@
     "pages/DonationBookDetail/DonationBookDetail",
     
     "pages/searchPage/searchPage",
-    "pages/BookClassification/BookClassification",
     
     
     
-    "pages/phoneCertification/phoneCertification",
+    
+    
 
     "pages/MyReading/MyReading",
 

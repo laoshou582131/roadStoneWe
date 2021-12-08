@@ -5,8 +5,184 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    openID:"wxid_6j6ff0aaplne11",
+    phoneNumber:"",
+    code:"",
   },
+  //获得用户的openID
+  getUserOpenID:function(e){
+    const that =this
+    wx.cloud.callFunction({
+      name:"login",
+      success:res=>{
+        console.log("云函数调用成功")
+        that.setData({
+          openID:res.result.openid,
+        })
+        console.log("获取到OpenID: "+this.data.openID)
+      },
+      fail:res=>{
+        console.log("云函数调用失败")
+      }
+    })
+  },
+  //提交验证码和手机号
+  submitPhoneAndCode:function(e){
+    console.log("上传手机号和code")
+    console.log(e)
+    var phoneNum=e.detail.value.thePhone
+    var code=e.detail.value.theCode
+    var openID=this.data.openID
+    // console.log(phoneNum,code)
+    if(phoneNum=="" ||code==""){
+      console.log("手机号或验证码不能为空")
+    }else{
+      wx.request({
+        url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkBindingCode',
+        method:"POST",
+        data:{
+          code:code,
+          phone_number:phoneNum,
+          open_id:openID
+        },
+        success:function(res){
+          console.log(res.data)
+          if(res.data.code==1){
+            // console.log("成功...")
+            wx.showModal({
+              title:"绑定手机成功！",
+              // cancelColor: 'red',
+              showCancel:false,
+              success:function(res){
+                if(res.confirm){
+                  wx.navigateBack({
+                    delta: 1,
+                  })
+                }else{
+                  wx.navigateBack({
+                    delta: 1,
+                  })
+                }
+              }
+            })
+          }else if(res.data.code==2){
+            wx.showToast({
+              title: res.data.msg,
+              icon:"error",
+              duration:1000
+            })
+          }else if(res.data.code==3){
+            wx.showToast({
+              title: res.data.msg,
+              icon:"error",
+              duration:1000
+            })
+          }else if(res.data.code==4){
+            wx.showToast({
+              title: res.data.msg,
+              icon:"error",
+              duration:1000
+            })
+          }else if(res.data.code==5){
+            wx.showToast({
+              title: res.data.msg,
+              icon:"error",
+              duration:1000
+            })
+          }else if(res.data.code==6){
+            wx.showToast({
+              title: res.data.msg,
+              icon:"error",
+              duration:1000
+            })
+          }else{
+            wx.showToast({
+              title: res.data.msg,
+              icon:"error",
+              duration:1000
+            })
+          }
+        }
+      })
+    }
+  },
+  //获取验证码
+  getTheCode:function(e){
+    //判断是否输入电话号码
+    var phoneNum=this.data.phoneNumber
+    var openID=this.data.openID
+    if(phoneNum==""){
+      wx.showToast({
+        title: '电话号码不能为空',
+        icon:"error",
+        duration:1000
+      })
+    }else{
+      wx.request({
+        url: 'https://qjnqrmlhidqj4nv8.jtabc.net/bindingUserPhoneNumber',
+        method:"POST",
+        data:{
+          phone_number:phoneNum,
+          open_id:openID
+        },
+        success:function(res){
+          console.log(res.data)
+          if(res.data.code==1){
+            console.log("成功，正在发送验证码")
+          }else if(res.data.code==2){
+            wx.showToast({
+              title: res.data.msg,
+              icon:"error",
+              duration:1000
+            })
+          }else if(res.data.code==3){
+            wx.showToast({
+              title: res.data.msg,
+              icon:"error",
+              duration:1000
+            })
+          }else if(res.data.code==4){
+            wx.showToast({
+              title: res.data.msg,
+              icon:"error",
+              duration:1000
+            })
+          }else{
+            wx.showToast({
+              title: res.data.msg,
+              icon:"error",
+              duration:1000
+            })
+          }
+        }
+      })
+    }
+  },
+  inputThePhoneNumber:function(e){
+    console.log(e)
+    var phoneNumber=e.detail.value
+    // console.log(phoneNumber)
+    //传入电话参数
+    this.setData({
+      phoneNumber:phoneNumber
+    })
+  },
+  inputTheCode:function(e){
+    console.log(e)
+    var code=e.detail.value
+    // console.log(code)
+    this.setData({
+      code:code
+    })
+  },
+
+  //取消回主页
+  cancelBackHome:function(){
+    wx.navigateBack({
+      delta: 1,
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面加载

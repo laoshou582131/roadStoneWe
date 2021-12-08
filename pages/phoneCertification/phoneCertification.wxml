@@ -1,18 +1,24 @@
 <view class="container">
   <view class="phoneCerBox">
     <view class="theText"><text>手机号验证</text></view>
-    <view class="phoneNumber">
-      <text>手机号：</text>
-      <input class="inputPhoneNum" type="number" confirm-type="next" />
-    </view>
-    <view class="certificater">
-      <text>验证码：</text>
-      <input class="inputCode" type="text" confirm-type="done" />
-      <button class="getCode"><text>获取验证码</text></button>
-    </view>
-    <view class="Btns">
-      <button class="confirmBtn">确定</button>
-      <button>取消</button>
-    </view>
+    <form bindsubmit="submitPhoneAndCode">
+      <view class="phoneNumber">
+        <text>手机号：</text>
+        <input class="inputPhoneNum" name="thePhone" type="number" bindblur="inputThePhoneNumber" confirm-type="next" />
+      </view>
+
+      <!-- <form bindsubmit="submitThePhone"> -->
+        <view class="certificater">
+          <text>验证码：</text>
+          <input class="inputCode" name="theCode" type="text" bindblur="inputTheCode" confirm-type="done" />
+          <button class="getCode" bindtap="getTheCode"><text>获取验证码</text></button>
+        </view>
+      <!-- </form>  -->
+
+      <view class="Btns">
+        <button class="confirmBtn" form-type="submit">确定</button>
+        <button bindtap="cancelBackHome">取消</button>
+      </view>
+    </form>
   </view>
 </view>

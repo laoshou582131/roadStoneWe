@@ -168,15 +168,21 @@ Page({
   },
   //获得所选的对应书籍
   getClassBooks(bookType,page,limit){
+    console.log("所选的内容")
+    
+    var bookType1=parseInt(bookType)
+    var page1=page
+    var limit1=limit
+    console.log(bookType1,page1,limit1)
     const that=this
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getSpecificBooksList',
       method:"GET",
       data:{
         // open_id:"wxid_6j6ff0aaplne11"
-        book_type:bookType,
-        page:page, //默认第一页
-        limit:limit //默认10个
+        book_type:bookType1,
+        page:page1, //默认第一页
+        limit:limit1 //默认10个
       },
       success:function(res){
         console.log("获得所选书籍类型的书籍信息：")
@@ -186,7 +192,7 @@ Page({
             currentBookItems:res.data.data.book_list
           })
         }else if(res.data.code==2){
-          console.log("获取书籍信息失败")
+          console.log("获取书籍信息失败2")
         }else{
           console.log("获取书籍信息失败")
         }

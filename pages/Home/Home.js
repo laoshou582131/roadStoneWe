@@ -7,7 +7,10 @@ Page({
   data: {
     UserBorrowingState:"",
     res:"",
-    openID:"wxid_6j6ff0aaplne11"
+    openID:"wxid_6j6ff0aaplne11",
+
+    //轮播图数组
+    picList:[]
   },
   //获得用户的openID
   getUserOpenID:function(e){
@@ -23,6 +26,41 @@ Page({
       },
       fail:res=>{
         console.log("云函数调用失败")
+      }
+    })
+  },
+  //判断用户是否绑定了手机
+  checkUserBindingPhone:function(){
+    // var openID=this.data.openID
+    var openID="wxid_6j6ff0aaplne11"
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkUserPhone',
+      method:"POST",
+      data:{
+        open_id:openID
+      },
+      success:function(res){
+        console.log(res.data)
+        if(res.data.code==1){
+          console.log(res.data.msg)
+        }else if(res.data.code==2){
+          wx.showModal({
+            title:res.data.msg,
+            content:"请前往绑定手机号",
+            cancelColor: 'red',
+            success:function(res){
+              console.log(res)
+              if(res.confirm){
+                //为绑定手机，前往绑定
+                wx.navigateTo({
+                  url: '../phoneCertification/phoneCertification',
+                })
+              }else{
+                console.log("选择了取消")
+              }
+            }
+          })
+        }
       }
     })
   },
@@ -46,8 +84,11 @@ Page({
 
   //定义扫码方法
   goScan:function(){
+    //判断是否绑定手机
+    this.checkUserBindingPhone()
     //判断是否可以借书
-    this.checkUserBorrowingRight(this.data.openID)
+    // this.checkUserBorrowingRight(this.data.openID)
+    //scan书籍
   },
   //判断用户是否能够借书
   checkUserBorrowingRight(openID){
@@ -120,11 +161,13 @@ Page({
     this.myTabBar=this.selectComponent("#middleNum");
     //获取openID
     this.getUserOpenID()
+    
     //获取轮播图
-    // this.getPics()
+    this.getPics()
   },
   //获取轮播图的图片
   getPics:function(){
+    var that=this
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getPicURL',
       method:"GET",
@@ -133,6 +176,17 @@ Page({
       },
       success:function(res){
         console.log(res.data)
+        if(res.data.code==1){
+          that.setData({
+            picList:res.data.data.pic_list
+            
+          })
+          // console.log(that.data.picList)
+        }else if(res.data.code==2){
+          console.log(res.data.msg)
+        }else{
+          console.log(res.data.msg)
+        }
       }
     })
     

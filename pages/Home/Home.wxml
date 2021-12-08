@@ -5,14 +5,10 @@
   <view class="slideShow">
     <!-- <text>我是轮播图</text> -->
     <swiper class="swiper" indicator-dots autoplay interval="5000" duration="2000">
-      <swiper-item>
-        <view class="swiperItem">第一页</view>
-      </swiper-item>
-      <swiper-item>
-        <view class="swiperItem">第二页</view>
-      </swiper-item>
-      <swiper-item>
-        <view class="swiperItem">第三页</view>
+      <swiper-item wx:for="{{picList}}" wx:key="index">
+        <view class="swiperItem">
+          <image class="pic" src="https://qjnqrmlhidqj4nv8.jtabc.net{{item.picture_url}}" mode="aspectFit"></image>
+        </view>
       </swiper-item>
     </swiper>
   </view>
