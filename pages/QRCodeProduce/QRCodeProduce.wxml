@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="title"><text>请将该二维码展示给管理员</text></view>
+  <!--二维码图-->
+  <canvas class="QRCodePic" canvas-id="myQrcode"></canvas>
+  <view class="bottomLine">
+    <button class="backBtn"><text>返回</text></button>
+  </view>
+</view>

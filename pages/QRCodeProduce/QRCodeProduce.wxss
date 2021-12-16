@@ -1,0 +1,28 @@
+/* pages/QRCodeProduce/QRCodeProduce.wxss */
+.container {
+  padding: 35rpx;
+  margin: 0rpx;
+  height: 800rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.container text {
+  font-size: 36rpx;
+  color: #494e3a;
+}
+.container .QRCodePic {
+  height: 420rpx;
+  width: 420rpx;
+  background-color: pink;
+}
+.container .backBtn {
+  width: 250rpx;
+  text-align: center;
+  background-color: #f7fceb;
+}
+.container .backBtn text {
+  font-size: 28rpx;
+  color: #494e3a;
+}

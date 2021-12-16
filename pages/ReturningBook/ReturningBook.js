@@ -1,4 +1,7 @@
 // pages/ReturningBook/ReturningBook.js
+//引入二维码生成js文件
+// let QRCode=require("../../utils/weapp.qrcode.min.js")
+
 Page({
 
   /**
@@ -12,13 +15,16 @@ Page({
     limit:10,//默认每一页内容为10个items
     // open_id:"wxid_6j6ff0aaplne11"
     openID:"wxid_6j6ff0aaplne11",//用户的id。
+
+    //用户借阅情况
     booksList:[],
-    selectToReturnBooksList:[],
+    selectToReturnBooksList:[],//用户所选择的即将要归还之书籍
+    enCodeList:[],//用作还书的二维码生成的基本信息。
   },
   //选择准备归还的书籍checkBox事件
   selectReadyToReturnBooks:function(e){
     console.log(e.detail.value) //checkBox的所选的数组，其元素为value.
-    var readyToReturnList=e.detail.value
+    var readyToReturnList=e.detail.value //选择的书籍。
     this.setData({
       selectToReturnBooksList:readyToReturnList
     })
@@ -37,6 +43,23 @@ Page({
       },
       success:function(res){
         console.log(res.data)
+        try{
+          if(res.data.code==1){
+            //获取返回到的信息，并通过该信息传到QRCodeProduce页面生成二维码
+            var enCodeList=res.data.data.book_encode_code_list
+            console.log(enCodeList)
+            wx.navigateTo({
+              url: '../QRCodeProduce/QRCodeProduce?enCodeList='+enCodeList.toString(),
+            })
+            
+          }else{
+            console.log("获取数据失败")
+          }
+        }catch(err){
+          console.log("点击还书时 error: "+err)
+        }
+        
+        
       },
       fail:function(res){
         console.log("fail, "+res.data)

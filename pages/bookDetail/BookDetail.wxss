@@ -96,6 +96,7 @@
   width: 90rpx;
   height: 90rpx;
   text-align: center;
+  background-color: #B1C280;
 }
 .btnType text {
   color: #494e3a;
@@ -110,6 +111,7 @@
   height: 90rpx;
   font-size: 28rpx;
   text-align: center;
+  background-color: #B1C280;
 }
 .btnType1 text {
   color: #494e3a;

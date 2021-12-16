@@ -1,22 +1,19 @@
 {
   "pages": [
-    "pages/phoneCertification/phoneCertification",
     "pages/Home/Home",
-    "pages/Test/Test",
-    
-    
-    
-    
-    
     "pages/BookClassification/BookClassification",
+    "pages/QRCodeProduce/QRCodeProduce",
+    "pages/ReturningBook/ReturningBook",
     
+    "pages/Ranking/Ranking",
+    
+    "pages/phoneCertification/phoneCertification",
+    
+    "pages/Test/Test",
     "pages/DeleteBorrowingBook/DeleteBorrowingBook",
     "pages/ReturningBookInDate/ReturningBookInDate",
-    "pages/ReturningBook/ReturningBook",
+    
     "pages/ReturningBookOutDate/ReturningBookOutDate",
-    
-    
-   
 
     "pages/UserInfo/UserInfo",
     "pages/DonationDetail/DonationDetail",
@@ -26,9 +23,7 @@
     "pages/bookDetail/BookDetail",
     
     "pages/Donation/Donation",
-    
-    
-    "pages/Ranking/Ranking",
+  
     "pages/DonationBookDetail/DonationBookDetail",
     
     "pages/searchPage/searchPage",

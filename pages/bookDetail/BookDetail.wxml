@@ -4,7 +4,7 @@
 <view class="container">
   <view class="bookPicContainer">
     <!--书籍图片-->
-    <image class="bookPicType" src="../../images/pictures/pic1.png" mode="aspectFit"></image>
+    <image class="bookPicType" src="{{theBook.book_url}}" mode="aspectFit"></image>
   </view>
 
   <view class="bookInfoContainer">
@@ -12,7 +12,7 @@
     <view class="bookDetailInfo">
       <view class="firstRow">
       <!--书籍名称-->
-        <view class="bookName">BookName</view>
+        <view class="bookName">{{theBook.book_main_title}}</view>
         <!--书籍的收藏，目前没有该功能，不用理会-->
         <button class="collectBtn" type="default" plain="true" style="border:none">
           <image class="collectImageType" src="../../images/icons/collect1.png" mode="aspectFit"></image>
@@ -21,12 +21,12 @@
       </view>
       <!--书籍作者介绍-->
       <view class="publishRow">
-        <text class="author">author</text>
-        <text class="publisher">publisher</text>
+        <text class="author">{{theBook.book_author}}</text>
+        <text class="publisher">{{theBook.book_pulisher}}</text>
       </view>
       <!--书籍内容介绍-->
       <view class="bookBriefIntro">
-        <rich-text nodes="{{nodes}}"></rich-text>
+        <rich-text nodes="{{theBook.book_subtitle}}"></rich-text>
       </view>
       <view class="relativeBtn">
         <!--加入到待借阅列表中-->

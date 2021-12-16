@@ -111,6 +111,7 @@ Page({
       let bookId=e.currentTarget.dataset.bookid
       console.log(bookId)
       if(bookId!=null){
+        //传递bookId参数到BookDetail页面
         wx.navigateTo({
           url: '../../pages/bookDetail/BookDetail?bookId='+bookId,
         })
@@ -146,7 +147,7 @@ Page({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getAllBookClass',
       method:"GET",
       data:{
-        // open_id:"wxid_6j6ff0aaplne11"
+        //无参数
       },
 
       success:function(res){
@@ -154,7 +155,7 @@ Page({
         console.log(res.data)
         that.setData({
           bookClassification:res.data.data.book_type_list,
-          currentClass:res.data.data.book_type_list[0], //设置当前所选的默认分类类型
+          currentClass:res.data.data.book_type_list[0], //设置当前所选的默认分类类型，为第一个。
         })
         // console.log("currentclass:"+that.data.currentClass) //Good
         //获取当前书籍类型的书本信息
@@ -169,10 +170,9 @@ Page({
   //获得所选的对应书籍
   getClassBooks(bookType,page,limit){
     console.log("所选的内容")
-    
-    var bookType1=parseInt(bookType)
-    var page1=page
-    var limit1=limit
+    var bookType1=parseInt(bookType)//选择的书籍类型
+    var page1=page//第几页
+    var limit1=limit//每页多少本书
     console.log(bookType1,page1,limit1)
     const that=this
     wx.request({

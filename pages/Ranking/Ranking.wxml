@@ -34,11 +34,13 @@
       <scroll-view class="scrollerRank" scroll-y="true"
       bindscrolltolower="paging" scroll-anchoring="true">
         <!--分别显示的排行榜列表-->
-        <view class="rankListUserType" wx:for="{{12}}" wx:key="index">
+        <view class="rankListUserType" wx:for="{{userRankingList}}" wx:key="index">
           <text class="rankIndex">{{index+1}}</text>
-          <image class="imageRankType" src="../../images/icons/Picon.png" mode="aspectFit"></image>
-          <text class="rankUserName">PName</text>
-          <text class="rankUserDonate">捐书4000本</text>
+          <image class="imageRankType" src="{{item.user_pic_url}}" mode="aspectFit"></image>
+          <text class="rankUserName">{{item.user_nickname}}</text>
+          <text wx:if="{{isSelectedReading}}" class="rankUserDonate">阅读数量 {{item.rank_reading}}</text>
+          <text wx:elif="{{isSelectedDBook}}" class="rankUserDonate">捐书数量 {{item.donate_book_sum_qualifie_count}}</text>
+          <text wx:else class="rankUserDonate">捐赠金额 {{item.donate_money_sum_value}}</text>
         </view>
       </scroll-view>
     </view>

@@ -35,7 +35,7 @@
     </button>
 
     <!--捐书button-->
-    <button class="buttonType" type="default">
+    <button class="buttonType" bindtap="goDonateBooks" type="default">
       <view class="dotContainer">
         <image class="dotType" src="../../images/icons/page7.png" mode="aspectFit"></image>
       </view>

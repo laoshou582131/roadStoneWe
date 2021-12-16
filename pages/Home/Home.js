@@ -10,7 +10,7 @@ Page({
     openID:"wxid_6j6ff0aaplne11",
 
     //是否绑定了手机号码
-    isBinded:false,
+    phoneIsBinded:false,
 
     //轮播图数组
     picList:[]
@@ -51,7 +51,7 @@ Page({
           console.log(res.data.msg)
           //是绑定了
           that.setData({
-            isBinded:true
+            phoneIsBinded:true
           })
         }else if(res.data.code==2){
           wx.showModal({
@@ -92,9 +92,15 @@ Page({
   goDonate:function(){
     //检查是否绑定了手机
     this.checkUserBindingPhone()
-    wx.navigateTo({
-      url: '../Donation/Donation',
-    })
+    var phoneIsBinded=this.data.phoneIsBinded
+    if(phoneIsBinded){
+      wx.navigateTo({
+        url: '../Donation/Donation',
+      })
+    }else{
+      console.log("请绑定手机号码")
+    }
+    
   },
 
 

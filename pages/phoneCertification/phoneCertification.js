@@ -124,7 +124,7 @@ Page({
         duration:1000
       })
     }else{
-      //设置验证码样式
+      //设置验证码样式，60s后重试
       this.setGettingCodeStyle()
 
       wx.request({
@@ -173,6 +173,7 @@ Page({
     this.setData({
       isGettingTheCode:true
     })
+    //每秒进行变化
     var interval=setInterval(function(){
       var time=this.data.time
       console.log("hee")
@@ -196,7 +197,6 @@ Page({
           isGettingTheCode:false
         })
       }
-      
       //每秒执行一次
     }.bind(this),1000)
 

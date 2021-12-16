@@ -1,6 +1,5 @@
 // pages/Ranking/Ranking.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -9,11 +8,13 @@ Page({
     page:1,
     limit:10,
 
-    //三个选项
+    //三个阅读选项
     isSelectedReading:true,
     isSelectedDBook:false,
-    isSelectedDMoney:false
-
+    isSelectedDMoney:false,
+    
+    //用户排行榜Array
+    userRankingList:[]
   },
   //翻页
   paging:function(){
@@ -43,13 +44,13 @@ Page({
       success:function(res){
         console.log(res.data)
         //将第新页的内容给加进来
-        // var newBookItems=res.data.data.book_list
-        // var tempCurrentBookItems=that.data.searchReturnContent
-        // tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
-        // // console.log(tempCurrentBookItems)
-        // that.setData({
-        //   searchReturnContent:tempCurrentBookItems
-        // })
+        var newUserRank=res.data.data.rank
+        var tempCurrentRank=that.data.userRankingList
+        tempCurrentRank=tempCurrentRank.concat(newUserRank) //与之前获取的书籍列表累加
+        // console.log(tempCurrentBookItems)
+        that.setData({
+          userRankingList:tempCurrentRank
+        })
 
       }
     })
@@ -66,6 +67,10 @@ Page({
       isSelectedDBook:false,
       isSelectedDMoney:false
     })
+    var page=this.data.page
+    var limit=this.data.limit
+    //获取该排行榜
+    this.getUserInfo(currentRankType,page,limit)
   },
   selectDonateBook:function(e){
     console.log(e.currentTarget.dataset.ranktype)
@@ -77,6 +82,10 @@ Page({
       isSelectedDBook:true,
       isSelectedDMoney:false
     })
+    var page=this.data.page
+    var limit=this.data.limit
+    //获取该排行榜
+    this.getUserInfo(currentRankType,page,limit)
   },
   selectDonateMoney:function(e){
     console.log(e.currentTarget.dataset.ranktype)
@@ -88,6 +97,10 @@ Page({
       isSelectedDBook:false,
       isSelectedDMoney:true
     })
+    var page=this.data.page
+    var limit=this.data.limit
+    //获取该排行榜
+    this.getUserInfo(currentRankType,page,limit)
   },
 
   /**
@@ -121,6 +134,19 @@ Page({
       },
       success:function(res){
         console.log(res.data)
+        //成功获得列表
+        if(res.data.code==1){
+          var userRankingList1=res.data.data.rank
+          console.log(userRankingList1)
+          that.setData({
+            userRankingList:userRankingList1
+          })
+        }else{
+          console.log("列表获取失败")
+          that.setData({
+            userRankingList:[]
+          })
+        }
       }
     })
   },

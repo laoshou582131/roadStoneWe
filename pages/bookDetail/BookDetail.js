@@ -6,7 +6,10 @@ Page({
    */
   data: {
     bookID:"",
-    openID:""
+    openID:"",
+
+    //该书籍的所有信息,一个对象。
+    theBook:{}
   },
   //借阅书籍
   goBorrowTheBook:function(e){
@@ -103,20 +106,33 @@ Page({
     })
     //获取用户openID
     this.getUserOpenID()
+    //根据获取到的bookID去查找
+    this.getBookDetailById(bookId)
   },
   //根据bookID获得书籍详情
   getBookDetailById(bookID){
     const that=this
     wx.request({
-      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getBookDetail',
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getBookDetailFromSearch',
       method:"GET",
       data:{
         //传递bookID 或bookCode给后台
-         //未完成
+        book_id:bookID
       },
       success:function(res){
         //获得该书的详情信息。
-        //未完成
+        console.log(res.data)
+        if(res.data.code==1){
+          var theBook1=res.data.data.book
+          // console.log(theBook.book_author)
+          that.setData({
+            theBook:theBook1 //获得书的所有内容
+          })
+        }else{
+          console.log("获取书籍详情信息失败")
+        }
+        
+        
       }
     })
   },

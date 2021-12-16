@@ -16,7 +16,10 @@ Page({
     userNickName:"",
     userPhoneNumber:"",
     userPicUrl:"",
-    userVipState:0
+    userVipState:0,
+
+    //是否绑定了手机
+    phoneIsBinded:false
   },
   //获得用户的openID
   getUserOpenID:function(e){
@@ -58,7 +61,7 @@ Page({
           console.log(res.data.msg)
           //是绑定了
           that.setData({
-            isBinded:true
+            phoneIsBinded:true
           })
         }else if(res.data.code==2){
           wx.showModal({
@@ -83,9 +86,16 @@ Page({
   },
    //资助
    goDonate:function(){
-    wx.navigateTo({
-      url: '../Donation/Donation',
-    })
+    this.checkUserBindingPhone()
+    var phoneIsBinded=this.data.phoneIsBinded
+    if(phoneIsBinded){
+      wx.navigateTo({
+        url: '../Donation/Donation',
+      })
+    }else{
+      console.log("不做事")
+    }
+    
   },
   //正常还书
   goReturning:function(){
