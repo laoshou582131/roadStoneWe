@@ -11,7 +11,9 @@ Page({
     page:1,
     limit:10,
     bookItemList:[],//书
-    selectToReturnBooksList:[]//选择要选择还书的list
+    selectToReturnBooksList:[],//选择要选择还书的list
+
+    // enCodeList:[] //code方法
   },
   //获得用户的openID
   getUserOpenID:function(e){
@@ -87,20 +89,39 @@ Page({
     const that=this
     var openID=this.data.openID
     var selectToReturnBooksList=this.data.selectToReturnBooksList.toString()
-    wx.request({
-      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/returnBooks',
-      method:"POST",
-      data:{
-        open_id:openID,//用户的id
-        book_list:selectToReturnBooksList
-      },
-      success:function(res){
-        console.log(res.data)
-      },
-      fail:function(res){
-        console.log("fail, "+res.data)
-      }
-    })
+    if(selectToReturnBooksList!=""){
+      wx.request({
+        url: 'https://qjnqrmlhidqj4nv8.jtabc.net/returnBooks',
+        method:"POST",
+        data:{
+          open_id:"wxid_6j6ff0aaplne11",//用户的id// open_id:"wxid_6j6ff0aaplne11"
+          book_list:selectToReturnBooksList
+        },
+        success:function(res){
+          console.log(res.data)
+          if(res.data.code==1){
+            var enCodeList=res.data.data.book_encode_code_list
+            // that.setData({
+            //   enCodeList:bookEncodeList
+            // })
+            wx.navigateTo({
+              url: '../QRCodeProduce/QRCodeProduce?enCodeList='+enCodeList.toString(),
+            })
+          }else{
+            console.log("还书失败")
+          }
+        },
+        fail:function(res){
+          console.log("fail, "+res.data)
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '未选择归还书籍',
+        icon:'error'
+      })
+    }
+    
   },
 
   
@@ -120,10 +141,11 @@ Page({
     //获取基本信息
     const that=this
     wx.request({
-      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getAllLegalBorrowingBooks',
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getWholeIlLegalBorrowingBooks',
       method:"POST",
       data:{
-        open_id:openID,
+        // openID:"wxid_6j6ff0aaplne11",
+        open_id:"wxid_6j6ff0aaplne11",
         page:page,
         limit:limit
       },

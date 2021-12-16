@@ -34,37 +34,44 @@ Page({
     const that=this
     var openID=this.data.openID
     var selectToReturnBooksList=this.data.selectToReturnBooksList.toString()
-    wx.request({
-      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/returnBooks',
-      method:"POST",
-      data:{
-        open_id:openID,//用户的id
-        book_list:selectToReturnBooksList
-      },
-      success:function(res){
-        console.log(res.data)
-        try{
-          if(res.data.code==1){
-            //获取返回到的信息，并通过该信息传到QRCodeProduce页面生成二维码
-            var enCodeList=res.data.data.book_encode_code_list
-            console.log(enCodeList)
-            wx.navigateTo({
-              url: '../QRCodeProduce/QRCodeProduce?enCodeList='+enCodeList.toString(),
-            })
-            
-          }else{
-            console.log("获取数据失败")
+    //若有选择书籍
+    if(selectToReturnBooksList!="")
+    {
+      wx.request({
+        url: 'https://qjnqrmlhidqj4nv8.jtabc.net/returnBooks',
+        method:"POST",
+        data:{
+          open_id:openID,//用户的id
+          book_list:selectToReturnBooksList
+        },
+        success:function(res){
+          console.log(res.data)
+          try{
+            if(res.data.code==1){
+              //获取返回到的信息，并通过该信息传到QRCodeProduce页面生成二维码
+              var enCodeList=res.data.data.book_encode_code_list
+              console.log(enCodeList)
+              wx.navigateTo({
+                url: '../QRCodeProduce/QRCodeProduce?enCodeList='+enCodeList.toString(),
+              })
+              
+            }else{
+              console.log("获取数据失败")
+            }
+          }catch(err){
+            console.log("点击还书时 error: "+err)
           }
-        }catch(err){
-          console.log("点击还书时 error: "+err)
+        },
+        fail:function(res){
+          console.log("fail, "+res.data)
         }
-        
-        
-      },
-      fail:function(res){
-        console.log("fail, "+res.data)
-      }
-    })
+      })
+    }else{
+      wx.showToast({
+        title: '未选择归还书籍',
+        icon:'error'
+      })
+    }
   },
   //翻页
   paging:function(){

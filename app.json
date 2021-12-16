@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/Donation/Donation",
     "pages/Home/Home",
     "pages/BookClassification/BookClassification",
     "pages/QRCodeProduce/QRCodeProduce",
@@ -22,7 +23,7 @@
     "pages/BorrowingBook/BorrowingBooks",
     "pages/bookDetail/BookDetail",
     
-    "pages/Donation/Donation",
+    
   
     "pages/DonationBookDetail/DonationBookDetail",
     

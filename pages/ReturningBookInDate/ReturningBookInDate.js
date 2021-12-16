@@ -1,6 +1,5 @@
 // pages/ReturningBookInDate/ReturningBookInDate.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -88,20 +87,35 @@ Page({
     const that=this
     var openID=this.data.openID
     var selectToReturnBooksList=this.data.selectToReturnBooksList.toString()
-    wx.request({
-      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/returnBooks',
-      method:"POST",
-      data:{
-        open_id:openID,//用户的id
-        book_list:selectToReturnBooksList
-      },
-      success:function(res){
-        console.log(res.data)
-      },
-      fail:function(res){
-        console.log("fail, "+res.data)
-      }
-    })
+    if(selectToReturnBooksList!=""){
+      wx.request({
+        url: 'https://qjnqrmlhidqj4nv8.jtabc.net/returnBooks',
+        method:"POST",
+        data:{
+          open_id:openID,//用户的id
+          book_list:selectToReturnBooksList
+        },
+        success:function(res){
+          console.log(res.data)
+          if(res.data.code==1){
+            var enCodeList=res.data.data.book_encode_code_list
+            wx.navigateTo({
+              url: '../QRCodeProduce/QRCodeProduce?enCodeList='+enCodeList.toString(),
+            })
+          }else{
+            console.log("还书失败")
+          }
+        },
+        fail:function(res){
+          console.log("fail, "+res.data)
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '未选择归还书籍',
+      })
+    }
+    
   },
 
   /**

@@ -3,6 +3,6 @@
   <!--二维码图-->
   <canvas class="QRCodePic" canvas-id="myQrcode"></canvas>
   <view class="bottomLine">
-    <button class="backBtn"><text>返回</text></button>
+    <button class="backBtn" bindtap="goBack"><text>返回</text></button>
   </view>
 </view>
