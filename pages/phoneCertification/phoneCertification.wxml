@@ -11,7 +11,8 @@
         <view class="certificater">
           <text>验证码：</text>
           <input class="inputCode" name="theCode" type="text" bindblur="inputTheCode" confirm-type="done" />
-          <button class="getCode" bindtap="getTheCode"><text>获取验证码</text></button>
+          <button wx:if="{{!isGettingTheCode}}" class="getCode" bindtap="getTheCodeTest"><text>获取验证码</text></button>
+          <button wx:else class="getCodeIng" bindtap="getTheCode" disabled="true" ><text>{{time}}秒后重试</text></button>
         </view>
       <!-- </form>  -->
 

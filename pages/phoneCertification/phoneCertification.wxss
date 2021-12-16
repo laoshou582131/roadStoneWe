@@ -8,7 +8,7 @@
 }
 .phoneCerBox {
   border-radius: 25rpx;
-  background-color: #F8F8F8;
+  background-color: #f7fceb;
   padding: 35rpx;
   width: 75%;
   height: 30%;
@@ -43,7 +43,7 @@
   height: 60rpx;
   width: 400rpx;
   padding-left: 10rpx;
-  background-color: #EDEDED;
+  background-color: #fcfff6;
 }
 .phoneCerBox .certificater {
   height: 75rpx;
@@ -60,18 +60,31 @@
   width: 200rpx;
   height: 60rpx;
   padding-left: 10rpx;
-  background-color: #EDEDED;
+  background-color: #fcfff6;
 }
 .phoneCerBox .certificater .getCode {
   height: 50rpx;
   width: 160rpx;
-  background-color: #B0C080;
+  background-color: #B1C280;
 }
 .phoneCerBox .certificater .getCode text {
   font-size: 20rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #494e3a;
+}
+.phoneCerBox .certificater .getCodeIng {
+  height: 50rpx;
+  width: 160rpx;
+  background-color: #B1C280;
+}
+.phoneCerBox .certificater .getCodeIng text {
+  font-size: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #494e3a;
 }
 .phoneCerBox .Btns {
   display: flex;
@@ -86,7 +99,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #494e3a;
 }
 .phoneCerBox .Btns .confirmBtn {
-  background-color: #B0C080;
+  background-color: #B1C280;
 }

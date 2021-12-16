@@ -14,6 +14,11 @@ const formatNumber = n => {
   return n[1] ? n : `0${n}`
 }
 
+//自定义一个方法
+function myFunc(){
+  console.log("hello, this is module-myFunc")
+}
 module.exports = {
-  formatTime
+  formatTime,
+  myFuncFromUtils:myFunc,
 }

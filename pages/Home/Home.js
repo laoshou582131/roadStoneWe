@@ -9,6 +9,9 @@ Page({
     res:"",
     openID:"wxid_6j6ff0aaplne11",
 
+    //是否绑定了手机号码
+    isBinded:false,
+
     //轮播图数组
     picList:[]
   },
@@ -23,6 +26,8 @@ Page({
           openID:res.result.openid,
         })
         console.log("获取到OpenID: "+this.data.openID)
+        //判断用户是否绑定了手机
+        that.checkUserBindingPhone()
       },
       fail:res=>{
         console.log("云函数调用失败")
@@ -32,7 +37,8 @@ Page({
   //判断用户是否绑定了手机
   checkUserBindingPhone:function(){
     // var openID=this.data.openID
-    var openID="wxid_6j6ff0aaplne11"
+    var that=this
+    var openID="wxid_6j6ff0aaplne11" //
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkUserPhone',
       method:"POST",
@@ -43,6 +49,10 @@ Page({
         console.log(res.data)
         if(res.data.code==1){
           console.log(res.data.msg)
+          //是绑定了
+          that.setData({
+            isBinded:true
+          })
         }else if(res.data.code==2){
           wx.showModal({
             title:res.data.msg,
@@ -73,9 +83,15 @@ Page({
     })
   },
   //捐书
+  goDonateBooks:function(){
+    //检查是否绑定了手机
+    this.checkUserBindingPhone()
+  },
 
   //资助
   goDonate:function(){
+    //检查是否绑定了手机
+    this.checkUserBindingPhone()
     wx.navigateTo({
       url: '../Donation/Donation',
     })
@@ -161,7 +177,7 @@ Page({
     this.myTabBar=this.selectComponent("#middleNum");
     //获取openID
     this.getUserOpenID()
-    
+    //
     //获取轮播图
     this.getPics()
   },

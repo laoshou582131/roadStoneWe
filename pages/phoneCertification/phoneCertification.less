@@ -1,3 +1,7 @@
+@mainColor:#B1C280;
+@itemColor:#f7fceb;
+@itemColor2:#fcfff6;
+@textColor:#494e3a;
 .container
 {
     padding: 0;
@@ -25,10 +29,11 @@
     }
     input{
         display: inline-block;
+        
     }
     // border: 1px solid red;
     border-radius: 25rpx;
-    background-color: #F8F8F8;
+    background-color: @itemColor;
     // box-shadow: 0 0;
     padding: 35rpx;
 
@@ -57,7 +62,7 @@
             width: 400rpx;
 
             padding-left: 10rpx;
-            background-color: #EDEDED;
+            background-color: @itemColor2;
         }
     }
 
@@ -81,21 +86,41 @@
             height: 60rpx;
 
             padding-left: 10rpx;
-            background-color: #EDEDED;
+            background-color: @itemColor2;
         }
         .getCode{
             height: 50rpx;
             width: 160rpx;
 
-            background-color: #B0C080;
+            background-color: @mainColor;
+
             
             text{
                 font-size: 20rpx;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
+                color:@textColor;
             }
         }
+        .getCodeIng{
+            height: 50rpx;
+            width: 160rpx;
+
+            background-color: @mainColor;
+
+            
+            text{
+                font-size: 20rpx;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                color:@textColor;
+            }
+        }
+        
     }
 
 
@@ -115,11 +140,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
+            color:@textColor;
             
         }
         .confirmBtn{
-            background-color: #B0C080;
+            background-color: @mainColor;
         }
     }
 

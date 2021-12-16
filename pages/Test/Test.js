@@ -1,3 +1,5 @@
+let QRCode=require("../../utils/weapp.qrcode.min.js")
+
 // pages/Test/Test.js
 Page({
   
@@ -15,6 +17,19 @@ Page({
 
     toView:"Red",
     scrollTop:0
+  },
+  //使用一个方法
+  click:function(){
+    // util.myFuncFromUtils()
+    console.log("Hello!")
+    let anArray=["123","hello1"]
+    QRCode({
+      width:200,
+      height:200,
+      canvasId:"myQrcode",
+      // text:"https://github.com/yingye",
+      text:anArray.toString()
+    })
   },
   //获取用户openID
   onGotUserInfo:function(e){

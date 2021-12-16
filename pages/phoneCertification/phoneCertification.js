@@ -8,6 +8,8 @@ Page({
     openID:"wxid_6j6ff0aaplne11",
     phoneNumber:"",
     code:"",
+    isGettingTheCode:false,
+    time:5,
   },
   //获得用户的openID
   getUserOpenID:function(e){
@@ -107,6 +109,10 @@ Page({
     }
   },
   //获取验证码
+  getTheCodeTest:function(){
+    //设置验证码样式
+    this.setGettingCodeStyle()
+  },
   getTheCode:function(e){
     //判断是否输入电话号码
     var phoneNum=this.data.phoneNumber
@@ -118,6 +124,9 @@ Page({
         duration:1000
       })
     }else{
+      //设置验证码样式
+      this.setGettingCodeStyle()
+
       wx.request({
         url: 'https://qjnqrmlhidqj4nv8.jtabc.net/bindingUserPhoneNumber',
         method:"POST",
@@ -157,6 +166,40 @@ Page({
         }
       })
     }
+  },
+  //设置验证码样式
+  setGettingCodeStyle:function(){
+    var that =this
+    this.setData({
+      isGettingTheCode:true
+    })
+    var interval=setInterval(function(){
+      var time=this.data.time
+      console.log("hee")
+      if(time>0){
+        this.setData({
+          time:time-1
+        })
+        console.log(this.data.time+"s")
+      }else if(time==2){
+        //60s后重置
+        clearInterval(interval)
+        this.setData({
+          time:60,
+          isGettingTheCode:false
+        })
+      }else{
+        //60s后重置
+        clearInterval(interval) //自己删除自己。
+        this.setData({
+          time:60,
+          isGettingTheCode:false
+        })
+      }
+      
+      //每秒执行一次
+    }.bind(this),1000)
+
   },
   inputThePhoneNumber:function(e){
     console.log(e)
