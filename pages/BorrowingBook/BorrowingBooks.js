@@ -15,7 +15,10 @@ Page({
     bookID:"",
 
     //选中的准备要借阅的书籍
-    selectedBookList:[]
+    selectedBookList:[],
+
+    //滚动页面
+    isTriggered:true
   },
   //准备借一堆书
   goBorrowTheseBook:function(e){
@@ -144,6 +147,14 @@ Page({
 
       }
     })
+  },
+   //滚动页面上拉
+   bindRefresherRefresh:function(){
+    setTimeout(() => {
+      this.setData({
+        isTriggered:false
+      })
+    }, 1000);
   },
 
   //前往删除页面

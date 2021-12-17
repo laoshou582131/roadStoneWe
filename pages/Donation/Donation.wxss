@@ -136,10 +136,10 @@
 .container .donateBtn {
   height: 100rpx;
 }
-.container .donateBtn text {
-  color: #494e3a;
-}
 .container .donateBtn button {
   border-radius: 45rpx;
   background-color: #bddb84;
+}
+.container .donateBtn button text {
+  color: #494e3a;
 }

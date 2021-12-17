@@ -1,13 +1,17 @@
 <!-- <myTabBar style="margin-top: 50rpx;"></myTabBar> -->
 <!-- <button open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">获取用户信息</button> -->
 
-<!-- <text>测试</text>
-<scroll-view scroll-y="true" scroll-into-view="{{toView}}" lower-threshold="50" bindscrolltolower="paging"
-scroll-with-animation="true" scroll-anchoring="true">
+<text>测试</text>
+<scroll-view scroll-y="true" scroll-into-view="{{toView}}" bindscrolltolower="paging"
+scroll-anchoring="true" 
+refresher-threshold="30" refresher-background="grey"
+refresher-enabled="true" refresher-default-style="none" 
+refresher-triggered="{{isTriggered}}" bindrefresherrefresh="bindRefresherRefresh"
+enhanced="true" fast-deceleration="true">
   <view id="red" class="scroll-item-red" wx:for="{{list}}" wx:key="index">{{index+1}}</view>
-</scroll-view> -->
+</scroll-view>
 
 <!-- <button bindtap="getSearch">hello</button> -->
 <text>Hello</text>
-<button bindtap="click">Click</button> 
-<canvas style="width: 220rpx; height: 220rpx;background:pink;" canvas-id="myQrcode"></canvas>
+<!-- <button bindtap="click">Click</button> 
+<canvas style="width: 220rpx; height: 220rpx;background:pink;" canvas-id="myQrcode"></canvas> -->

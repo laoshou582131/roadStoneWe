@@ -26,10 +26,15 @@
     </view>
     <!--暂时无-->
     <view class="editPInfo">
-      <image class="editPType" src="../../images/icons/editP1.png" mode="aspectFit"></image>
+      <!-- <image class="editPType" src="../../images/icons/editP1.png" mode="aspectFit"></image> -->
+      <button class="editBTN" style="border: none;" bindtap="goBindingPhone">
+        <!-- <image class="editPType"  src="../../images/icons/editP1.png" mode="aspectFit"></image> -->
+        <text>绑定手机</text>
+      </button>
     </view>
   </view>
 
+  <!--四个按钮-->
   <view class="showFourBasicInfo">
     <!--借阅button，显示合法借书期限内的书籍列表-->
     <button class="buttonType" type="default" bindtap="goReturningInDate">

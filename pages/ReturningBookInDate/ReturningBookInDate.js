@@ -10,7 +10,10 @@ Page({
     page:1,
     limit:10,
     bookItemList:[],
-    selectToReturnBooksList:[]//选择要选择还书的list
+    selectToReturnBooksList:[],//选择要选择还书的list
+
+    //滚动页面
+    isTriggered:true
   },
   //获得用户的openID
   getUserOpenID:function(e){
@@ -72,6 +75,14 @@ Page({
 
       }
     })
+  },
+  //滚动页面上拉
+  bindRefresherRefresh:function(){
+    setTimeout(() => {
+      this.setData({
+        isTriggered:false
+      })
+    }, 1000);
   },
 
   //选择要还的书籍

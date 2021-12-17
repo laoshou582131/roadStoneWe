@@ -4,7 +4,11 @@
   </view>
   <checkbox-group class="ItemsGroup" bindchange="selectReadyToDeleteBooks">
     <scroll-view wx:if="{{booksList.length>=1}}" scroll-y="true"
-    bindscrolltolower="paging" scroll-anchoring="true">
+    bindscrolltolower="paging" scroll-anchoring="true"
+    refresher-threshold="30" refresher-background="#f7fceb"
+    refresher-enabled="true" refresher-default-style="none" 
+    refresher-triggered="{{isTriggered}}" bindrefresherrefresh="bindRefresherRefresh"
+    enhanced="true" fast-deceleration="true">
       <view class="borrowingBooks" wx:for="{{booksList}}" wx:key="index">
         <text class="itemIndex">{{index+1}}</text>
         <view class="bookPic"><image class="bookPicType" src="../../images/pictures/pic1.png" mode="widthFix"></image></view>

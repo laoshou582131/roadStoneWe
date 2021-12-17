@@ -13,7 +13,11 @@
   <!--分类信息展示-->
   <view  class="bookItemsContainer">
     <scroll-view wx:if="{{haveReturnContent}}" scroll-y="true"
-    lower-threshold="10" bindscrolltolower="paging" scroll-anchoring="true">
+    bindscrolltolower="paging" scroll-anchoring="true"
+    refresher-threshold="30" refresher-background="#f7fceb"
+    refresher-enabled="true" refresher-default-style="none" 
+    refresher-triggered="{{isTriggered}}" bindrefresherrefresh="bindRefresherRefresh"
+    enhanced="true" fast-deceleration="true">
       <view wx:for="{{10}}" wx:key="index" class="bookItem">
         <text class="bookIndex">{{index+1}}</text>
         <image src="../../images/pictures/pic1.png" mode="widthFix"></image>

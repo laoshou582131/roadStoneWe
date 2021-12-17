@@ -3,7 +3,8 @@
       <text class="bookTitle">证书名</text>
       <text class="borTimeTitle">获得时间</text>
     </view>
-    <scroll-view scroll-y="true">
+    <scroll-view scroll-y="true"
+    >
       <!--头部条目渲染方式-->
       <view class="temp" wx:for="{{length}}" wx:key="index">
         <view wx:if="{{index==0}}" class="borrowingBooksTop" >

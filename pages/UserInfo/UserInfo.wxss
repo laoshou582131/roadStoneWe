@@ -51,13 +51,33 @@
 .PersonalInfo .editPInfo {
   width: 100rpx;
   flex-grow: 1;
-  /* display: flex;
-    justify-content: center; */
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
 }
 .PersonalInfo .editPInfo .editPType {
   width: 125rpx;
   height: 125rpx;
   float: right;
+}
+.PersonalInfo .editPInfo .editBTN {
+  margin: 0;
+  padding: 0;
+  width: 155rpx;
+  height: 60rpx;
+  background-color: #B1C280;
+  border-top-left-radius: 25rpx;
+  border-bottom-left-radius: 25rpx;
+  border-top-right-radius: 0rpx;
+  border-bottom-right-radius: 0rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.PersonalInfo .editPInfo .editBTN text {
+  text-align: center;
+  font-size: 24rpx;
+  color: #f7fceb;
 }
 /*四个基本信息button*/
 .showFourBasicInfo {
@@ -85,10 +105,6 @@
 .fourMine {
   margin: 0rpx 35rpx 15rpx 35rpx;
   padding: 25rpx;
-  /* display: flex;
-  flex-direction: column;
-  justify-content:flex-start;
-  align-items: stretch; */
   border-radius: 35rpx;
   box-shadow: 0 5rpx 15rpx 2rpx #c9c8c8;
 }

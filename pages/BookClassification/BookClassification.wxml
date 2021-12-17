@@ -27,7 +27,11 @@
     <!--右列的书籍内容展示-->
     <view class="right-col">
       <scroll-view class="scroller" scroll-y="true" 
-      lower-threshold="10" bindscrolltolower="paging" scroll-anchoring="true">
+      bindscrolltolower="paging" scroll-anchoring="true"
+      refresher-threshold="30" refresher-background="#f7fceb"
+      refresher-enabled="true" refresher-default-style="none" 
+      refresher-triggered="{{isTriggered}}" bindrefresherrefresh="bindRefresherRefresh"
+      enhanced="true" fast-deceleration="true">
         <view class="booksTempContainer">
           <view class="bookItems" wx:for="{{currentBookItems}}" wx:key="index">
             <button class="bookType" bindtap="goDetail" data-bookid="{{item.book_id}}">

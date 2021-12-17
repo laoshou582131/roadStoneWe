@@ -84,6 +84,21 @@ Page({
       }
     })
   },
+  //去绑定手机的页面
+  goBindingPhone:function(){
+    var phoneIsBinded=this.data.phoneIsBinded
+    if(phoneIsBinded)
+    {
+      wx.showToast({
+        title: '您已绑定手机',
+      })
+    }else{
+      wx.navigateTo({
+        url: '../phoneCertification/phoneCertification',
+      })
+    }
+    
+  },
    //资助
    goDonate:function(){
     this.checkUserBindingPhone()

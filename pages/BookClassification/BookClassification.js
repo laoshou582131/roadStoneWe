@@ -104,6 +104,14 @@ Page({
       }
     })
   },
+  //滚动页面上拉
+  bindRefresherRefresh:function(){
+    setTimeout(() => {
+      this.setData({
+        isTriggered:false
+      })
+    }, 1000);
+  },
 
   //前往该书籍的详情页面
   goDetail:function(e){

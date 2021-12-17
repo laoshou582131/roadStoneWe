@@ -99,16 +99,24 @@ Page({
       success:function(res){
         console.log(res.data)
         //将第新页的内容给加进来
-        // var newBookItems=res.data.data.book_list
-        // var tempCurrentBookItems=that.data.searchReturnContent
-        // tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
-        // // console.log(tempCurrentBookItems)
-        // that.setData({
-        //   searchReturnContent:tempCurrentBookItems
-        // })
+        var newBookItems=res.data.data.book_list
+        var tempCurrentBookItems=that.data.booksList
+        tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
+        // console.log(tempCurrentBookItems)
+        that.setData({
+          booksList:tempCurrentBookItems
+        })
 
       }
     })
+  },
+   //滚动页面上拉
+   bindRefresherRefresh:function(){
+    setTimeout(() => {
+      this.setData({
+        isTriggered:false
+      })
+    }, 1000);
   },
 
   /**

@@ -16,7 +16,17 @@ Page({
     // openid:''
 
     toView:"Red",
-    scrollTop:0
+    scrollTop:0,
+
+    //
+    isTriggered:true
+  },
+  bindRefresherRefresh:function(){
+    setTimeout(() => {
+      this.setData({
+        isTriggered:false
+      })
+    }, 2000);
   },
   //使用一个方法
   click:function(){

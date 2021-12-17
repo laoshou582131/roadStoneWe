@@ -1,7 +1,12 @@
 {
   "pages": [
-    "pages/Donation/Donation",
     "pages/Home/Home",
+    "pages/Donation/Donation",
+    
+    "pages/Test/Test",
+    "pages/UserInfo/UserInfo",
+    
+    
     "pages/BookClassification/BookClassification",
     "pages/QRCodeProduce/QRCodeProduce",
     "pages/ReturningBook/ReturningBook",
@@ -10,13 +15,13 @@
     
     "pages/phoneCertification/phoneCertification",
     
-    "pages/Test/Test",
+    
     "pages/DeleteBorrowingBook/DeleteBorrowingBook",
     "pages/ReturningBookInDate/ReturningBookInDate",
     
     "pages/ReturningBookOutDate/ReturningBookOutDate",
 
-    "pages/UserInfo/UserInfo",
+    
     "pages/DonationDetail/DonationDetail",
     
     

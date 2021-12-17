@@ -32,7 +32,11 @@
 
     <view class="rankingList">
       <scroll-view class="scrollerRank" scroll-y="true"
-      bindscrolltolower="paging" scroll-anchoring="true">
+      bindscrolltolower="paging" scroll-anchoring="true"
+      refresher-threshold="30" refresher-background="#f7fceb"
+      refresher-enabled="true" refresher-default-style="none" 
+      refresher-triggered="{{isTriggered}}" bindrefresherrefresh="bindRefresherRefresh"
+      enhanced="true" fast-deceleration="true">
         <!--分别显示的排行榜列表-->
         <view class="rankListUserType" wx:for="{{userRankingList}}" wx:key="index">
           <text class="rankIndex">{{index+1}}</text>

@@ -20,6 +20,9 @@ Page({
     booksList:[],
     selectToReturnBooksList:[],//用户所选择的即将要归还之书籍
     enCodeList:[],//用作还书的二维码生成的基本信息。
+
+    //滚动页面
+    isTriggered:true
   },
   //选择准备归还的书籍checkBox事件
   selectReadyToReturnBooks:function(e){
@@ -101,16 +104,24 @@ Page({
       success:function(res){
         console.log(res.data)
         //将第新页的内容给加进来
-        // var newBookItems=res.data.data.book_list
-        // var tempCurrentBookItems=that.data.searchReturnContent
-        // tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
-        // // console.log(tempCurrentBookItems)
-        // that.setData({
-        //   searchReturnContent:tempCurrentBookItems
-        // })
+        var newBookItems=res.data.data.book_list
+        var tempCurrentBookItems=that.data.booksList
+        tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
+        // console.log(tempCurrentBookItems)
+        that.setData({
+          booksList:tempCurrentBookItems
+        })
 
       }
     })
+  },
+  //滚动页面上拉
+  bindRefresherRefresh:function(){
+    setTimeout(() => {
+      this.setData({
+        isTriggered:false
+      })
+    }, 1000);
   },
   /**
    * 生命周期函数--监听页面加载

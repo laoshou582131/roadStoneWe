@@ -77,12 +77,37 @@
     // border: 1px solid rgb(83, 20, 165);
     width: 100rpx;
     flex-grow: 1;
-    /* display: flex;
-    justify-content: center; */
+
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse; //让图片靠在页面右边
+
     .editPType{
       width: 125rpx;
       height: 125rpx;
       float:right;
+    }
+    .editBTN{
+      margin: 0;
+      padding: 0;
+      width: 155rpx;
+      height: 60rpx;
+      background-color: @mainColor;
+
+      border-top-left-radius: 25rpx;
+      border-bottom-left-radius: 25rpx;
+      border-top-right-radius: 0rpx;
+      border-bottom-right-radius: 0rpx;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text{
+        text-align: center;
+        font-size: 24rpx;
+        color: @itemColor;
+      }
     }
   }
 
@@ -122,11 +147,6 @@
 .fourMine{
   margin: 0rpx 35rpx 15rpx 35rpx;
   padding:25rpx;
-  // border: 1px solid rgb(19, 226, 209); 
-  /* display: flex;
-  flex-direction: column;
-  justify-content:flex-start;
-  align-items: stretch; */
   border-radius: 35rpx;
   box-shadow: 0 5rpx 15rpx 2rpx #c9c8c8;
 

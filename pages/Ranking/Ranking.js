@@ -55,6 +55,16 @@ Page({
       }
     })
   },
+  //滚动页面上拉
+  bindRefresherRefresh:function(){
+    setTimeout(() => {
+      this.setData({
+        isTriggered:false
+      })
+    }, 1000);
+  },
+
+
   //阅读磅
   selectReading:function(e){
     console.log(e.currentTarget.dataset.ranktype)

@@ -54,6 +54,6 @@
 
   <!--捐赠按钮-->
   <view class="donateBtn">
-    <button>立即捐赠爱心</button>
+    <button bindtap="getDonateSignInfoAndDonate">立即捐赠爱心</button>
   </view>
 </view>
