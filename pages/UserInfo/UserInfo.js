@@ -101,15 +101,18 @@ Page({
   },
    //资助
    goDonate:function(){
-    this.checkUserBindingPhone()
-    var phoneIsBinded=this.data.phoneIsBinded
-    if(phoneIsBinded){
-      wx.navigateTo({
-        url: '../Donation/Donation',
-      })
-    }else{
-      console.log("不做事")
-    }
+    // this.checkUserBindingPhone()
+    // var phoneIsBinded=this.data.phoneIsBinded
+    // if(phoneIsBinded){
+    //   wx.navigateTo({
+    //     url: '../Donation/Donation',
+    //   })
+    // }else{
+    //   console.log("不做事")
+    // }
+    wx.navigateTo({
+      url: '../Donation/Donation',
+    })
     
   },
   //正常还书

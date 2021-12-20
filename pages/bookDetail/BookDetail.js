@@ -6,6 +6,7 @@ Page({
    */
   data: {
     bookID:"",
+    bookCode:"",
     openID:"",
 
     //该书籍的所有信息,一个对象。
@@ -99,15 +100,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("传递的BookID参数："+options.bookId)
-    let bookId=options.bookId
+    console.log("传递的BookID参数：")
+    console.log(options.bookId)
+    console.log("获得的bookCode：")
+    console.log(options.book_code)
+
+    var bookId=options.bookId
+    var bookCode=options.book_code
     this.setData({
-      bookID:bookId
+      bookID:bookId,
+      bookCode:bookCode
     })
     //获取用户openID
     this.getUserOpenID()
     //根据获取到的bookID去查找
-    this.getBookDetailById(bookId)
+    this.getBookDetailByCode(bookCode)
+    // if(bookId!=""){
+    //   this.getBookDetailById(bookId)
+    // }else{
+    //   this.getBookDetailByCode(bookCode)
+    // }
+    
   },
   //根据bookID获得书籍详情
   getBookDetailById(bookID){
@@ -131,11 +144,40 @@ Page({
         }else{
           console.log("获取书籍详情信息失败")
         }
-        
-        
+
       }
     })
   },
+  //
+    //根据bookID获得书籍详情
+    getBookDetailByCode(bookCode){
+      wx.showToast({
+        title: '获取'+bookCode,
+      })
+      const that=this
+      wx.request({
+        url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getBookDetailFromScan',
+        method:"GET",
+        data:{
+          //传递bookID 或bookCode给后台
+          book_code:bookCode
+        },
+        success:function(res){
+          //获得该书的详情信息。
+          console.log(res.data)
+          if(res.data.code==1){
+            var theBook1=res.data.data.book
+            // console.log(theBook.book_author)
+            that.setData({
+              theBook:theBook1 //获得书的所有内容
+            })
+          }else{
+            console.log("获取书籍详情信息失败")
+          }
+  
+        }
+      })
+    },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

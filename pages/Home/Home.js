@@ -13,7 +13,29 @@ Page({
     phoneIsBinded:false,
 
     //轮播图数组
-    picList:[]
+    picList:[],
+    tempRes:{}
+  },
+  //获取用户的授权
+  getUserPermmission:function(){
+    wx.login({
+      timeout: 5000,
+      success(res){
+        console.log(res.code)//获取登入的临时凭证
+        var tempCode=res.code
+        var appID="wx33672cd0c62cd3cb"
+        var secret="eb92a6fe12159ab1fe0b2fcd41533d8e"
+        wx.request({
+          // url: 'https://api.weixin.qq.com/sns/jscode2session?appid='+appID+'&secret='+secret+'&js_code='+tempCode+'&grant_type=authorization_code',
+          url:'',
+          method:"GET",
+          data:{},
+          success(res){
+            console.log(res)  
+          }
+        })
+      }
+    })
   },
   //获得用户的openID
   getUserOpenID:function(e){
@@ -91,15 +113,18 @@ Page({
   //资助
   goDonate:function(){
     //检查是否绑定了手机
-    this.checkUserBindingPhone()
-    var phoneIsBinded=this.data.phoneIsBinded
-    if(phoneIsBinded){
-      wx.navigateTo({
-        url: '../Donation/Donation',
-      })
-    }else{
-      console.log("请绑定手机号码")
-    }
+    // this.checkUserBindingPhone()
+    // var phoneIsBinded=this.data.phoneIsBinded
+    // if(phoneIsBinded){
+    //   wx.navigateTo({
+    //     url: '../Donation/Donation',
+    //   })
+    // }else{
+    //   console.log("请绑定手机号码")
+    // }
+    wx.navigateTo({
+      url: '../Donation/Donation',
+    })
     
   },
 
@@ -107,10 +132,48 @@ Page({
   //定义扫码方法
   goScan:function(){
     //判断是否绑定手机
-    this.checkUserBindingPhone()
+    // this.checkUserBindingPhone()
     //判断是否可以借书
     // this.checkUserBorrowingRight(this.data.openID)
     //scan书籍
+    var that =this
+    wx.scanCode({
+      onlyFromCamera: true,
+      // scanType:['barCode'],
+      success:function(res){
+        that.setData({
+          tempRes:res
+        })
+        console.log("扫描得到bookCode:")
+        console.log(res.result)
+        
+        console.log("扫码的类型："+res.scanType)
+        var theBookCode=res.result
+        //前往详情页面
+        that.goDetail(res.result)
+
+      }
+    })
+    
+  },
+   //前往该书籍的详情页面
+   goDetail(bookCode){
+    try{
+      var bookCode1=bookCode
+      console.log("进入goDetail的bookCode")
+      console.log(bookCode)
+      if(bookCode1!=null){
+        //传递bookId参数到BookDetail页面
+        wx.navigateTo({
+          url: '../../pages/bookDetail/BookDetail?book_code='+bookCode,
+        })
+      }else{
+        console.log("无。")
+      }
+    }catch(err){
+      console.log("goBookDetail's error: "+err)
+    }
+
   },
   //判断用户是否能够借书
   checkUserBorrowingRight(openID){
@@ -181,8 +244,10 @@ Page({
   onLoad: function (options) {
     // console.log("hello")
     this.myTabBar=this.selectComponent("#middleNum");
+
+    this.getUserPermmission()
     //获取openID
-    this.getUserOpenID()
+    // this.getUserOpenID()
     //
     //获取轮播图
     this.getPics()

@@ -76,8 +76,9 @@ Page({
   },
   //去捐赠
   doDonate:function(){
+    console.log("进入doDonate")
     var theResult=this.data.payResult
-    var nonceStr=theResult.nonce_str
+    var nonceStr=theResult.nonce_str.toString()
     var package1=theResult.package
     var paySign=theResult.pay_sign
     var timeStamp=theResult.time_stamp
@@ -90,19 +91,26 @@ Page({
       timeStamp: timeStamp,
 
       success:function(res){
+        console.log("doDonate成功！")
         console.log(res.data)
+      },
+      fail:function(res){
+        console.log("支付失败")
+        console.log(res)
       }
     })
   },
   //获取捐赠信息 成功并触发doDonate方法。
   getDonateSignInfoAndDonate:function(){
     var that =this
+    var openID=this.data.openID
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/doDonation',
       method:"POST",
       data:{
-        open_id:"wxid_6j6ff0aaplne11",
-        money_value:100
+        // "wxid_6j6ff0aaplne11"
+        open_id:openID,
+        money_value:1
       },
       success:function(res){
         console.log(res)

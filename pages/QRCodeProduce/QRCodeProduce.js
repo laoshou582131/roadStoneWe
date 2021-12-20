@@ -27,8 +27,8 @@ Page({
   },
   drawCode:function(theEnCode){
     QRCode({
-      width:230,
-      height:230,
+      width:200,
+      height:200,
       canvasId:"myQrcode",
       // text:"https://github.com/yingye",
       text:theEnCode
