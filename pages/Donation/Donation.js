@@ -7,6 +7,25 @@ Page({
   data: {
     openID:"wxid_6j6ff0aaplne11",
     payResult:{},//获取的支付信息。
+    
+    moneyAmount:0,
+    needNote:"true",
+  },
+  //设置金钱数量
+  set200Amount(){
+    this.setData({
+      moneyAmount:200
+    })
+  },
+  set500Amount(){
+    this.setData({
+      moneyAmount:500
+    })
+  },
+  set1000Amount(){
+    this.setData({
+      moneyAmount:1000
+    })
   },
   
   //获得用户的openID
@@ -74,6 +93,26 @@ Page({
       url: '/pages/DonationDetail/DonationDetail',
     })
   },
+  //获取捐赠的基本信息，金额，姓名，电话，邮箱
+  submitTheDonateInfo(e){
+    //检查内容是否为空
+    console.log(e) //value: {moneyAmount: "0", userName: "1", userPhone: "1", userEmail: "1"}
+    var moneyAmount=e.detail.value.moneyAmount
+    var userName=e.detail.value.userName
+    var userPhone=e.detail.value.userPhone
+    var userEmail=e.detail.value.userEmail
+
+    //设置数据
+    this.setData({
+
+    })
+  },
+  //是否需要电子发票
+  needNoteOrNot:function(e){
+    console.log(e)
+    var needNote=e.detail.value
+    console.log("needNote:"+needNote)
+  },
   //去捐赠
   doDonate:function(){
     console.log("进入doDonate")
@@ -110,7 +149,7 @@ Page({
       data:{
         // "wxid_6j6ff0aaplne11"
         open_id:openID,
-        money_value:1
+        money_value:0.1
       },
       success:function(res){
         console.log(res)

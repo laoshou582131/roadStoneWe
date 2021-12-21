@@ -1,0 +1,55 @@
+/* pages/QRCodeProduce/QRCodeProduce.wxss */
+@mainColor:#B1C280;
+@itemColor:#f7fceb;
+@textColor:#494e3a;
+.container{
+    padding: 35rpx;
+    margin: 0rpx;
+    // border: 1px solid red;
+
+    height: 800rpx;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    text{
+        font-size: 36rpx;
+        color: @textColor;
+    }
+
+    .codeContainer{
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+
+        border: 1px solid red;
+
+        // padding: 25rpx;
+
+        .QRCodePic{
+            height: 420rpx;
+            width: 420rpx;
+    
+            background-color: white;
+
+            position: fixed;
+            left: 180rpx;
+            top: 250rpx;
+        }
+    }
+
+    
+    .backBtn{
+        width: 250rpx;
+        text-align: center;
+        background-color: @itemColor;
+
+        text{
+            font-size: 28rpx;
+            color: @textColor;
+            
+        }
+    }
+}

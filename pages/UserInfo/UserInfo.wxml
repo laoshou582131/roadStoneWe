@@ -27,9 +27,9 @@
     <!--暂时无-->
     <view class="editPInfo">
       <!-- <image class="editPType" src="../../images/icons/editP1.png" mode="aspectFit"></image> -->
-      <button class="editBTN" style="border: none;" bindtap="goBindingPhone">
+      <button class="editBTN" style="border: none;" bindtap="goShowUserCode">
         <!-- <image class="editPType"  src="../../images/icons/editP1.png" mode="aspectFit"></image> -->
-        <text>绑定手机</text>
+        <text>我的借书码</text>
       </button>
     </view>
   </view>

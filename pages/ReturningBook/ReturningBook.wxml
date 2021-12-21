@@ -3,7 +3,7 @@
       <text class="bookTitle">书名</text>
       <text class="borTimeTitle">借阅时间</text>
     </view>
-    <checkbox-group bindchange="selectReadyToReturnBooks">
+    <!-- <checkbox-group bindchange="selectReadyToReturnBooks"> -->
       <view class="oneItem" wx:if="{{booksList.length==1}}">
       <!--一个条目渲染方式-->
         <view class="borrowingBooksMiddle" >
@@ -11,7 +11,7 @@
             <view class="bookPic"><image class="bookPicType" src="{{booksList[0].book_url}}" mode="widthFix"></image></view>
             <text class="bookNameType">{{booksList[0].book_main_title}}</text>
             <text class="timeType">{{booksList[0].book_record_borrow_time}}</text>
-            <checkbox class="checkBoxType" value="{{booksList[0].book_id}}"></checkbox>
+            <!-- <checkbox class="checkBoxType" value="{{booksList[0].book_id}}"></checkbox> -->
           </view>
       </view>
       <!--多条渲染方式-->
@@ -28,7 +28,7 @@
             <view class="bookPic"><image class="bookPicType" src="{{item.book_url}}" mode="widthFix"></image></view>
             <text class="bookNameType">{{item.book_main_title}}</text>
             <text class="timeType">{{item.book_record_borrow_time}}</text>
-            <checkbox class="checkBoxType" value="{{item.book_id}}"></checkbox>
+            <!-- <checkbox class="checkBoxType" value="{{item.book_id}}"></checkbox> -->
           </view>
           <!--中间条目渲染方式-->
           <view wx:elif="{{index>0 && index<length-1}}" class="borrowingBooksMiddle" >
@@ -36,7 +36,7 @@
             <view class="bookPic"><image class="bookPicType" src="{{item.book_url}}" mode="widthFix"></image></view>
             <text class="bookNameType">{{item.book_main_title}}</text>
             <text class="timeType">{{item.book_record_borrow_time}}</text>
-            <checkbox class="checkBoxType" value="{{item.book_id}}"></checkbox>
+            <!-- <checkbox class="checkBoxType" value="{{item.book_id}}"></checkbox> -->
           </view>
           <!--底部条目渲染方式-->
           <view wx:else class="borrowingBooksBottom" >
@@ -44,17 +44,17 @@
             <view class="bookPic"><image class="bookPicType" src="{{item.book_url}}" mode="widthFix"></image></view>
             <text class="bookNameType">{{item.book_main_title}}</text>
             <text class="timeType">{{item.book_record_borrow_time}}</text>
-            <checkbox class="checkBoxType" value="{{item.book_id}}"></checkbox>
+            <!-- <checkbox class="checkBoxType" value="{{item.book_id}}"></checkbox> -->
           </view>
         </view>
         
       </scroll-view>
       <view class="showNone" wx:else><text>无借阅书籍</text></view>
-    </checkbox-group>
+    <!-- </checkbox-group> -->
     
 
     <view class="borrowBtnArea">
       <text>数量： {{selectToReturnBooksList.length}}</text>
-      <button class="btnOK" bindtap="returnTheBook">还书</button>
+      <!-- <button class="btnOK" bindtap="returnTheBook">还书</button> -->
     </view>
 </view>

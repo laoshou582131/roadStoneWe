@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="title"><text>您的借书码</text></view>
+  <!--二维码图-->
+  <view class="codeContainer">
+    <canvas class="QRCodePic" canvas-id="myQrcode"></canvas>
+  </view>
+  
+  <view class="bottomLine">
+    <!-- <button class="backBtn" bindtap="goBack"><text>返回</text></button> -->
+  </view>
+</view>

@@ -9,51 +9,52 @@
   </view>
 
   <!--捐赠选择-->
-  <view class="donationBar">
-    <view class="donationChoices">
-      <button><text>200元</text></button>
-      <button><text>500元</text></button>
-      <button><text>1000元</text></button>
+  <form bindsubmit="submitTheDonateInfo">
+    <view class="donationBar">
+      <view class="donationChoices">
+        <button bindtap="set200Amount"><text>200元</text></button>
+        <button bindtap="set500Amount"><text>500元</text></button>
+        <button bindtap="set1000Amount"><text>1000元</text></button>
+      </view>
+      <view class="otherDChoices">
+        <text class="otherAmountLabel">捐赠金额：</text>
+        <input class="inputType" name="moneyAmount" value="{{moneyAmount}}" type="digit" />
+      </view>
     </view>
-    <view class="otherDChoices">
-      <text class="otherAmountLabel">其他金额：</text>
-      <input class="inputType" type="digit" />
-    </view>
-  </view>
 
-  <!--捐赠者信息-->
-  <view class="userInfoBar">
-    <view class="name">
-      <text class="textType">您的姓名：</text>
-      <input class="inputType" type="text" />
+    <!--捐赠者信息-->
+    <view class="userInfoBar">
+      <view class="name">
+        <text class="textType">您的姓名：</text>
+        <input class="inputType" name="userName" type="text" />
+      </view>
+      <view class="phone">
+        <text class="textType">您的电话：</text>
+        <input class="inputType" name="userPhone" type="number" />
+      </view>
+      <view class="email">
+        <text class="textType">您的邮箱：</text>
+        <input class="inputType" name="userEmail" type="text" />
+      </view>
+      <view class="receipt">
+        <text class="textType">是否需要电子票据：</text>
+        <radio-group bindchange="needNoteOrNot">
+          <radio value="true"> 是</radio>
+          <radio value="false"> 否</radio>
+        </radio-group>
+      </view>
     </view>
-    <view class="phone">
-      <text class="textType">您的电话：</text>
-      <input class="inputType" type="number" />
+    <!--捐赠说明-->
+    <view class="declarationBar">
+      <text>捐赠说明</text>
+      <rich-text>
+        湖北省刘道玉教育基金会将为捐赠满100元及以上的爱心人士开具捐赠电子发票，请您仔细检查填写姓名、电话、邮箱。
+      </rich-text>
     </view>
-    <view class="email">
-      <text class="textType">您的邮箱：</text>
-      <input class="inputType" type="text" />
+    <!--捐赠按钮-->
+    <view class="donateBtn">
+      <button bindtap="getDonateSignInfoAndDonate" form-type="submit">立即捐赠爱心</button>
+      <!-- <button form-type='submit'>立即捐赠爱心</button> -->
     </view>
-    <view class="receipt">
-      <text class="textType">是否需要电子票据：</text>
-      <radio-group>
-        <radio> 是</radio>
-        <radio> 否</radio>
-      </radio-group>
-    </view>
-  </view>
-
-  <!--捐赠说明-->
-  <view class="declarationBar">
-    <text>捐赠说明</text>
-    <rich-text>
-      湖北省刘道玉教育基金会将为捐赠满100元及以上的爱心人士开具捐赠电子发票，请您仔细检查填写姓名、电话、邮箱。
-    </rich-text>
-  </view>
-
-  <!--捐赠按钮-->
-  <view class="donateBtn">
-    <button bindtap="getDonateSignInfoAndDonate">立即捐赠爱心</button>
-  </view>
+  </form>
 </view>

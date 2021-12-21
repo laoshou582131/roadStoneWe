@@ -99,6 +99,14 @@ Page({
     }
     
   },
+  //前往用户个人的借书码页面
+  goShowUserCode:function(){
+    var openID=this.data.openID
+    wx.navigateTo({
+      url: '../../pages/showUserQRCode/showUserQRcode?openID='+openID,
+    })
+  },
+  
    //资助
    goDonate:function(){
     // this.checkUserBindingPhone()

@@ -2,9 +2,13 @@
   "pages": [
     "pages/Home/Home",
     "pages/Donation/Donation",
+    "pages/UserInfo/UserInfo",
+    "pages/showUserQRCode/showUserQRcode",
+   
+    
     
     "pages/Test/Test",
-    "pages/UserInfo/UserInfo",
+    
     
     
     "pages/BookClassification/BookClassification",

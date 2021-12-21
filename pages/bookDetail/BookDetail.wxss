@@ -93,13 +93,14 @@
   /* border: 1px solid rgb(94, 255, 0); */
   border-radius: 25rpx;
   box-shadow: 0 0 10rpx 2rpx #cecece;
-  width: 90rpx;
+  width: 160rpx;
   height: 90rpx;
   text-align: center;
   background-color: #B1C280;
 }
 .btnType text {
   color: #494e3a;
+  font-size: 20rpx;
 }
 .btnType1 {
   margin: 0;
