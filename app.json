@@ -4,13 +4,9 @@
     "pages/Donation/Donation",
     "pages/UserInfo/UserInfo",
     "pages/showUserQRCode/showUserQRcode",
-   
-    
-    
+
     "pages/Test/Test",
-    
-    
-    
+
     "pages/BookClassification/BookClassification",
     "pages/QRCodeProduce/QRCodeProduce",
     "pages/ReturningBook/ReturningBook",
@@ -31,9 +27,6 @@
     
     "pages/BorrowingBook/BorrowingBooks",
     "pages/bookDetail/BookDetail",
-    
-    
-  
     "pages/DonationBookDetail/DonationBookDetail",
     
     "pages/searchPage/searchPage",
@@ -43,8 +36,7 @@
     "pages/Poster/Poster",
     "pages/index/index",
     "pages/logs/logs"
-    
-    
+
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -53,28 +45,31 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
+    "custom": true,
     "list": [
       {
         "pagePath": "pages/Home/Home",
-        "iconPath": "images/tabBarIcon/home.png",
-        "selectedIconPath": "images/tabBarIcon/home.png",
-        "text": "主页"
+        "iconPath": "components/images/Home.png",
+        "selectedIconPath": "components/images/Home_fill.png",
+        "text": "首页"
       },
       {
         "pagePath": "pages/Ranking/Ranking",
-        "iconPath": "images/tabBarIcon/ranking.png",
-        "selectedIconPath": "images/tabBarIcon/ranking.png",
+        "iconPath": "components/images/rank.png",
+        "selectedIconPath": "components/images/rank_fill.png",
         "text": "排行榜"
       },
       {
-        "pagePath": "pages/UserInfo/UserInfo",
-        "iconPath": "images/tabBarIcon/mine.png",
-        "selectedIconPath": "images/tabBarIcon/mine.png",
-        "text": "我的"
+        "pagePath": "pages/BookClassification/BookClassification",
+        "iconPath": "components/images/classfi.png",
+        "selectedIconPath": "components/images/classifi_fill.png",
+        "text": "书籍"
       },
       {
-        "pagePath": "pages/BookClassification/BookClassification",
-        "text": "书籍种类"
+        "pagePath": "pages/UserInfo/UserInfo",
+        "iconPath": "components/images/User.png",
+        "selectedIconPath": "components/images/User_fill.png",
+        "text": "我的"
       }
     ]
   },

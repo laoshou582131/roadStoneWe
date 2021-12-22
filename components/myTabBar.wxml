@@ -1,5 +1,6 @@
 <view class="barContainer">
-  <view class="barItems" wx:for="{{tabBar.list}}" wx:key="index">
+  <!-- <view><text>{{theSelected}}</text></view> -->
+  <view class="barItems" wx:for="{{tabBar.list}}" wx:key="index" data-index="{{index}}" bindtap="switchTab">
     <!--中间的扫码按钮-->
     <button class="middle" wx:if="{{item.isSpecial==true}}" open-type="navigate" style="border: none;" bindtap="goBorrow" plain="true">
       <image class="plusIcon" src="{{item.iconPath}}" mode="widthFix" style="width: 100rpx;"></image>
@@ -10,7 +11,7 @@
 
      <!--除了中间按钮的其他导航选择-->
     <navigator class="naviItemType" wx:else url="{{item.pagePath}}" open-type="switchTab">
-      <image class="naviItemIcon" src="{{item.iconPath}}" mode="widthFix"></image>
+      <image class="naviItemIcon" src="{{theSelected==index? item.selectedIconPath:item.iconPath}}" mode="widthFix"></image>
       <text>{{item.text}}</text>
     </navigator>
   </view>

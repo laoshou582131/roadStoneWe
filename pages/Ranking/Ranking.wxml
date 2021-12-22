@@ -53,6 +53,6 @@
 </view>
  <!--底部导航栏-->
 <view class="naviContainer">
-  <myTabBar></myTabBar>
+  <myTabBar theSelected="1"></myTabBar>
 </view>
 

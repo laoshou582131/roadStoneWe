@@ -14,7 +14,10 @@ Page({
     isSelectedDMoney:false,
     
     //用户排行榜Array
-    userRankingList:[]
+    userRankingList:[],
+
+    //底部导航栏设置
+    theSelected:1
   },
   //翻页
   paging:function(){
@@ -160,7 +163,6 @@ Page({
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

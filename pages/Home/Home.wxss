@@ -52,6 +52,7 @@
 }
 .fourButtonArea .buttonType text {
   display: inline-block;
+  font-family: 'Alibaba PuHuiTi';
 }
 .fourButtonArea .iconType {
   width: 80rpx;

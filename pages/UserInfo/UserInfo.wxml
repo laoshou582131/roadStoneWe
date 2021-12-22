@@ -95,5 +95,5 @@
 
 <!--底部导航栏-->
 <view class="naviContainer">
-  <myTabBar></myTabBar>
+  <myTabBar theSelected="4"></myTabBar>
 </view>
