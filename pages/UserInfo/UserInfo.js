@@ -158,7 +158,7 @@ Page({
    */
   onLoad: function (options) {
     //获取用户的openID
-    this.getUserOpenID()
+    // this.getUserOpenID()
     // //获得用户基本信息
     // this.getUserBasicInfo(this.data.openID)
   },

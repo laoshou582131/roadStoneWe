@@ -1,4 +1,6 @@
 /* components/myTabBar.wxss */
+@textColor:#2D3220;
+
 .barContainer{
     // flex: 1;
     display: flex;
@@ -13,6 +15,7 @@
     padding-top: 10rpx;
 
     // height: 170rpx;
+
 }
 
 .barItems{
@@ -21,6 +24,12 @@
 
     width: 145rpx;
     height: 100rpx;
+
+    text{
+        color: @textColor;
+        font-family:'Alibaba PuHuiTi',;
+        font-weight: bold;
+    }
 
     .naviItemType{
         width: 150rpx;
@@ -53,6 +62,10 @@
         left: 5rpx;
         top: 30rpx;
     }
+
+    text{
+        color: white;
+    }
 }
 
 .badge{
@@ -65,8 +78,13 @@
     height: 55rpx;
     font-size: 22rpx;
 
+
     right: 0rpx;
     top: 0rpx;
     
-    background-color: rgb(193, 241, 161);
+    background-color: @textColor;
+
+    
+        
+    
 }

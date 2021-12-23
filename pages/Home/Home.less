@@ -1,4 +1,5 @@
 /* pages/Home/Home.wxss */
+@textColor:#2D3220;
 .mainContainer{
   display: flex;
   flex-direction: column;
@@ -7,31 +8,91 @@
 
   // border: 1px solid red;
 }
+//
+.latest{
+  // border: 1px solid red;
+  height: 85rpx;
+
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+
+  .tempContainer{
+    padding: 0;
+    margin: 0;
+  }
+  image{
+    width: 100rpx;
+    // border: 1px solid blue;
+    height: 20rpx;
+  }
+  text{
+    display: inline-block;
+    font-size: 40rpx;
+    color:@textColor ;
+    margin-left: 25rpx;
+    font-family:'Alibaba PuHuiTi',;
+  }
+}
+
+.functions{
+  // border: 1px solid red;
+  height: 75rpx;
+
+  margin: 0;
+
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+
+  .tempContainer{
+    padding: 0;
+    margin: 0;
+  }
+  image{
+    width: 100rpx;
+    // border: 1px solid blue;
+    height: 20rpx;
+  }
+  text{
+    display: inline-block;
+    font-size: 40rpx;
+    color:@textColor ;
+    margin-left: 25rpx;
+    font-family:'Alibaba PuHuiTi',;
+  }
+}
+
 
 .slideShow{
   // border: 1rpx solid rgb(33, 93, 224);
   /* height: 500rpx; */
   width: auto;
-  padding: 35rpx 60rpx 0 60rpx;
+  padding: 25rpx 60rpx 25rpx 60rpx;
 
   .swiper{
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(238, 238, 238);
     border-radius: 25px;
-    height: 450rpx;
+    height: 380rpx;
   
     /*轮播图的装饰*/
-    box-shadow: 0 5px 10px 1px #bbbbbb;
+    box-shadow: 0 0 10rpx 2rpx #00000020;
 
     swiper-item{
       // border: 1px solid yellow;
-
       display: flex;
       justify-content: center;
       align-items: stretch;
 
       padding: 0;
       margin: 0;
+
+      image{
+        // border: 1px solid rgb(47, 151, 236);
+        height: 370rpx;
+      }
     }
+
 
     .pic{
       // border:1px solid red;
@@ -43,13 +104,13 @@
 
 
 .fourButtonArea{
-  /* border: 1rpx solid rgb(83, 209, 24); */
+  // border: 1rpx solid rgb(83, 209, 24);
   width: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding: 15rpx;
-  margin-top:45rpx;
+  padding: 10rpx;
+  margin-top:0rpx;
 
   /*button的样式*/
   .buttonType{
@@ -59,7 +120,7 @@
     /* margin-bottom: 25rpx; */
     margin: 35rpx 25rpx 30rpx 25rpx;
     padding: 15rpx;
-    box-shadow: 0 2rpx 25rpx 2rpx #c9c9c9;
+    box-shadow: 0 0 10rpx 2rpx #00000020;
     border-radius: 25rpx;
     /* border: 1px solid red; */
 
@@ -74,6 +135,7 @@
     text{
       display: inline-block;
       font-family:'Alibaba PuHuiTi',;
+      font-weight: bold;
     }
     
 

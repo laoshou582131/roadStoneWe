@@ -1,6 +1,13 @@
 <!--pages/Home/Home.wxml-->
 <!-- <text>pages/Home/Home.wxml</text> -->
 <view class="mainContainer">
+  <view class="latest">
+    <view class="tempContainer">
+      <image src="../Home/images/Line1.png" mode="aspectFit"></image>
+      <text>书屋近况</text>
+    </view>
+  </view>
+
   <!-- <view><text>2021年10月16日</text></view> -->
   <view class="slideShow">
     <!-- <text>我是轮播图</text> -->
@@ -13,6 +20,13 @@
     </swiper>
   </view>
 
+  <view class="functions">
+    <view class="tempContainer">
+      <image src="../Home/images/Line2.png" mode="aspectFit"></image>
+      <text>功能</text>
+    </view>
+  </view>
+
   <view class="fourButtonArea">
     <!-- 扫码button-->
     <button class="buttonType" type="default" bindtap="goScan">
@@ -20,7 +34,7 @@
         <image class="dotType" src="../../images/icons/page5.png" mode="aspectFit"></image>
       </view>
       <!-- <icon type="success" size="40rpx" color="green"></icon> -->
-      <image class="iconType" src="../Home/images/Book Reading.png" mode="aspectFit"></image>
+      <image class="iconType" src="../Home/images/BookReading.png" mode="aspectFit"></image>
       <view>
         <text>借书</text>
       </view>

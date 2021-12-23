@@ -60,15 +60,14 @@
 .pCredictContainer{
   display: flex;
   align-items: center;
-
   background-color: white;
 
   /* border: 1px solid rgb(171, 34, 199); */
   width: 100%;
-  height: 150rpx;
+  height: 120rpx;
   margin-top: 20rpx;
   border-radius: 25rpx;
-  box-shadow: 0 5px 10px 2px rgb(209, 209, 209);
+  box-shadow: 0 0 10rpx 2rpx #00000020;
 
   /* position: relative; */
 }
@@ -110,11 +109,11 @@
 /*排行榜*/
 .ranking{
   margin: 0;
-  padding: 25rpx;
+  padding: 10rpx 25rpx 0 25rpx;
   // border: 1px solid rgb(171, 34, 199);
 
   // width: 100%;
-  height: 850rpx;
+  height: 920rpx;
 
   display: flex;
   flex-direction: column;
@@ -127,9 +126,9 @@
   /* width: 100%; */
   height: 50rpx;
   flex-grow: 0;
-  /* margin-right: 20rpx; */
 
-  /* border: 1px solid rgb(40, 199, 34); */
+  font-size: 36rpx;
+  font-weight: bold;
 }
 .rankingDifC{
   /* width: 100%; */
@@ -137,7 +136,7 @@
   flex-grow: 0;
   padding: 0;
 
-  /* border: 1px solid rgb(34, 72, 199); */
+  // border: 1px solid rgb(34, 72, 199);
 
   display: flex;
   justify-content: space-evenly;
@@ -156,6 +155,7 @@
 
   text{
     color: @textColor;
+    font-weight: bold;
   }
 }
 .rankBtnTypeNs{
@@ -170,6 +170,7 @@
 
   text{
     color: @textColor;
+    
   }
 }
 .rankingList{
@@ -178,9 +179,9 @@
   flex-grow: 1;
   /* border: 1px solid rgb(199, 34, 89); */
   border-radius: 25rpx;
-  box-shadow: 0 5rpx 10px 2rpx rgb(216, 216, 216);
-  padding: 35rpx;
-  margin-top: 25rpx;
+  box-shadow: 0 0 10rpx 2rpx #00000020;
+  padding: 5rpx;
+  margin-top: 15rpx;
 
   /*用户内容排列*/
   display: flex;
@@ -193,7 +194,7 @@
 }
 .rankListUserType{
   /* width: 100%; */
-  height: 75rpx;
+  height: 80rpx;
   /* border: 1px solid rgb(8, 201, 8); */
 
   /*用户列表内部内容排序模式*/
@@ -212,19 +213,19 @@
   width: 75rpx;
   height: 75rpx;
   flex-grow: 0;
-  /* border: 1px solid rgb(8, 69, 201); */
+  // border: 1px solid rgb(8, 69, 201);
 }
 .rankUserName{
-  width: 75rpx;
-  flex-grow: 1;
-  /* border: 1px solid rgb(201, 8, 169); */
+  width: 220rpx;
+  flex-grow: 0;
+  // border: 1px solid rgb(201, 8, 169);
   text-align: center;
 }
 .rankUserDonate{
   width: 75rpx;
-  flex-grow: 2;
-  /* border: 1px solid rgb(8, 172, 201); */
-  text-align: right;
+  flex-grow: 1;
+  // border: 1px solid rgb(8, 172, 201);
+  text-align: left;
 }
 
 .naviContainer{

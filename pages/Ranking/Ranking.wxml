@@ -21,6 +21,7 @@
 
   <view class="ranking">
     <view class="rankName">
+      <!-- <image src="../Ranking/images/Line3.png" mode="aspectFit"></image> -->
       <text>排行榜</text>
     </view>
     <!--三个不同种类的button-->

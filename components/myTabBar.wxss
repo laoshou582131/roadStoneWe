@@ -13,6 +13,11 @@
   width: 145rpx;
   height: 100rpx;
 }
+.barItems text {
+  color: #2D3220;
+  font-family: 'Alibaba PuHuiTi';
+  font-weight: bold;
+}
 .barItems .naviItemType {
   width: 150rpx;
   flex-grow: 0;
@@ -38,6 +43,9 @@
   left: 5rpx;
   top: 30rpx;
 }
+.middle text {
+  color: white;
+}
 .badge {
   position: absolute;
   margin: 0;
@@ -48,5 +56,5 @@
   font-size: 22rpx;
   right: 0rpx;
   top: 0rpx;
-  background-color: #c1f1a1;
+  background-color: #2D3220;
 }
