@@ -6,7 +6,9 @@ Page({
    */
   data: {
     isVip:false,
-    openID:"wxid_6j6ff0aaplne11",
+    openID:"",
+    userID:"",
+
     //用户基本信息
     donateSumMoney:0,
     donateBookCount:0,
@@ -152,25 +154,83 @@ Page({
       url: '../MyReading/MyReading',
     })
   },
+  //提示功能仍在开发
+  functionConstruction(){
+    wx.showModal({
+      cancelColor: 'cancelColor',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getUserID()
+
     //获取用户的openID
     // this.getUserOpenID()
     // //获得用户基本信息
-    // this.getUserBasicInfo(this.data.openID)
+    // this.getUserPermmission()
   },
+  //获取用户的userID
+  getUserID(){
+    var that=this
+    wx.getStorage({
+      key:"userID",
+      success(res){
+        console.log("通过key拿到了其value:")
+        console.log(res)
+        var theUserID=res.data
+        that.setData({
+          userID:theUserID
+        })
+        that.getUserBasicInfo(theUserID)
+      }
+    })
+  },
+  //获取用户的openID
+  // getUserPermmission:function(){
+  //   var that=this
+  //   wx.login({
+  //     timeout: 5000,
+  //     success(res){
+  //       console.log("获取临时凭证成功，")
+  //       console.log(res.code)//获取登入的临时凭证
+  //       var tempCode=res.code
+  //       wx.request({
+  //         url: "https://qjnqrmlhidqj4nv8.jtabc.net/getLogin",
+  //         method:"POST",
+  //         data:{
+  //           js_code:tempCode
+  //         },
+  //         success(res){
+  //           console.log("获取用户openID成功")
+  //           console.log(res) //获得用户的openID
+  //           var theOpenID=res.data.data.user_login.open_id
+  //           console.log("id是："+theOpenID)
+  //           that.setData({
+  //             openID:theOpenID
+  //           })
+  //           //获取用户基本信息
+  //           that.getUserBasicInfo(theOpenID)
+  //         },
+  //         fail(res){
+  //           console.log("获取用户openID失败")
+  //           console.log(res)
+  //         }
+  //       })
+  //     }
+  //   })
+  // },
   //获取用户的基本信息
-  getUserBasicInfo(openID){
+  getUserBasicInfo(userID){
     //获取基本信息
     const that=this
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getPersonalInfo',
       method:"POST",
       data:{
-        open_id:openID//"wxid_6j6ff0aaplne11",
+        user_id:userID//"wxid_6j6ff0aaplne11",
         // open_id:"wxid_6j6ff0aaplne11"
       },
       success:function(res){

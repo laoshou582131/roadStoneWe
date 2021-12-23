@@ -2,10 +2,14 @@
   <view class="title"><text>您的借书码</text></view>
   <!--二维码图-->
   <view class="codeContainer">
-    <canvas class="QRCodePic" canvas-id="myQrcode"></canvas>
+    <image src="../showUserQRCode/images/CodeFrame.png" mode="aspectFit"></image>
+    <view class="theCode">
+      <canvas class="QRCodePic" canvas-id="myQrcode"></canvas>
+    </view>
+    <text>请展示给图书管理员</text>
   </view>
   
   <view class="bottomLine">
-    <!-- <button class="backBtn" bindtap="goBack"><text>返回</text></button> -->
+    <button class="backBtn" bindtap="goBack"><text>返 回</text></button>
   </view>
 </view>

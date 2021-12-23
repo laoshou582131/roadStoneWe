@@ -17,18 +17,25 @@ Page({
   onLoad: function (options) {
     //获取用户的openID
     var openID=options.openID
-    console.log(openID)
+    // console.log(openID)
     //将openID转化为二维码
-    this.drawCode(openID)
+    // this.drawCode(openID)
+    this.drawCode(123)
 
   },
   //画图
   drawCode:function(openID){
     QRCode({
-      width:210,
-      height:210,
+      width:200,
+      height:200,
       canvasId:"myQrcode",
       text:openID
+    })
+  },
+  goBack(){
+    //返回上一个页面
+    wx.navigateBack({
+      delta: 1,
     })
   },
 

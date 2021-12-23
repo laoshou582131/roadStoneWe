@@ -1,13 +1,12 @@
 // pages/Home/Home.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    //用户的基本信息
     UserBorrowingState:"",
     res:"",
     openID:"wxid_6j6ff0aaplne11",
+    userNickName:"",
+    userAvatarUrl:"",
 
     //是否绑定了手机号码
     phoneIsBinded:false,
@@ -15,47 +14,142 @@ Page({
     //轮播图数组
     picList:[],
     tempRes:{}
+
+    
   },
   //获取用户的授权
   getUserPermmission:function(){
+    var that=this
     wx.login({
       timeout: 5000,
       success(res){
+        console.log("获取临时凭证成功，")
         console.log(res.code)//获取登入的临时凭证
         var tempCode=res.code
-        var appID="wx33672cd0c62cd3cb"
-        var secret="eb92a6fe12159ab1fe0b2fcd41533d8e"
+        // var appID="wx33672cd0c62cd3cb"
+        // var secret="eb92a6fe12159ab1fe0b2fcd41533d8e"
         wx.request({
-          // url: 'https://api.weixin.qq.com/sns/jscode2session?appid='+appID+'&secret='+secret+'&js_code='+tempCode+'&grant_type=authorization_code',
-          url:'',
-          method:"GET",
-          data:{},
+          url: "https://qjnqrmlhidqj4nv8.jtabc.net/getLogin",
+          method:"POST",
+          data:{
+            js_code:tempCode
+          },
           success(res){
-            console.log(res)  
+            console.log("获取用户openID成功")
+            console.log(res) //获得用户的openID
+            var theOpenID=res.data.data.user_login.open_id
+            console.log("id是："+theOpenID)
+            that.setData({
+              openID:theOpenID
+            })
+            var theNickName=that.data.userNickName
+            var theUserAvatarUrl=that.data.userAvatarUrl
+            
+            //将用户的昵称，ICON以及用户的openID保存近数据库。
+            that.checkAndSaveUserInfo(theOpenID,theNickName,theUserAvatarUrl)
+
+          },
+          fail(res){
+            console.log("获取用户openID失败")
+            console.log(res)
           }
         })
       }
     })
   },
-  //获得用户的openID
-  getUserOpenID:function(e){
-    const that =this
-    wx.cloud.callFunction({
-      name:"login",
-      success:res=>{
-        console.log("云函数调用成功")
-        that.setData({
-          openID:res.result.openid,
-        })
-        console.log("获取到OpenID: "+this.data.openID)
-        //判断用户是否绑定了手机
-        that.checkUserBindingPhone()
+  //保存或更新旧用户信息
+  //保存或更新用户的openID,昵称以及用户的头像。
+  checkAndSaveUserInfo(openID,nickName,picUrl){
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkNewUser',
+      method:"POST",
+      data:{
+        open_id:openID,
+        nickname:nickName,
+        pic_url:picUrl
       },
-      fail:res=>{
-        console.log("云函数调用失败")
+      success(res){
+        console.log("保存用户信息成功")
+        console.log(openID+","+nickName+","+picUrl)
+        console.log(res)
+
+        var theUserID=res.data.data.user_id
+        //保存返回回来的user_id
+        wx.setStorage({
+          key:"userID",
+          data:theUserID
+        })
+
       }
     })
   },
+  //获取用户的昵称和头像
+  getUserNNameAndIcon(){
+    var that=this
+    wx.getUserProfile({
+      desc: '展示用户信息',
+      success(res){
+        console.log(res)
+        var nickName=res.userInfo.nickName
+        var avatarUrl=res.userInfo.avatarUrl
+        console.log("nickName:"+nickName+"url:"+avatarUrl)
+        that.setData({
+          //userInfo.avatarUrl nickName
+          userNickName:nickName,
+          userAvatarUrl:avatarUrl
+        })
+        //获得了昵称和Icon之后，就去获得用户的openID
+        that.getUserPermmission()
+      },
+      fail(res){
+        console.log("error"+res)
+      }
+      
+    })
+  },
+  //用户进入页面直接进行弹框提问
+  askUserGetPermission(){
+    var that=this
+    wx.showModal({
+      cancelColor: 'red',
+      title:"获得基本信息",
+      content:"将获取您的昵称和头像...",
+      confirmText:"允许",
+      success(res){
+        console.log(res)
+        if(res.confirm){
+          console.log("允许了")
+          //获取用户的昵称和头像
+          that.getUserNNameAndIcon()
+        }else{
+          console.log("不允许")
+        }
+      },
+      fail(res){
+        console.log("不允许"+res)
+      }
+    })
+  },
+
+  //获得用户的openID
+  // getUserOpenID:function(e){
+  //   const that =this
+  //   wx.cloud.callFunction({
+  //     name:"login",
+  //     success:res=>{
+  //       console.log("云函数调用成功")
+  //       that.setData({
+  //         openID:res.result.openid,
+  //       })
+  //       console.log("获取到OpenID: "+this.data.openID)
+  //       //判断用户是否绑定了手机
+  //       that.checkUserBindingPhone()
+  //     },
+  //     fail:res=>{
+  //       console.log("云函数调用失败")
+  //     }
+  //   })
+  // },
   //判断用户是否绑定了手机
   checkUserBindingPhone:function(){
     // var openID=this.data.openID
@@ -112,16 +206,6 @@ Page({
 
   //资助
   goDonate:function(){
-    //检查是否绑定了手机
-    // this.checkUserBindingPhone()
-    // var phoneIsBinded=this.data.phoneIsBinded
-    // if(phoneIsBinded){
-    //   wx.navigateTo({
-    //     url: '../Donation/Donation',
-    //   })
-    // }else{
-    //   console.log("请绑定手机号码")
-    // }
     wx.navigateTo({
       url: '../Donation/Donation',
     })
@@ -237,6 +321,15 @@ Page({
     })
     
   },
+  //提示功能仍在开发
+  stillConstructing(){
+    wx.showModal({
+      cancelColor: 'red',
+      title:"功能仍在开发中",
+      content:"敬请期待...",
+      showCancel:false
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -245,10 +338,8 @@ Page({
     // console.log("hello")
     this.myTabBar=this.selectComponent("#middleNum");
 
-    this.getUserPermmission()
-    //获取openID
-    // this.getUserOpenID()
-    //
+    this.askUserGetPermission()
+
     //获取轮播图
     this.getPics()
   },

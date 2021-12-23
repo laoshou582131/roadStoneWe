@@ -1,11 +1,16 @@
 {
   "pages": [
-    "pages/UserInfo/UserInfo",
-    "pages/Ranking/Ranking",
     "pages/Home/Home",
-    "pages/Donation/Donation",
+    "pages/UserInfo/UserInfo",
+    
     
     "pages/showUserQRCode/showUserQRcode",
+    
+    "pages/Ranking/Ranking",
+    
+    "pages/Donation/Donation",
+    
+    
 
     "pages/Test/Test",
 

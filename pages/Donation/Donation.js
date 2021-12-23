@@ -177,7 +177,7 @@ Page({
    */
   onLoad: function (options) {
     //获得OpenID
-    this.getUserOpenID()
+    // this.getUserOpenID()
   },
 
   /**
