@@ -19,8 +19,9 @@
   padding-left: 25rpx;
 }
 .PersonalInfo .personalIcon .pIconType {
-  width: 150rpx;
-  height: 150rpx;
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 75rpx;
 }
 .PersonalInfo .nameAndPhone {
   width: 150rpx;

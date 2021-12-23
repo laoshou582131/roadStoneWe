@@ -123,14 +123,52 @@
       margin: 0;
       padding: 0;
     
-      /*书籍栏目的排列*/
+      // /*书籍栏目的排列*/
+      // display: flex;
+      // flex-direction: row;
+      // justify-content: flex-start;
+      // align-content: flex-start;
+      // flex-wrap: wrap;
+      // // align-content: space-around;
+      // align-items: flex-start;
       display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-content: flex-start;
-      flex-wrap: wrap;
-      // align-content: space-around;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: stretch;
+
+      .noBook{
+        margin: 0;
+        padding:0;
+        // border: 1px solid red;
+
+        height: 800rpx;
+        width: auto;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+        text{
+          font-size: 36rpx;
+        }
+
+      }
+
+      .haveBook{
+        margin: 0;
+        padding: 0;
+        // border: 1px solid green;
+
+        /*书籍栏目的排列*/
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        // align-content: space-around;
+        align-items: flex-start;
+        
+      }
 
       .bookItems{
         width: 250rpx;

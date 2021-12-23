@@ -62,8 +62,18 @@ Component({
   methods: {
     //前往借阅书籍的页面
     goBorrow:function(){
-      wx.navigateTo({
-        url: '/pages/BorrowingBook/BorrowingBooks',
+      this.stillConstructing()
+      // wx.navigateTo({
+      //   url: '/pages/BorrowingBook/BorrowingBooks',
+      // })
+    },
+    //提示功能仍在开发
+    stillConstructing(){
+      wx.showModal({
+        cancelColor: 'red',
+        title:"功能仍在开发中",
+        content:"敬请期待...",
+        showCancel:false
       })
     },
     switchTab(e){

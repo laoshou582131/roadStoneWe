@@ -121,7 +121,7 @@ Page({
       this.setData({
         isTriggered:false
       })
-    }, 1000);
+    }, 600);
   },
   /**
    * 生命周期函数--监听页面加载

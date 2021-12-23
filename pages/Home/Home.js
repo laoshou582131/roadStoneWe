@@ -42,6 +42,8 @@ Page({
             that.setData({
               openID:theOpenID
             })
+            //缓存openID
+            // wx.setStorageSync('userOpenID', theOpenID)
             var theNickName=that.data.userNickName
             var theUserAvatarUrl=that.data.userAvatarUrl
             
@@ -75,10 +77,7 @@ Page({
 
         var theUserID=res.data.data.user_id
         //保存返回回来的user_id
-        wx.setStorage({
-          key:"userID",
-          data:theUserID
-        })
+        wx.setStorageSync('userID', theUserID)
 
       }
     })
@@ -98,6 +97,9 @@ Page({
           userNickName:nickName,
           userAvatarUrl:avatarUrl
         })
+        //保存昵称和ICON
+        wx.setStorageSync('userNickName',nickName)
+        wx.setStorageSync('userIcon', avatarUrl)
         //获得了昵称和Icon之后，就去获得用户的openID
         that.getUserPermmission()
       },
@@ -338,6 +340,7 @@ Page({
     // console.log("hello")
     this.myTabBar=this.selectComponent("#middleNum");
 
+    //询问是否可以获取用户的信息使用权。
     this.askUserGetPermission()
 
     //获取轮播图

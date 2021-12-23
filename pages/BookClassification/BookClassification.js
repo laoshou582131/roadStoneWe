@@ -1,9 +1,5 @@
 // pages/BookClassification/BookClassification.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     bookClassification:[],//获得所有的书籍类型数据
     currentClass:"",//当前所选的书籍类型
@@ -11,6 +7,9 @@ Page({
     limit:10, //每一页的所要的书籍数量
     currentBookItems:[],//当前所获得的书籍信息列表
     bookid:"",//书籍的id
+
+    //搜索框内容为空
+    searchContent1:"",
 
     //搜索
     searchPage:1,
@@ -62,10 +61,6 @@ Page({
 
     //获取所选类型的书籍信息
     this.getClassBooks(this.data.currentClass,this.data.currentPage,this.data.limit)
-    // let menu1=[];
-    // menu1.push(this.data.bookClassification[v[0]]);
-    // this.setData({menu:menu1});
-    
   },
 
   //滚动换页
@@ -86,7 +81,7 @@ Page({
       method:"GET",
       data:{
         // open_id:"wxid_6j6ff0aaplne11"
-        book_type:bookType,
+        book_type:bookType.book_type,
         page:page, //新的页面
         limit:limit //默认10个
       },
@@ -110,7 +105,7 @@ Page({
       this.setData({
         isTriggered:false
       })
-    }, 1000);
+    }, 600);
   },
 
   //前往该书籍的详情页面
@@ -137,9 +132,6 @@ Page({
   onLoad: function (options) {
     //获得书籍分类数据
     this.getBooksClasses()
-    //获取所选分类的书籍内容
-    console.log("Hello")
-    // this.getClassBooks(this.data.currentClass,this.data.page,this.data.limit)
   },
 
   /**
@@ -157,17 +149,22 @@ Page({
       data:{
         //无参数
       },
-
       success:function(res){
         console.log("获取书籍分类数据,") 
         console.log(res.data)
-        that.setData({
-          bookClassification:res.data.data.book_type_list,
-          currentClass:res.data.data.book_type_list[0], //设置当前所选的默认分类类型，为第一个。
-        })
+        if(res.data.code==1){
+          that.setData({
+            bookClassification:res.data.data.book_type_list,
+            currentClass:res.data.data.book_type_list[0], //设置当前所选的默认分类类型，为第一个。
+            value:[0]//设置左侧的选择器，默认第一个。
+          })
+        }
         // console.log("currentclass:"+that.data.currentClass) //Good
         //获取当前书籍类型的书本信息
-        that.getClassBooks(that.data.currentClass,that.data.currentPage,that.data.limit)
+        var currentClass=that.data.currentClass
+        var page=that.data.currentPage
+        var limit=that.data.limit
+        that.getClassBooks(currentClass,page,limit)
         
       },
       fail:function(res){
@@ -178,7 +175,7 @@ Page({
   //获得所选的对应书籍
   getClassBooks(bookType,page,limit){
     console.log("所选的内容")
-    var bookType1=parseInt(bookType)//选择的书籍类型
+    var bookType1=bookType.book_type//选择的书籍类型
     var page1=page//第几页
     var limit1=limit//每页多少本书
     console.log(bookType1,page1,limit1)
@@ -200,7 +197,7 @@ Page({
             currentBookItems:res.data.data.book_list
           })
         }else if(res.data.code==2){
-          console.log("获取书籍信息失败2")
+          console.log("获取书籍信息失败")
         }else{
           console.log("获取书籍信息失败")
         }
@@ -215,7 +212,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    //每次回到页面都清空内容
+    this.setData({
+      searchContent1:""
+    })
   },
   
 

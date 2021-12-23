@@ -154,7 +154,7 @@ Page({
       this.setData({
         isTriggered:false
       })
-    }, 1000);
+    }, 600);
   },
 
   //前往删除页面

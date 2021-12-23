@@ -1,20 +1,25 @@
 {
   "pages": [
-    "pages/Home/Home",
     "pages/UserInfo/UserInfo",
+    "pages/contactUs/contactUs",
+    "pages/Donation/Donation",
+    "pages/BookClassification/BookClassification",
+    
+    "pages/Home/Home",
+    
     
     
     "pages/showUserQRCode/showUserQRcode",
     
     "pages/Ranking/Ranking",
     
-    "pages/Donation/Donation",
+    
     
     
 
     "pages/Test/Test",
 
-    "pages/BookClassification/BookClassification",
+    
     "pages/QRCodeProduce/QRCodeProduce",
     "pages/ReturningBook/ReturningBook",
     

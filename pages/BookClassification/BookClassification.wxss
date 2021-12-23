@@ -90,6 +90,27 @@
   height: auto;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /*bookType*/
+}
+.right-col .scroller .booksTempContainer .noBook {
+  margin: 0;
+  padding: 0;
+  height: 800rpx;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.right-col .scroller .booksTempContainer .noBook text {
+  font-size: 36rpx;
+}
+.right-col .scroller .booksTempContainer .haveBook {
+  margin: 0;
+  padding: 0;
   /*书籍栏目的排列*/
   display: flex;
   flex-direction: row;
@@ -97,7 +118,6 @@
   align-content: flex-start;
   flex-wrap: wrap;
   align-items: flex-start;
-  /*bookType*/
 }
 .right-col .scroller .booksTempContainer .bookItems {
   width: 250rpx;

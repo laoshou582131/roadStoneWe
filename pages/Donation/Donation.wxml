@@ -18,7 +18,7 @@
       </view>
       <view class="otherDChoices">
         <text class="otherAmountLabel">捐赠金额：</text>
-        <input class="inputType" name="moneyAmount" value="{{moneyAmount}}" type="digit" />
+        <input class="inputType" name="moneyAmount" value="{{moneyAmount}}" bindblur="updateMoney" type="digit" />
       </view>
     </view>
 
@@ -26,22 +26,22 @@
     <view class="userInfoBar">
       <view class="name">
         <text class="textType">您的姓名：</text>
-        <input class="inputType" name="userName" type="text" />
+        <input class="inputType" name="userName" value="{{userName}}" bindblur="updateName" type="text" />
       </view>
       <view class="phone">
         <text class="textType">您的电话：</text>
-        <input class="inputType" name="userPhone" type="number" />
+        <!-- <input class="inputType" name="userPhone" value="{{userPhone}}" type="number" /> -->
       </view>
       <view class="email">
         <text class="textType">您的邮箱：</text>
-        <input class="inputType" name="userEmail" type="text" />
+        <input class="inputType" name="userEmail" placeholder="（可选填）" value="{{userEmail}}" type="text" />
       </view>
       <view class="receipt">
         <text class="textType">是否需要电子票据：</text>
-        <radio-group bindchange="needNoteOrNot">
+        <!-- <radio-group bindchange="needNoteOrNot">
           <radio value="true"> 是</radio>
           <radio value="false"> 否</radio>
-        </radio-group>
+        </radio-group> -->
       </view>
     </view>
     <!--捐赠说明-->
@@ -53,7 +53,7 @@
     </view>
     <!--捐赠按钮-->
     <view class="donateBtn">
-      <button bindtap="getDonateSignInfoAndDonate" form-type="submit">立即捐赠爱心</button>
+      <button bindtap="readyToDonate" form-type="submit">立即捐赠爱心</button>
       <!-- <button form-type='submit'>立即捐赠爱心</button> -->
     </view>
   </form>

@@ -1,0 +1,33 @@
+/* pages/contactUs/contactUs.wxss */
+.container {
+  padding: 20rpx;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contactWays {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.contactWays text {
+  display: inline-block;
+}
+.contactWays .showText {
+  color: #B1C280;
+  font-size: 36rpx;
+}
+.contactWays .contact {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.contactWays .copyBtn {
+  display: inline-block;
+}
+.contactWays .copyBtn image {
+  width: 35rpx;
+  height: 35rpx;
+}

@@ -116,7 +116,7 @@ Page({
       this.setData({
         isTriggered:false
       })
-    }, 1000);
+    }, 600);
   },
 
   /**

@@ -100,27 +100,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("传递的BookID参数：")
-    console.log(options.bookId)
-    console.log("获得的bookCode：")
-    console.log(options.book_code)
-
-    var bookId=options.bookId
-    var bookCode=options.book_code
-    this.setData({
-      bookID:bookId,
-      bookCode:bookCode
-    })
-    //获取用户openID
-    this.getUserOpenID()
-    //根据获取到的bookID去查找
-    this.getBookDetailByCode(bookCode)
-    // if(bookId!=""){
-    //   this.getBookDetailById(bookId)
-    // }else{
-    //   this.getBookDetailByCode(bookCode)
-    // }
-    
+    // console.log(options)
   },
   //根据bookID获得书籍详情
   getBookDetailById(bookID){
@@ -190,7 +170,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let pages=getCurrentPages() //当前页面
+    console.log(pages)
+    let currentPage=pages[pages.length-1]
+    console.log(currentPage.options) //获取到了bookClassification传来的bookID
+    var bookID=currentPage.options.bookId
+    //获得书籍的详情页面
+    this.getBookDetailById(bookID)
   },
 
   /**

@@ -6,12 +6,12 @@
   <view class="PersonalInfo">
     <view class="personalIcon">
       <!--用户头像-->
-      <image class="pIconType" src="{{userPicUrl}}" mode="aspectFit"></image>
+      <image class="pIconType" src="{{userIcon}}" mode="aspectFit"></image>
     </view>
     <view class="nameAndPhone">
       <view class="textPType">
         <!--用户名字-->
-        <text>{{userNickName}}</text>
+        <text>{{nickName}}</text>
         <!--vip的标识，若是则显示金色王冠，若否则显示为灰色王冠-->
         <image wx:if="{{userVipState==1}}" src="../UserInfo/images/vip.png" mode="widthFix" style="width: 50rpx;"></image>
         <image wx:else src="../UserInfo/images/nonVip.png" mode="widthFix" style="width: 50rpx;"></image>
@@ -47,7 +47,7 @@
       <text>待还</text>
     </button>
     <!--捐书button，显示捐书页面，展示海报，目前还没有-->
-    <button class="buttonType" type="default">
+    <button class="buttonType" type="default" bindtap="stillConstructing">
       <text>{{donateBookCount}}</text>
       <text>捐书</text>
     </button>
@@ -80,7 +80,7 @@
       <text>会员权益</text>
     </button>
     <!--暂时没有-->
-    <button class="buttonMType" type="default" plain="true" style="border: none;">
+    <button class="buttonMType" type="default" plain="true" style="border: none;" bindtap="goContactUs">
       <image class="imagesMType" src="../../images/Mines/contact1.png"></image>
       <text>联系我们</text>
     </button>

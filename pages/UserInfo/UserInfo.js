@@ -8,6 +8,8 @@ Page({
     isVip:false,
     openID:"",
     userID:"",
+    nickName:"",
+    userIcon:"",
 
     //用户基本信息
     donateSumMoney:0,
@@ -24,68 +26,68 @@ Page({
     phoneIsBinded:false
   },
   //获得用户的openID
-  getUserOpenID:function(e){
-    const that =this
-    wx.cloud.callFunction({
-      name:"login",
-      success:res=>{
-        console.log("云函数调用成功")
-        that.setData({
-          //"wxid_6j6ff0aaplne11"
-          // openID:res.result.openid,
-          openID:"wxid_6j6ff0aaplne11"
-        })
-        console.log("获取到OpenID: "+this.data.openID)
-        //获得用户基本信息
-        this.getUserBasicInfo(this.data.openID)
-        //判断用户是否绑定了手机e
-        this.checkUserBindingPhone()
-      },
-      fail:res=>{
-        console.log("云函数调用失败")
-      }
-    })
-  },
+  // getUserOpenID:function(e){
+  //   const that =this
+  //   wx.cloud.callFunction({
+  //     name:"login",
+  //     success:res=>{
+  //       console.log("云函数调用成功")
+  //       that.setData({
+  //         //"wxid_6j6ff0aaplne11"
+  //         // openID:res.result.openid,
+  //         openID:"wxid_6j6ff0aaplne11"
+  //       })
+  //       console.log("获取到OpenID: "+this.data.openID)
+  //       //获得用户基本信息
+  //       this.getUserBasicInfo(this.data.openID)
+  //       //判断用户是否绑定了手机e
+  //       this.checkUserBindingPhone()
+  //     },
+  //     fail:res=>{
+  //       console.log("云函数调用失败")
+  //     }
+  //   })
+  // },
   //判断用户是否绑定了手机
-  checkUserBindingPhone:function(){
-    // var openID=this.data.openID
-    var that=this
-    var openID="wxid_6j6ff0aaplne11" //
-    wx.request({
-      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkUserPhone',
-      method:"POST",
-      data:{
-        open_id:openID
-      },
-      success:function(res){
-        console.log(res.data)
-        if(res.data.code==1){
-          console.log(res.data.msg)
-          //是绑定了
-          that.setData({
-            phoneIsBinded:true
-          })
-        }else if(res.data.code==2){
-          wx.showModal({
-            title:res.data.msg,
-            content:"请前往绑定手机号",
-            cancelColor: 'red',
-            success:function(res){
-              console.log(res)
-              if(res.confirm){
-                //为绑定手机，前往绑定
-                wx.navigateTo({
-                  url: '../phoneCertification/phoneCertification',
-                })
-              }else{
-                console.log("选择了取消")
-              }
-            }
-          })
-        }
-      }
-    })
-  },
+  // checkUserBindingPhone:function(){
+  //   // var openID=this.data.openID
+  //   var that=this
+  //   var openID="wxid_6j6ff0aaplne11" //
+  //   wx.request({
+  //     url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkUserPhone',
+  //     method:"POST",
+  //     data:{
+  //       open_id:openID
+  //     },
+  //     success:function(res){
+  //       console.log(res.data)
+  //       if(res.data.code==1){
+  //         console.log(res.data.msg)
+  //         //是绑定了
+  //         that.setData({
+  //           phoneIsBinded:true
+  //         })
+  //       }else if(res.data.code==2){
+  //         wx.showModal({
+  //           title:res.data.msg,
+  //           content:"请前往绑定手机号",
+  //           cancelColor: 'red',
+  //           success:function(res){
+  //             console.log(res)
+  //             if(res.confirm){
+  //               //为绑定手机，前往绑定
+  //               wx.navigateTo({
+  //                 url: '../phoneCertification/phoneCertification',
+  //               })
+  //             }else{
+  //               console.log("选择了取消")
+  //             }
+  //           }
+  //         })
+  //       }
+  //     }
+  //   })
+  // },
   //去绑定手机的页面
   goBindingPhone:function(){
     var phoneIsBinded=this.data.phoneIsBinded
@@ -111,15 +113,6 @@ Page({
   
    //资助
    goDonate:function(){
-    // this.checkUserBindingPhone()
-    // var phoneIsBinded=this.data.phoneIsBinded
-    // if(phoneIsBinded){
-    //   wx.navigateTo({
-    //     url: '../Donation/Donation',
-    //   })
-    // }else{
-    //   console.log("不做事")
-    // }
     wx.navigateTo({
       url: '../Donation/Donation',
     })
@@ -145,19 +138,29 @@ Page({
   },
   //我的证书
   goCertification:function(){
-    wx.navigateTo({
-      url: '../myCertification/myCertification',
-    })
+    this.stillConstructing()
+    // wx.navigateTo({
+    //   url: '../myCertification/myCertification',
+    // })
   },
   goMyReading:function(){
-    wx.navigateTo({
-      url: '../MyReading/MyReading',
-    })
+    this.stillConstructing()
+    // wx.navigateTo({
+    //   url: '../MyReading/MyReading',
+    // })
   },
   //提示功能仍在开发
-  functionConstruction(){
+  stillConstructing(){
     wx.showModal({
-      cancelColor: 'cancelColor',
+      cancelColor: 'red',
+      title:"功能仍在开发中",
+      content:"敬请期待...",
+      showCancel:false
+    })
+  },
+  goContactUs(){
+    wx.navigateTo({
+      url: '../contactUs/contactUs',
     })
   },
 
@@ -165,12 +168,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getUserID()
-
-    //获取用户的openID
-    // this.getUserOpenID()
-    // //获得用户基本信息
-    // this.getUserPermmission()
+    //获得基本的用户信息
+    
   },
   //获取用户的userID
   getUserID(){
@@ -188,6 +187,37 @@ Page({
       }
     })
   },
+  //获得用户的nickName
+  getUserNickName(){
+    var that=this
+    wx.getStorage({
+      key:"userNickName",
+      success(res){
+        console.log("通过key拿到了其value:")
+        console.log(res)
+        var userNickName=res.data
+        that.setData({
+          nickName:userNickName
+        })
+      }
+    })
+  },
+  //获得用户Icon
+  getUserIcon(){
+    var that=this
+    wx.getStorage({
+      key:"userIcon",
+      success(res){
+        console.log("通过key拿到了其value:")
+        console.log(res)
+        var userIcon=res.data
+        that.setData({
+          userIcon:userIcon
+        })
+      }
+    })
+  },
+
   //获取用户的openID
   // getUserPermmission:function(){
   //   var that=this
@@ -285,7 +315,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    //每当页面展示时，就获取这三个信息。
+    this.getUserID()
+    this.getUserNickName()
+    this.getUserIcon()
   },
 
   /**

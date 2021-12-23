@@ -21,24 +21,24 @@ Page({
     userID:0
   },
   //获得用户的openID
-  getUserOpenID:function(e){
-    const that =this
-    wx.cloud.callFunction({
-      name:"login",
-      success:res=>{
-        console.log("云函数调用成功")
-        that.setData({
-          openID:res.result.openid,
-        })
-        console.log("获取到OpenID: "+this.data.openID)
-        //获取过期的书籍列表
-        this.getUserDonationInfo(this.data.openID,this.data.page,this.data.limit)
-      },
-      fail:res=>{
-        console.log("云函数调用失败")
-      }
-    })
-  },
+  // getUserOpenID:function(e){
+  //   const that =this
+  //   wx.cloud.callFunction({
+  //     name:"login",
+  //     success:res=>{
+  //       console.log("云函数调用成功")
+  //       that.setData({
+  //         openID:res.result.openid,
+  //       })
+  //       console.log("获取到OpenID: "+this.data.openID)
+  //       //获取过期的书籍列表
+  //       this.getUserDonationInfo(this.data.openID,this.data.page,this.data.limit)
+  //     },
+  //     fail:res=>{
+  //       console.log("云函数调用失败")
+  //     }
+  //   })
+  // },
   //翻页
   paging:function(){
     console.log("paging")
@@ -87,7 +87,7 @@ Page({
   onLoad: function (options) {
     //重置参数
     //1获取openID
-    this.getUserOpenID()
+    // this.getUserOpenID()
     //2，设置初始页面page=1
     
     // this.getUserDonationInfo(this.data.openID,this.data.page,this.data.limit)

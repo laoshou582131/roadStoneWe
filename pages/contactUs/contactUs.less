@@ -1,0 +1,43 @@
+/* pages/contactUs/contactUs.wxss */
+@mainColor:#B1C280;
+@itemColor:#f7fceb;
+@textColor:#494e3a;
+
+.container{
+    padding: 20rpx;
+    margin:0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.contactWays{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+
+    text{
+        display: inline-block;
+    }
+    .showText{
+        color: @mainColor;
+        font-size: 36rpx;
+    }
+    .contact{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .copyBtn{
+        display: inline-block;
+        // height: 45rpx;
+
+        image{
+            width: 35rpx;
+            height: 35rpx;
+        }
+    }
+}

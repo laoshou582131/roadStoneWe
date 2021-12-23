@@ -5,7 +5,7 @@
   <checkbox-group class="ItemsGroup" bindchange="selectReadyToDeleteBooks">
     <scroll-view wx:if="{{booksList.length>=1}}" scroll-y="true"
     bindscrolltolower="paging" scroll-anchoring="true"
-    refresher-threshold="30" refresher-background="#f7fceb"
+    refresher-threshold="30" refresher-background="#fff"
     refresher-enabled="true" refresher-default-style="none" 
     refresher-triggered="{{isTriggered}}" bindrefresherrefresh="bindRefresherRefresh"
     enhanced="true" fast-deceleration="true">

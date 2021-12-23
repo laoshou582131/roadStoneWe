@@ -64,7 +64,7 @@ Page({
       this.setData({
         isTriggered:false
       })
-    }, 1000);
+    }, 600);
   },
 
 
@@ -121,15 +121,7 @@ Page({
    */
   onLoad: function (options) {
     //rank_reading,rank_donate_money, rank_donate_book
-    // 设置默认的排行榜
-    this.setData({
-      rankType:"rank_reading",
-      page:1 //默认设置为第一页
-    })
-    console.log(this.data.rankType)
     
-    //获取初始默认的排行榜
-    this.getUserInfo(this.data.rankType,this.data.page,this.data.limit)
   },
   //获取用户的合法借书列表
   getUserInfo(rankType,page,limit){
@@ -174,7 +166,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 设置默认的排行榜
+    this.setData({
+      rankType:"rank_reading",
+      page:1 //默认设置为第一页
+    })
+    console.log(this.data.rankType)
+    
+    //获取初始默认的排行榜
+    this.getUserInfo(this.data.rankType,this.data.page,this.data.limit)
   },
 
   /**

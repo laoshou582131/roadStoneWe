@@ -82,7 +82,7 @@ Page({
       this.setData({
         isTriggered:false
       })
-    }, 1000);
+    }, 600);
   },
 
   //选择要还的书籍
