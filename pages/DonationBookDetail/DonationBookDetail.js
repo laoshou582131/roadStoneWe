@@ -1,13 +1,14 @@
 // pages/DonationBookDetail/DonationBookDetail.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     length:7,
     //基本信息
-    openID:"wxid_6j6ff0aaplne11",
+    openID:"",
+    userID:"",
+
     page:1,
     limit:10,
     bookItemList:[]
@@ -61,17 +62,17 @@ Page({
     //2，设置初始页面page=1
 
     //获取用户捐赠的书籍信息
-    this.getUserBookDonation(this.data.openID,this.data.page,this.data.limit)
+    // this.getUserBookDonation(this.data.openID,this.data.page,this.data.limit)
   },
   //获取用户捐赠的书籍信息
-  getUserBookDonation(openID,page,limit){
+  getUserBookDonationRecord(userID,page,limit){
     //获取基本信息
     const that=this
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getAllDonatedBooks',
       method:"POST",
       data:{
-        open_id:openID,
+        user_id:userID,
         page:page,
         limit:limit
       },
@@ -96,6 +97,23 @@ Page({
    */
   onShow: function () {
 
+  },
+  //获取用户的userID
+  getUserID(){
+    var that=this
+    wx.getStorage({
+      key:"userID",
+      success(res){
+        console.log("通过key拿到了其value:")
+        console.log(res)
+        var theUserID=res.data
+        that.setData({
+          userID:theUserID
+        })
+        //获得用户的捐赠信息
+        
+      }
+    })
   },
 
   /**

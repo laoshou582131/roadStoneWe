@@ -6,7 +6,20 @@
   align-items: stretch;
 }
 .container scroll-view {
-  height: 1400rpx;
+  height: 1250rpx;
+}
+.container .topText {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.container .topText .bigDate {
+  display: block;
+  margin-top: 25rpx;
+  margin-left: 30rpx;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #494e3a;
 }
 .monthlySection {
   padding: 35rpx;
@@ -17,6 +30,9 @@
 .monthlySection .bigDate {
   display: block;
   margin-bottom: 35rpx;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #494e3a;
 }
 .monthlySection .DonationItems {
   padding: 20rpx;
@@ -29,6 +45,9 @@
 .monthlySection .DonationItems .monthlyDescribe .dateD {
   margin-top: 15rpx;
   font-size: 16rpx;
+}
+.monthlySection .DonationItems .monthlyDescribe text {
+  color: #494e3a;
 }
 .monthlySection .DonationItems .Money {
   font-size: 36rpx;

@@ -25,69 +25,6 @@ Page({
     //是否绑定了手机
     phoneIsBinded:false
   },
-  //获得用户的openID
-  // getUserOpenID:function(e){
-  //   const that =this
-  //   wx.cloud.callFunction({
-  //     name:"login",
-  //     success:res=>{
-  //       console.log("云函数调用成功")
-  //       that.setData({
-  //         //"wxid_6j6ff0aaplne11"
-  //         // openID:res.result.openid,
-  //         openID:"wxid_6j6ff0aaplne11"
-  //       })
-  //       console.log("获取到OpenID: "+this.data.openID)
-  //       //获得用户基本信息
-  //       this.getUserBasicInfo(this.data.openID)
-  //       //判断用户是否绑定了手机e
-  //       this.checkUserBindingPhone()
-  //     },
-  //     fail:res=>{
-  //       console.log("云函数调用失败")
-  //     }
-  //   })
-  // },
-  //判断用户是否绑定了手机
-  // checkUserBindingPhone:function(){
-  //   // var openID=this.data.openID
-  //   var that=this
-  //   var openID="wxid_6j6ff0aaplne11" //
-  //   wx.request({
-  //     url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkUserPhone',
-  //     method:"POST",
-  //     data:{
-  //       open_id:openID
-  //     },
-  //     success:function(res){
-  //       console.log(res.data)
-  //       if(res.data.code==1){
-  //         console.log(res.data.msg)
-  //         //是绑定了
-  //         that.setData({
-  //           phoneIsBinded:true
-  //         })
-  //       }else if(res.data.code==2){
-  //         wx.showModal({
-  //           title:res.data.msg,
-  //           content:"请前往绑定手机号",
-  //           cancelColor: 'red',
-  //           success:function(res){
-  //             console.log(res)
-  //             if(res.confirm){
-  //               //为绑定手机，前往绑定
-  //               wx.navigateTo({
-  //                 url: '../phoneCertification/phoneCertification',
-  //               })
-  //             }else{
-  //               console.log("选择了取消")
-  //             }
-  //           }
-  //         })
-  //       }
-  //     }
-  //   })
-  // },
   //去绑定手机的页面
   goBindingPhone:function(){
     var phoneIsBinded=this.data.phoneIsBinded
@@ -264,8 +201,6 @@ Page({
             title: '信息错误',
           })
         }
-        
-        
       }
     })
   },

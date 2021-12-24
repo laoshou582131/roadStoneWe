@@ -1,3 +1,7 @@
+@mainColor:#B1C280;
+@itemColor:#f7fceb;
+@textColor:#494e3a;
+
 .container{
     padding: 0;
     margin: 0;
@@ -9,8 +13,34 @@
 
     scroll-view{
         // border: 1px solid blue;
-        height: 1400rpx;
+        height: 1250rpx;
+
     }
+
+    .topText{
+        // border: 1px solid red;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+
+        .bigDate{
+            //月份的显示
+            display: block;
+            margin-top: 25rpx;
+            margin-left: 30rpx;
+            // margin-bottom: 35rpx;
+            font-size: 48rpx;
+            font-weight: bold;
+    
+            color: @textColor;
+
+            
+        }
+    }
+
+    
 }
 
 .monthlySection{
@@ -24,6 +54,10 @@
         //月份的显示
         display: block;
         margin-bottom: 35rpx;
+        font-size: 48rpx;
+        font-weight: bold;
+
+        color: @textColor;
     }
 
     .DonationItems{
@@ -42,6 +76,10 @@
             .dateD{
                 margin-top: 15rpx;
                 font-size: 16rpx;
+            }
+
+            text{
+                color: @textColor;
             }
         }
 

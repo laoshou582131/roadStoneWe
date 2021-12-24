@@ -1,13 +1,21 @@
 <view class="container">
+  <view class="topText">
+    <text class="bigDate">捐款记录</text>
+  </view>
   <scroll-view wx:if="{{DonateItemList.length!=0}}" scroll-y="true"
-  bindscrolltolower="paging" scroll-anchoring="true"> 
+  bindscrolltolower="paging" scroll-anchoring="true"
+  refresher-threshold="30" refresher-background="#fff"
+  refresher-enabled="true" refresher-default-style="none" 
+  refresher-triggered="{{isTriggered}}" bindrefresherrefresh="bindRefresherRefresh"
+  enhanced="true" fast-deceleration="true"
+  > 
     <!--月度sections-->
     <view wx:for="{{1}}" wx:key="index" class="monthlySection">
-      <text class="bigDate">2021-10</text>
+      
       <view wx:for="{{DonateItemList}}" wx:key="index" class="DonationItems">
         <view class="monthlyDescribe">
           <text>捐赠金额</text>
-          <text class="dateD">2021年10月23日</text>
+          <text class="dateD">{{item.donate_money_time}}</text>
         </view>
         <view class="Money">
           <text>{{item.donate_money_value}}</text>

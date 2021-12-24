@@ -54,7 +54,7 @@
 
     <view class="borrowBtnArea">
       <!-- <text>数量： {{bookItemList.length}}</text>selectToReturnBooksList-->
-      <text>数量： {{selectToReturnBooksList.length}}</text>
+      <text>数量： {{bookItemList.length}}</text>
       <!-- <button class="btnOK" bindtap="returnTheBook">还书</button> -->
     </view>
 </view>

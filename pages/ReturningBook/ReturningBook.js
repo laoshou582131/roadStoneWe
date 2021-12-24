@@ -3,7 +3,6 @@
 // let QRCode=require("../../utils/weapp.qrcode.min.js")
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -15,6 +14,7 @@ Page({
     limit:10,//默认每一页内容为10个items
     // open_id:"wxid_6j6ff0aaplne11"
     openID:"wxid_6j6ff0aaplne11",//用户的id。
+    userID:"",
 
     //用户借阅情况
     booksList:[],
@@ -85,10 +85,10 @@ Page({
     })
     console.log(this.data.page)
     //获得更多有关搜索内容的信息
-    this.getMoreBooks(this.data.openID,this.data.page,this.data.limit)
+    this.getMoreBooks(this.data.userID,this.data.page,this.data.limit)
   },
-  getMoreBooks(openID,page,limit){
-    console.log("getMoreBooks:"+openID+","+page+","+limit)
+  getMoreBooks(userID,page,limit){
+    console.log("getMoreBooks:"+userID+","+page+","+limit)
     // console.log(searchContent)
     //去访问后端获取更多书籍
     const that=this
@@ -97,7 +97,7 @@ Page({
       method:"POST",
       data:{
         // open_id:"wxid_6j6ff0aaplne11"
-        open_id:openID,
+        user_id:user_id,
         page:page, //新的页面
         limit:limit //默认10个
       },
@@ -127,17 +127,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getReadyBorrowingBooks(this.data.page,this.data.openID,this.data.limit)
+    
   },
   //获取用户当前所借阅的书籍
-  getReadyBorrowingBooks(page,openID,limit){
+  getReadyBorrowingBooks(page,userID,limit){
     const that=this
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getAllBorrowingBooks',
       method:"POST",
       data:{
         page:page, //新的页面
-        open_id:openID,//用户的id
+        user_id:userID,//用户的id
         limit:limit //默认10个
       },
       success:function(res){
@@ -165,7 +165,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      page:1
+    })
+    this.getUserID()
+  },
+  //获取用户的userID
+  getUserID(){
+    var that=this
+    var limit=this.data.limit
+    wx.getStorage({
+      key:"userID",
+      success(res){
+        console.log("通过key拿到了其value:")
+        console.log(res)
+        var theUserID=res.data
+        that.setData({
+          userID:theUserID
+        })
+        //获得用户的基本信息，捐赠的书籍数量，捐赠信息等。
+        that.getReadyBorrowingBooks(1,theUserID,limit)
+      }
+    })
   },
 
   /**

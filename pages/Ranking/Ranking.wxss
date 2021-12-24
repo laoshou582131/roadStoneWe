@@ -24,9 +24,10 @@
   justify-content: center;
 }
 .iconType {
-  width: 150rpx;
-  height: 150rpx;
+  width: 130rpx;
+  height: 130rpx;
   display: block;
+  border-radius: 85rpx;
   /* border: 1px solid rgb(0, 255, 234); */
 }
 .pName {

@@ -3,8 +3,8 @@
   <view class="personalInfo">
     <view class="picon">
       <!--用户头像和用户名称-->
-      <image class="iconType" src="../../images/icons/Picon.png" mode="aspectFit"></image>
-      <text class="pName">星川莉莉</text>
+      <image class="iconType" src="{{userIcon}}" mode="aspectFit"></image>
+      <text class="pName">{{nickName}}</text>
       <image class="dots" src="../../images/icons/dots2.png" mode="aspectFit"></image>
     </view>
     <view class="pCredictContainer">

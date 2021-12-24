@@ -2,15 +2,20 @@
 Page({
   data: {
     openID:"",
+    userID:"",
     payResult:{},//获取的支付信息。
+    donateSumMoney:"",//用户捐赠的总金额
     
-    moneyAmount:0,
+    moneyAmount:"",
     needNote:"true",
 
     //基本信息
     userName:"",
     userPhone:"",
     userEmail:"",
+
+    //是否绑定了收集
+    phoneIsBinded:false,
   },
   //设置金钱数量
   set200Amount(){
@@ -30,45 +35,88 @@ Page({
   },
   
     //判断用户是否绑定了手机
-    // checkUserBindingPhone:function(){
-    //   // var openID=this.data.openID
-    //   var that=this
-    //   var openID="wxid_6j6ff0aaplne11" //
-    //   wx.request({
-    //     url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkUserPhone',
-    //     method:"POST",
-    //     data:{
-    //       open_id:openID
-    //     },
-    //     success:function(res){
-    //       console.log(res.data)
-    //       if(res.data.code==1){
-    //         console.log(res.data.msg)
-    //         //是绑定了
-    //         that.setData({
-    //           phoneIsBinded:true
-    //         })
-    //       }else if(res.data.code==2){
-    //         wx.showModal({
-    //           title:res.data.msg,
-    //           content:"请前往绑定手机号",
-    //           cancelColor: 'red',
-    //           success:function(res){
-    //             console.log(res)
-    //             if(res.confirm){
-    //               //为绑定手机，前往绑定
-    //               wx.navigateTo({
-    //                 url: '../phoneCertification/phoneCertification',
-    //               })
-    //             }else{
-    //               console.log("选择了取消")
-    //             }
-    //           }
-    //         })
-    //       }
-    //     }
-    //   })
-    // },
+    checkUserBindingPhone:function(){
+      var that=this
+      var userID=this.data.userID
+      wx.request({
+        url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkUserPhone',
+        method:"POST",
+        data:{
+          user_id:userID
+        },
+        success:function(res){
+          console.log(res.data)
+          if(res.data.code==1){
+            console.log(res.data.msg)
+            //是绑定了
+            that.setData({
+              phoneIsBinded:true
+            })
+            //判断输入的合法性
+            that.checkInputValidity()
+          }else if(res.data.code==2){
+            wx.showModal({
+              title:res.data.msg,
+              content:"请前往绑定手机号",
+              cancelColor: 'red',
+              success:function(res){
+                console.log(res)
+                if(res.confirm){
+                  //为绑定手机，前往绑定
+                  wx.navigateTo({
+                    url: '../phoneCertification/phoneCertification',
+                  })
+                }else{
+                  console.log("选择了取消")
+                }
+              }
+            })
+          }
+        }
+      })
+    },
+    //检查输入的合法性
+    checkInputValidity(){
+      console.log("进入checkInputValidity")
+      var phoneIsBinded=this.data.phoneIsBinded
+      var moneyAmount=this.data.moneyAmount
+      var userName=this.data.userName
+      if(phoneIsBinded){
+        console.log("电话已绑定")
+        //正则表达式
+        if(moneyAmount!="")
+        {
+          console.log("moneyAMount不为空")
+          //判断浮点数金额的判断
+          if((/^[1-9]+|[1-9]+\.\d+|[0]\.\d+$/.test(moneyAmount))){
+            console.log("isCheck!")
+            if(userName!=""){
+              //若金额不为0且名字不为空，则可以捐款
+              console.log("成功捐款")
+              //获取openID，传入moneyValue，并获得result，然后执行wx.requestPayment.
+              this.getUserPermmission()
+            }else{
+              wx.showToast({
+                title: '请填写名字',
+                icon:"error"
+              })
+            }
+          }else{
+            console.log("isNotCheck!")
+            wx.showToast({
+              title: '金额数不妥当',
+            })
+          }
+        }else{
+          console.log("金额为空...")
+          wx.showToast({
+            title: '请输入捐赠金额',
+          })
+        }
+      }else{
+        console.log("没有绑定手机号。")
+      }
+    },
 
   //前往捐赠记录页面
   goDonationRecord:function(){
@@ -99,6 +147,7 @@ Page({
   //去捐赠
   doDonate:function(){
     console.log("进入doDonate")
+    var that=this
     var theResult=this.data.payResult //里面含有用户的基本捐赠信息，姓名，金额，电话
     var nonceStr=theResult.nonce_str.toString()
     var package1=theResult.package
@@ -114,11 +163,25 @@ Page({
 
       success:function(res){
         console.log("doDonate成功！")
-        console.log(res.data)
+        console.log(res)
+        wx.showToast({
+          title: '捐赠成功，谢谢您！',
+          icon:"success"
+        })
+        //清空内容
+        that.setData({
+          moneyAmount:"",
+          userName:"",
+          userEmail:"",
+        })
       },
       fail:function(res){
         console.log("支付失败")
         console.log(res)
+        wx.showToast({
+          title: '捐赠失败',
+          icon:"error"
+        })
       }
     })
   },
@@ -209,27 +272,8 @@ Page({
 
     //点击捐赠按钮时的预检查
     readyToDonate(){
-      //判断金额是否为0，以及名字是否填写
-      var moneyAmount=parseInt(this.data.moneyAmount)
-      console.log(moneyAmount)
-      var userName=this.data.userName
-      if(moneyAmount!=0){
-        if(userName!=""){
-          //若金额不为0且名字不为空，则可以捐款
-          console.log("成功捐款")
-          // this.getUserPermmission()
-        }else{
-          wx.showToast({
-            title: '请填写名字',
-            icon:"error"
-          })
-        }
-      }else{
-        wx.showToast({
-          title: '金额不能为0',
-          icon:"error"
-        })
-      }
+      //检查是否绑定了手机号码，success后并检查输入是否合法，若合法则获取openID,准备打包信息，并提交捐赠信息。
+      this.checkUserBindingPhone()
     },
   /**
    * 生命周期函数--监听页面加载
@@ -250,7 +294,57 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    //获得用户的userID
+    this.getUserID()
+  },
+  //获得用户的userID
+  getUserID(){
+    var that=this
+    wx.getStorage({
+      key:"userID",
+      success(res){
+        console.log("通过key拿到了其value:")
+        console.log(res)
+        var theUserID=res.data
+        that.setData({
+          userID:theUserID
+        })
+        //获得捐赠的总金额数
+        that.getUserBasicInfo(theUserID)
+      }
+    })
+  },
+  //获取用户的基本信息
+  getUserBasicInfo(userID){
+    //获取基本信息
+    const that=this
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getPersonalInfo',
+      method:"POST",
+      data:{
+        user_id:userID
+      },
+      success:function(res){
+        if(res.data.code==1){
+          console.log(res.data)
+          // console.log(donateSumMoney)
+          var donateSumMoney=res.data.data.user_info.donate_sum_money
+          // console.log(borrowBookCount,donateBookCount,donateSumMoney,returnBookCount,userNickName,userPhoneNumber,userPicUrl,userVipState)
+          //赋值
+          that.setData({
+            donateSumMoney:donateSumMoney,
+          })
+        }else if(res.data.code==2){
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }else{
+          wx.showToast({
+            title: '信息错误',
+          })
+        }
+      }
+    })
   },
 
   /**

@@ -1,14 +1,11 @@
 // pages/DonationDetail/DonationDetail.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     //基本信息
-    openID:"wxid_6j6ff0aaplne11",
+    openID:"",
+    userID:"",
     page:1,
-    limit:10,
+    limit:20,
     DonateItemList:[],
 
     //获取的捐赠信息
@@ -20,25 +17,6 @@ Page({
     orderReturnTime:0,
     userID:0
   },
-  //获得用户的openID
-  // getUserOpenID:function(e){
-  //   const that =this
-  //   wx.cloud.callFunction({
-  //     name:"login",
-  //     success:res=>{
-  //       console.log("云函数调用成功")
-  //       that.setData({
-  //         openID:res.result.openid,
-  //       })
-  //       console.log("获取到OpenID: "+this.data.openID)
-  //       //获取过期的书籍列表
-  //       this.getUserDonationInfo(this.data.openID,this.data.page,this.data.limit)
-  //     },
-  //     fail:res=>{
-  //       console.log("云函数调用失败")
-  //     }
-  //   })
-  // },
   //翻页
   paging:function(){
     console.log("paging")
@@ -48,37 +26,54 @@ Page({
     })
     console.log(this.data.page)
     //获得更多有关搜索内容的信息
-    this.getMoreDonations(this.data.openID,this.data.page,this.data.limit)
+
+    var userID=this.data.userID
+    var page=this.data.page
+    var limit=this.data.limit
+    this.getMoreDonations(userID,page,limit)
   },
   //获得更多有关搜索内容的信息
-  getMoreDonations(openID,page,limit){
-    console.log("getMoreDonations:"+openID+","+page+","+limit)
+  getMoreDonations(userID,page,limit){
+    console.log("getMoreDonations:"+userID+","+page+","+limit)
     // console.log(searchContent)
     //去访问后端获取更多书籍
     const that=this
     wx.request({
-      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getAllDonationMoneyRecord',
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getAllDonationRecord',
       method:"POST",
       data:{
         // open_id:"wxid_6j6ff0aaplne11"
-        open_id:openID,
+        user_id:userID,
         page:page, //新的页面
         limit:limit //默认10个
       },
       success:function(res){
-        console.log("getMoreDonationsInfo:")
+        console.log("成功获取捐赠记录")
         console.log(res.data)
         //将第新页的内容给加进来
-        // var newBookItems=res.data.data.book_list
-        // var tempCurrentBookItems=that.data.searchReturnContent
-        // tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
-        // // console.log(tempCurrentBookItems)
-        // that.setData({
-        //   searchReturnContent:tempCurrentBookItems
-        // })
-
+        var newBookItems=res.data.data.donate_money_list
+        console.log(newBookItems.length)
+        if(newBookItems.length!=0)
+        {
+          var tempCurrentBookItems=that.data.DonateItemList
+          tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
+          // console.log(tempCurrentBookItems)
+          that.setData({
+            DonateItemList:tempCurrentBookItems
+          })
+        }
       }
     })
+  },
+
+  //bindRefresherRefresh
+  //滚动页面上拉
+  bindRefresherRefresh:function(){
+    setTimeout(() => {
+      this.setData({
+        isTriggered:false
+      })
+    }, 600);
   },
 
   /**
@@ -93,14 +88,14 @@ Page({
     // this.getUserDonationInfo(this.data.openID,this.data.page,this.data.limit)
   },
   //获取用户的合法借书列表
-  getUserDonationInfo(openID,page,limit){
+  getUserDonationInfo(userID,page,limit){
     //获取基本信息
     const that=this
     wx.request({
-      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getAllDonationMoneyRecord',
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getAllDonationRecord',
       method:"POST",
       data:{
-        open_id:openID,
+        user_id:userID,
         page:page,
         limit:limit
       },
@@ -127,7 +122,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getUserID()
+    //初始化page
+    this.setData({
+      page:1
+    })
+  },
+  //获取用户的userID
+  getUserID(){
+    var that=this
+    wx.getStorage({
+      key:"userID",
+      success(res){
+        console.log("通过key拿到了其value:")
+        console.log(res)
+        var theUserID=res.data
+        that.setData({
+          userID:theUserID
+        })
+        //获得用户的基本信息，捐赠的书籍数量，捐赠信息等。
+        var page=that.data.page
+        var limit=that.data.limit
+        //获取用户的捐赠信息
+        that.getUserDonationInfo(theUserID,1,limit)
+      }
+    })
   },
 
   /**

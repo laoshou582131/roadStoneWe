@@ -5,39 +5,62 @@ Page({
    * 页面的初始数据
    */
   data: {
-    openID:"wxid_6j6ff0aaplne11",
+    openID:"",
+    userID:"",
+
     phoneNumber:"",
     code:"",
     isGettingTheCode:false,
-    time:5,
+    time:60,
   },
   //获得用户的openID
-  getUserOpenID:function(e){
-    const that =this
-    wx.cloud.callFunction({
-      name:"login",
-      success:res=>{
-        console.log("云函数调用成功")
+  // getUserOpenID:function(e){
+  //   const that =this
+  //   wx.cloud.callFunction({
+  //     name:"login",
+  //     success:res=>{
+  //       console.log("云函数调用成功")
+  //       that.setData({
+  //         openID:res.result.openid,
+  //       })
+  //       console.log("获取到OpenID: "+this.data.openID)
+  //     },
+  //     fail:res=>{
+  //       console.log("云函数调用失败")
+  //     }
+  //   })
+  // },
+
+  //获取userID
+  getUserID(){
+    var that=this
+    wx.getStorage({
+      key:"userID",
+      success(res){
+        console.log("通过key拿到了其value:")
+        console.log(res)
+        var theUserID=res.data
         that.setData({
-          openID:res.result.openid,
+          userID:theUserID
         })
-        console.log("获取到OpenID: "+this.data.openID)
-      },
-      fail:res=>{
-        console.log("云函数调用失败")
       }
     })
   },
+
   //提交验证码和手机号
   submitPhoneAndCode:function(e){
     console.log("上传手机号和code")
     console.log(e)
     var phoneNum=e.detail.value.thePhone
     var code=e.detail.value.theCode
-    var openID=this.data.openID
+    var userID=this.data.userID
     // console.log(phoneNum,code)
     if(phoneNum=="" ||code==""){
       console.log("手机号或验证码不能为空")
+      wx.showToast({
+        title: '手机号或验证码不可为空',
+        icon:"error"
+      })
     }else{
       wx.request({
         url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkBindingCode',
@@ -45,7 +68,7 @@ Page({
         data:{
           code:code,
           phone_number:phoneNum,
-          open_id:openID
+          user_id:userID
         },
         success:function(res){
           console.log(res.data)
@@ -116,7 +139,7 @@ Page({
   getTheCode:function(e){
     //判断是否输入电话号码
     var phoneNum=this.data.phoneNumber
-    var openID=this.data.openID
+    var userID=this.data.userID
     if(phoneNum==""){
       wx.showToast({
         title: '电话号码不能为空',
@@ -126,13 +149,13 @@ Page({
     }else{
       //设置验证码样式，60s后重试
       this.setGettingCodeStyle()
-
+      //获取其验证码
       wx.request({
         url: 'https://qjnqrmlhidqj4nv8.jtabc.net/bindingUserPhoneNumber',
         method:"POST",
         data:{
           phone_number:phoneNum,
-          open_id:openID
+          user_id:userID
         },
         success:function(res){
           console.log(res.data)
@@ -245,6 +268,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //获取userID
+    this.getUserID()
 
   },
 

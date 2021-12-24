@@ -1,11 +1,14 @@
 {
   "pages": [
+    "pages/Home/Home",
+    "pages/DonationDetail/DonationDetail",
+    "pages/Donation/Donation",
     "pages/UserInfo/UserInfo",
     "pages/contactUs/contactUs",
-    "pages/Donation/Donation",
+    
     "pages/BookClassification/BookClassification",
     
-    "pages/Home/Home",
+    
     
     
     
@@ -34,7 +37,7 @@
     "pages/ReturningBookOutDate/ReturningBookOutDate",
 
     
-    "pages/DonationDetail/DonationDetail",
+    
     
     
     "pages/BorrowingBook/BorrowingBooks",

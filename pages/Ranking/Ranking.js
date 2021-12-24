@@ -8,6 +8,11 @@ Page({
     page:1,
     limit:10,
 
+    //用户基本信息
+    nickName:"",
+    userIcon:"",
+
+
     //三个阅读选项
     isSelectedReading:true,
     isSelectedDBook:false,
@@ -172,9 +177,45 @@ Page({
       page:1 //默认设置为第一页
     })
     console.log(this.data.rankType)
+
+    //获取用户nickName
+    this.getUserNickName()
+    //获得用户Icon
+    this.getUserIcon()
     
     //获取初始默认的排行榜
     this.getUserInfo(this.data.rankType,this.data.page,this.data.limit)
+  },
+
+  //获得用户的nickName
+  getUserNickName(){
+    var that=this
+    wx.getStorage({
+      key:"userNickName",
+      success(res){
+        console.log("通过key拿到了其value:")
+        console.log(res)
+        var userNickName=res.data
+        that.setData({
+          nickName:userNickName
+        })
+      }
+    })
+  },
+  //获得用户Icon
+  getUserIcon(){
+    var that=this
+    wx.getStorage({
+      key:"userIcon",
+      success(res){
+        console.log("通过key拿到了其value:")
+        console.log(res)
+        var userIcon=res.data
+        that.setData({
+          userIcon:userIcon
+        })
+      }
+    })
   },
 
   /**
