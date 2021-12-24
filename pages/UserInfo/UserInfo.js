@@ -183,6 +183,7 @@ Page({
         that.setData({
           userID:theUserID
         })
+        //获得用户的基本信息，捐赠的书籍数量，捐赠信息等。
         that.getUserBasicInfo(theUserID)
       }
     })
@@ -217,41 +218,6 @@ Page({
       }
     })
   },
-
-  //获取用户的openID
-  // getUserPermmission:function(){
-  //   var that=this
-  //   wx.login({
-  //     timeout: 5000,
-  //     success(res){
-  //       console.log("获取临时凭证成功，")
-  //       console.log(res.code)//获取登入的临时凭证
-  //       var tempCode=res.code
-  //       wx.request({
-  //         url: "https://qjnqrmlhidqj4nv8.jtabc.net/getLogin",
-  //         method:"POST",
-  //         data:{
-  //           js_code:tempCode
-  //         },
-  //         success(res){
-  //           console.log("获取用户openID成功")
-  //           console.log(res) //获得用户的openID
-  //           var theOpenID=res.data.data.user_login.open_id
-  //           console.log("id是："+theOpenID)
-  //           that.setData({
-  //             openID:theOpenID
-  //           })
-  //           //获取用户基本信息
-  //           that.getUserBasicInfo(theOpenID)
-  //         },
-  //         fail(res){
-  //           console.log("获取用户openID失败")
-  //           console.log(res)
-  //         }
-  //       })
-  //     }
-  //   })
-  // },
   //获取用户的基本信息
   getUserBasicInfo(userID){
     //获取基本信息

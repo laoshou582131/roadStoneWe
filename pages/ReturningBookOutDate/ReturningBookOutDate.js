@@ -48,7 +48,7 @@ Page({
     this.getMoreBooks(this.data.openID,this.data.page,this.data.limit)
   },
   //获得更多有关搜索内容的信息
-  getMoreBooks(openID,page,limit){
+  getMoreBooks(userID,page,limit){
     console.log("getMoreBooks:"+openID+","+page+","+limit)
     // console.log(searchContent)
     //去访问后端获取更多书籍
@@ -58,7 +58,7 @@ Page({
       method:"POST",
       data:{
         // open_id:"wxid_6j6ff0aaplne11"
-        open_id:openID,
+        user_id:userID,
         page:page, //新的页面
         limit:limit //默认10个
       },
@@ -139,15 +139,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //重置参数
-    //1获取openID
-    this.getUserOpenID()
-    //2，设置初始页面page=1
-    
-    // this.getUserBorrowOutDate(this.data.openID,this.data.page,this.data.limit)
+
   },
   //获取用户的合法借书列表
-  getUserBorrowOutDate(openID,page,limit){
+  getUserBorrowOutDate(userID,page,limit){
     //获取基本信息
     const that=this
     wx.request({
@@ -155,7 +150,7 @@ Page({
       method:"POST",
       data:{
         // openID:"wxid_6j6ff0aaplne11",
-        open_id:"wxid_6j6ff0aaplne11",
+        user_id:userID,
         page:page,
         limit:limit
       },
@@ -192,7 +187,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getUserID()
+  },
+  //获取用户的userID并查找其待还书籍列表
+  getUserID(){
+    var that=this
+    wx.getStorage({
+      key:"userID",
+      success(res){
+        console.log("通过key拿到了其value:")
+        console.log(res)
+        var theUserID=res.data
+        var limit=that.data.limit
+        that.setData({
+          userID:theUserID,
+          //设置初始化page页面
+          page:1
+        })
+        that.getUserBorrowOutDate(theUserID,1,limit) //默认从page=1开始搜索
+      }
+    })
   },
 
   /**
