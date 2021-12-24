@@ -316,10 +316,12 @@ Page({
   },
   //获取用户的基本信息
   getUserBasicInfo(userID){
+    console.log(userID)
+    // var userID=user
     //获取基本信息
     const that=this
     wx.request({
-      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getPersonalInfo',
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getTotalDonatedMoney',
       method:"POST",
       data:{
         user_id:userID
@@ -328,7 +330,7 @@ Page({
         if(res.data.code==1){
           console.log(res.data)
           // console.log(donateSumMoney)
-          var donateSumMoney=res.data.data.user_info.donate_sum_money
+          var donateSumMoney=res.data.data.total_money
           // console.log(borrowBookCount,donateBookCount,donateSumMoney,returnBookCount,userNickName,userPhoneNumber,userPicUrl,userVipState)
           //赋值
           that.setData({
@@ -337,10 +339,12 @@ Page({
         }else if(res.data.code==2){
           wx.showToast({
             title: res.data.msg,
+            icon:"error"
           })
         }else{
           wx.showToast({
             title: '信息错误',
+            icon:"error"
           })
         }
       }

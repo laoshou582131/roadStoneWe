@@ -1,8 +1,10 @@
 {
   "pages": [
     "pages/Home/Home",
-    "pages/DonationDetail/DonationDetail",
     "pages/Donation/Donation",
+    
+    "pages/DonationDetail/DonationDetail",
+    
     "pages/UserInfo/UserInfo",
     "pages/contactUs/contactUs",
     
