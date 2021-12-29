@@ -20,10 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("传过来的参数为："+options.enCodeList)
-    var enCodeList=options.enCodeList
-    //生成二维码
-    this.drawCode(enCodeList)
+    
   },
   drawCode:function(theEnCode){
     QRCode({
@@ -46,7 +43,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    //获取到了borrowingBook传来的bookIDs和userID
+    let pages=getCurrentPages() //当前页面
+    console.log(pages)
+    let currentPage=pages[pages.length-1]
+    console.log(currentPage.options) 
+    //生成二维码
+    // this.drawCode(enCodeList)
   },
 
   /**

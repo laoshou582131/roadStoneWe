@@ -13,10 +13,31 @@ Page({
 
     //轮播图数组
     picList:[],
-    tempRes:{}
+    tempRes:{},
 
-    
+    //用户地理位置
+    latitude:0, //经度
+    longitude:0, //纬度
   },
+  //获取用户位置
+  getUserPosition(){
+    var that=this
+    wx.getLocation({
+      type: 'wgs84',
+      success (res) {
+        var latitude = res.latitude //经度
+        var longitude = res.longitude //维度
+
+        // //保存经纬度信息
+        // that.setData({
+        //   latitude:latitude,
+        //   longitude:longitude
+        // })
+        console.log(latitude,longitude)
+      }
+     })
+  },
+
   //获取用户的授权
   getUserPermmission:function(){
     var that=this
@@ -132,26 +153,6 @@ Page({
       }
     })
   },
-
-  //获得用户的openID
-  // getUserOpenID:function(e){
-  //   const that =this
-  //   wx.cloud.callFunction({
-  //     name:"login",
-  //     success:res=>{
-  //       console.log("云函数调用成功")
-  //       that.setData({
-  //         openID:res.result.openid,
-  //       })
-  //       console.log("获取到OpenID: "+this.data.openID)
-  //       //判断用户是否绑定了手机
-  //       that.checkUserBindingPhone()
-  //     },
-  //     fail:res=>{
-  //       console.log("云函数调用失败")
-  //     }
-  //   })
-  // },
   //判断用户是否绑定了手机
   checkUserBindingPhone:function(){
     // var openID=this.data.openID
@@ -242,6 +243,12 @@ Page({
     })
     
   },
+    //前往用户个人的借书码页面
+    goShowUserCode:function(){
+      wx.navigateTo({
+        url: '../../pages/showUserQRCode/showUserQRcode',
+      })
+    },
    //前往该书籍的详情页面
    goDetail(bookCode){
     try{
@@ -338,13 +345,16 @@ Page({
    */
   onLoad: function (options) {
     // console.log("hello")
-    this.myTabBar=this.selectComponent("#middleNum");
+    // this.myTabBar=this.selectComponent("#middleNum");
 
     //询问是否可以获取用户的信息使用权。
     this.askUserGetPermission()
 
     //获取轮播图
     this.getPics()
+
+    //获取用户的经纬度信息
+    this.getUserPosition()
   },
   //获取轮播图的图片
   getPics:function(){

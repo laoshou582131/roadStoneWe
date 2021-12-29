@@ -8,7 +8,8 @@ Page({
     page:1,//默认要第一页的准备借阅内容
     limit:10,//默认每一页内容为10个items
     // open_id:"wxid_6j6ff0aaplne11"
-    openID:"wxid_6j6ff0aaplne11",//用户的id。
+    openID:"",//用户的id。
+    userID:"",
 
     //准备借阅的书籍列表
     booksList:[],
@@ -23,47 +24,44 @@ Page({
   //准备借一堆书
   goBorrowTheseBook:function(e){
     //先检查看看能不能结束
-    this.checkUserBorrowingRight()
-    //判断是否绑定手机号
+    var userID=this.data.userID
+    //若合法则借书，否则提示不可借书之原因。
+    this.checkUserBorrowingRight(userID)
+
+    //
+    // var userID=that.data.userID
+    // var bookIDs=that.data.selectedBookList.toString()
+    // console.log(userID,bookIDs)
+    // //生成二维码
+    // wx.navigateTo({
+    //   url: '../QRCodeProduce/QRCodeProduce?userID='+userID+'?bookIDs='+bookIDs,
+    // })
     
   },
-  //获得用户的openID
-  getUserOpenID:function(e){
-    const that =this
-    wx.cloud.callFunction({
-      name:"login",
-      success:res=>{
-        console.log("云函数调用成功")
-        that.setData({
-          openID:res.result.openid,
-        })
-        console.log("获取到OpenID: "+this.data.openID)
-      },
-      fail:res=>{
-        console.log("云函数调用失败")
-      }
-    })
-  },
   //判断用户是否能够借书
-  checkUserBorrowingRight(){
+  checkUserBorrowingRight(userID){
     var that=this
+    console.log("userID:"+userID)
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkUserBorrowingStatus',
       method:"POST",
       data:{
-        open_id:"wxid_6j6ff0aaplne11"
+        user_id:userID
       },
       success:function(res){
         console.log(res.data)
         if(res.data.code==1){
-          //允许借书,开启扫码
-          wx.scanCode(
-            {
-              success:function(res){
-                that.setData({res:res})
-              }
-            }
-          )
+          //允许借书，将userID和bookIDs生成二维码
+          var userID=that.data.userID
+          var bookIDs=that.data.selectedBookList.toString()
+          console.log(userID,bookIDs)
+          // var list=[{"userID":userID},{"bookList":bookIDs}]
+          // //生成二维码
+          // wx.navigateTo({
+          //   url: '../QRCodeProduce/QRCodeProduce?list='+list,
+          // })
+          
+          
         }else if(res.data.code==2)
         {
           //有图书超期未还，不允许借书
@@ -83,12 +81,30 @@ Page({
           })
         }else if(res.data.code==22)
         {
-          //不是会员，会员过期，不允许借书
-          wx.showToast({
-            title: res.data.msg,
-            icon:'error',
-            duration:1500
+          // //不是会员，会员过期，不允许借书
+          // wx.showToast({
+          //   title: res.data.msg,
+          //   icon:'error',
+          //   duration:1500
+          // })
+          //请前往捐赠页面，成为会员
+          wx.showModal({
+            title:res.data.msg,
+            content:"请前往捐赠页面",
+            cancelColor: 'red',
+            success:function(res){
+              console.log(res)
+              if(res.confirm){
+                //为绑定手机，前往绑定
+                wx.navigateTo({
+                  url: '../Donation/Donation',
+                })
+              }else{
+                console.log("选择了取消")
+              }
+            }
           })
+          
         }
         else{
           //借书失败
@@ -111,11 +127,10 @@ Page({
     })
     console.log(this.data.page)
     //获得更多有关搜索内容的信息
-    this.getMoreBooks(this.data.openID,this.data.page,this.data.limit)
+    this.getMoreBooks(this.data.userID,this.data.page,this.data.limit)
   },
-  getMoreBooks(openID,page,limit){
-    console.log("getMoreBooks:"+openID+","+page+","+limit)
-    // console.log(searchContent)
+  getMoreBooks(userID,page,limit){
+    console.log("getMoreBooks:"+userID+","+page+","+limit)
     //去访问后端获取更多书籍
     const that=this
     wx.request({
@@ -123,7 +138,7 @@ Page({
       method:"POST",
       data:{
         // open_id:"wxid_6j6ff0aaplne11"
-        open_id:openID,
+        user_id:userID,
         page:page, //新的页面
         limit:limit //默认10个
       },
@@ -143,8 +158,6 @@ Page({
         }else{
           console.log(res.data.msg)
         }
-        
-
       }
     })
   },
@@ -165,30 +178,29 @@ Page({
   },
   //监听用户选了哪些书籍并更新selectedBookList
   getSelectedBook:function(e){
+    console.log(e.detail)
     console.log("选中的是："+e.detail.value)
+    this.setData({
+      selectedBookList:e.detail.value
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获取用户openID
-    this.getUserOpenID()
-    let page=this.data.page
-    let limit=this.data.limit
-    let openID=this.data.openID
-    this.getReadyBorrowingBooks(page,openID,limit)
 
   },
   //获取用户当前所选，准备要借阅的书籍
-  getReadyBorrowingBooks(page,openID,limit){
+  getReadyBorrowingBooks(page,userID,limit){
     const that=this
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getWholeReadyBorrowingBook',
       method:"POST",
       data:{
+        //page.user_id,limit
         page:page, //新的页面
-        open_id:openID,//用户的id
+        user_id:userID,//用户的id
         limit:limit //默认10个
       },
       success:function(res){
@@ -215,7 +227,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    //设置page的初始值
+    this.setData({
+      page:1
+    })
+    //获取用户的userID以及查询用户准备借阅的书籍列表。
+    this.getUserID()
+  },
+  //获取用户的userID
+  getUserID(){
+    var that=this
+    var page=this.data.page
+    var limit=this.data.limit
+    wx.getStorage({
+      key:"userID",
+      success(res){
+        console.log("通过key拿到了其value:")
+        console.log(res)
+        var theUserID=res.data
+        that.setData({
+          userID:theUserID
+        })
+        //获取用户准备借阅的书籍列表
+        that.getReadyBorrowingBooks(page,theUserID,limit)
+      }
+    })
   },
 
   /**

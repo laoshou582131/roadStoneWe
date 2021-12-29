@@ -42,9 +42,9 @@ Page({
   },
   //前往用户个人的借书码页面
   goShowUserCode:function(){
-    var openID=this.data.openID
+    // var openID=this.data.openID
     wx.navigateTo({
-      url: '../../pages/showUserQRCode/showUserQRcode?openID='+openID,
+      url: '../../pages/showUserQRCode/showUserQRcode',
     })
   },
   
@@ -105,7 +105,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获得基本的用户信息
     
   },
   //获取用户的userID

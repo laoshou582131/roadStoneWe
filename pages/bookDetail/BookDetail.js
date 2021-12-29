@@ -7,35 +7,32 @@ Page({
   data: {
     bookID:"",
     bookCode:"",
+
     openID:"",
+    userID:"",
 
     //该书籍的所有信息,一个对象。
     theBook:{}
   },
-  //借阅书籍
-  goBorrowTheBook:function(e){
-    //检查用户是否能够结束
-    this.checkUserBorrowingRight(this.data.openID)
-    //判断是否绑定手机号
-    
-  },
-  //获得用户的openID
-  getUserOpenID:function(e){
-    const that =this
-    wx.cloud.callFunction({
-      name:"login",
-      success:res=>{
-        console.log("云函数调用成功")
-        that.setData({
-          openID:res.result.openid,
-        })
-        console.log("获取到OpenID: "+this.data.openID)
+  //加入愿望书单
+  addBookWishList(){
+    var that=this
+    var userID=this.data.userID
+    var bookID=this.data.bookID
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/addBook',
+      method:"POST",
+      data:{
+        user_id:userID,
+        book_id:bookID
       },
-      fail:res=>{
-        console.log("云函数调用失败")
+      success:function(res){
+        console.log(res)
+        
       }
     })
   },
+
   //判断用户是否能够借书
   checkUserBorrowingRight(openID){
     var that=this
@@ -93,9 +90,7 @@ Page({
         }
       }
     })
-    
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -114,6 +109,7 @@ Page({
       },
       success:function(res){
         //获得该书的详情信息。
+        console.log("书籍详情:")
         console.log(res.data)
         if(res.data.code==1){
           var theBook1=res.data.data.book
@@ -124,7 +120,6 @@ Page({
         }else{
           console.log("获取书籍详情信息失败")
         }
-
       }
     })
   },
@@ -170,13 +165,37 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //获取到了bookClassification传来的bookID
     let pages=getCurrentPages() //当前页面
     console.log(pages)
     let currentPage=pages[pages.length-1]
-    console.log(currentPage.options) //获取到了bookClassification传来的bookID
-    var bookID=currentPage.options.bookId
+    console.log(currentPage.options) 
+    var bookID1=currentPage.options.bookId
+    //保存bookID
+    this.setData({
+      bookID:bookID1
+    })
+
+    //获取用户的userID
+    this.getUserID()
+
     //获得书籍的详情页面
-    this.getBookDetailById(bookID)
+    this.getBookDetailById(bookID1)
+  },
+  //获取用户的userID
+  getUserID(){
+    var that=this
+    wx.getStorage({
+      key:"userID",
+      success(res){
+        console.log("通过key拿到了其value:")
+        console.log(res)
+        var theUserID=res.data
+        that.setData({
+          userID:theUserID
+        })
+      }
+    })
   },
 
   /**

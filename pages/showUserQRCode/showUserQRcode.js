@@ -9,27 +9,22 @@ Page({
    */
   data: {
     openID:'', //用户的openID
+    userID:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获取用户的openID
-    var openID=options.openID
-    // console.log(openID)
-    //将openID转化为二维码
-    // this.drawCode(openID)
-    this.drawCode(123)
 
   },
   //画图
-  drawCode:function(openID){
+  drawCode:function(userID){
     QRCode({
       width:200,
       height:200,
       canvasId:"myQrcode",
-      text:openID
+      text:userID
     })
   },
   goBack(){
@@ -50,8 +45,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getUserID()
   },
+    //获取用户的userID
+    getUserID(){
+      var that=this
+      wx.getStorage({
+        key:"userID",
+        success(res){
+          console.log("通过key拿到了其value:")
+          console.log(res)
+          var theUserID=res.data
+          that.setData({
+            userID:theUserID
+          })
+          //获取了userID后并画图
+          that.drawCode(theUserID)
+          
+        }
+      })
+    },
 
   /**
    * 生命周期函数--监听页面隐藏

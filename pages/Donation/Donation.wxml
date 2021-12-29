@@ -11,6 +11,10 @@
   <!--捐赠选择-->
   <form bindsubmit="submitTheDonateInfo">
     <view class="donationBar">
+      <view class="title">
+        <text>填写捐赠金额</text>
+      </view>
+
       <view class="donationChoices">
         <button bindtap="set200Amount"><text>200元</text></button>
         <button bindtap="set500Amount"><text>500元</text></button>
@@ -23,26 +27,31 @@
     </view>
 
     <!--捐赠者信息-->
+    
     <view class="userInfoBar">
+      <view class="title">
+        <text>填写个人信息</text>
+      </view>
+
       <view class="name">
         <text class="textType">您的姓名：</text>
         <input class="inputType" name="userName" value="{{userName}}" bindblur="updateName" type="text" />
       </view>
-      <view class="phone">
+      <!-- <view class="phone">
         <text class="textType">您的电话：</text>
-        <!-- <input class="inputType" name="userPhone" value="{{userPhone}}" type="number" /> -->
-      </view>
+        <input class="inputType" name="userPhone" value="{{userPhone}}" type="number" />
+      </view> -->
       <view class="email">
         <text class="textType">您的邮箱：</text>
         <input class="inputType" name="userEmail" placeholder="（可选填）" value="{{userEmail}}" type="text" />
       </view>
-      <view class="receipt">
+      <!-- <view class="receipt">
         <text class="textType">是否需要电子票据：</text>
-        <!-- <radio-group bindchange="needNoteOrNot">
+        <radio-group bindchange="needNoteOrNot">
           <radio value="true"> 是</radio>
           <radio value="false"> 否</radio>
-        </radio-group> -->
-      </view>
+        </radio-group>
+      </view> -->
     </view>
     <!--捐赠说明-->
     <view class="declarationBar">

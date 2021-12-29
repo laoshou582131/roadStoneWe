@@ -62,10 +62,10 @@ Component({
   methods: {
     //前往借阅书籍的页面
     goBorrow:function(){
-      this.stillConstructing()
-      // wx.navigateTo({
-      //   url: '/pages/BorrowingBook/BorrowingBooks',
-      // })
+      // this.stillConstructing()
+      wx.navigateTo({
+        url: '/pages/BorrowingBook/BorrowingBooks',
+      })
     },
     //提示功能仍在开发
     stillConstructing(){

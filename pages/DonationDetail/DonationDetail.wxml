@@ -18,7 +18,7 @@
           <text class="dateD">{{item.donate_money_time}}</text>
         </view>
         <view class="Money">
-          <text>{{item.donate_money_value}}</text>
+          <text>{{item.donate_money_value}} 元</text>
         </view>
       </view>
     </view>

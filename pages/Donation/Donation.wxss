@@ -31,12 +31,18 @@
   color: #929090;
 }
 .container .donationBar {
-  height: 200rpx;
   padding: 35rpx;
   margin-bottom: 35rpx;
   border-radius: 25rpx;
   box-shadow: 0 0 10px 2px #d8d8d8;
   color: #929090;
+}
+.container .donationBar .title {
+  margin-bottom: 25rpx;
+}
+.container .donationBar .title text {
+  font-size: 36rpx;
+  color: #494e3a;
 }
 .container .donationBar .donationChoices {
   display: flex;
@@ -68,14 +74,21 @@
   box-shadow: 0 0 10rpx 2rpx #d3d3d3;
 }
 .container .userInfoBar {
-  height: 370rpx;
   border-radius: 25rpx;
   box-shadow: 0 0 10px 2px #d8d8d8;
   padding: 35rpx;
   margin-bottom: 35rpx;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: stretch;
+}
+.container .userInfoBar .title {
+  margin-bottom: 25rpx;
+}
+.container .userInfoBar .title text {
+  font-size: 36rpx;
+  color: #494e3a;
 }
 .container .userInfoBar .textType {
   color: #929090;

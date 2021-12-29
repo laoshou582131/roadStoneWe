@@ -30,7 +30,7 @@
       </view>
       <view class="relativeBtn">
         <!--加入到待借阅列表中-->
-        <button class="btnType" type="default"><text>加入书单</text></button>
+        <button class="btnType" type="default" bindtap="addBookWishList"><text>加入书单</text></button>
         <!--若点击借阅则直接借阅，展示出该书的二维码-->
         <!-- <button class="btnType1" type="default" bindtap="goBorrowTheBook"><text>借阅书籍</text></button> -->
       </view>

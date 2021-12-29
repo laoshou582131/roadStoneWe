@@ -29,7 +29,7 @@
 
   <view class="fourButtonArea">
     <!-- 扫码button-->
-    <button class="buttonType" type="default" bindtap="goScan">
+    <button class="buttonType" type="default" bindtap="goShowUserCode">
       <view class="dotContainer">
         <image class="dotType" src="../../images/icons/page5.png" mode="aspectFit"></image>
       </view>
