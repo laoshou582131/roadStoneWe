@@ -95,5 +95,5 @@
 
 <!--底部导航栏-->
 <view class="naviContainer">
-  <myTabBar theSelected="4"></myTabBar>
+  <myTabBar theSelected="{{bookWishNum}}"></myTabBar>
 </view>

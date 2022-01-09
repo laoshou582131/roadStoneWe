@@ -19,6 +19,7 @@ Page({
 
     value:[0], //picker默认下从选择第几个元素
     // menu:[]
+    bookWishNum:0
   },
   //搜索
   onSubmitSearch:function(e){
@@ -58,9 +59,9 @@ Page({
       currentPage:1 //每一次选新的书籍类型时，初始化从第一页开始
     })
     console.log("currentClass is "+this.data.currentClass)
-
+    var theLocalID=wx.getStorageSync('localID')
     //获取所选类型的书籍信息
-    this.getClassBooks(this.data.currentClass,this.data.currentPage,this.data.limit)
+    this.getClassBooks(this.data.currentClass,this.data.currentPage,this.data.limit,theLocalID)
   },
 
   //滚动换页
@@ -70,11 +71,12 @@ Page({
       currentPage:tempPage
     })
     console.log(this.data.currentPage)
-    this.getMoreBooks(this.data.currentClass,this.data.currentPage,this.data.limit)
+    var localID=wx.getStorageSync('localID')
+    this.getMoreBooks(this.data.currentClass,this.data.currentPage,this.data.limit,localID)
   },
   //滚动时获取新的书籍内容
-  getMoreBooks(bookType,page,limit){
-    console.log("getMoreBooks:"+bookType+","+page+","+limit)
+  getMoreBooks(bookType,page,limit,locakID){
+    console.log("getMoreBooks:"+bookType+","+page+","+limit,locakID)
     const that=this
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getSpecificBooksList',
@@ -83,7 +85,8 @@ Page({
         // open_id:"wxid_6j6ff0aaplne11"
         book_type:bookType.book_type,
         page:page, //新的页面
-        limit:limit //默认10个
+        limit:limit, //默认10个
+        local_id:locakID
       },
       success:function(res){
         // console.log(res.data)
@@ -164,7 +167,9 @@ Page({
         var currentClass=that.data.currentClass
         var page=that.data.currentPage
         var limit=that.data.limit
-        that.getClassBooks(currentClass,page,limit)
+        var localID=wx.getStorageSync("localID")
+        console.log("获得localID"+localID)
+        that.getClassBooks(currentClass,page,limit,localID)
         
       },
       fail:function(res){
@@ -173,7 +178,7 @@ Page({
     })
   },
   //获得所选的对应书籍
-  getClassBooks(bookType,page,limit){
+  getClassBooks(bookType,page,limit,localID){
     console.log("所选的内容")
     var bookType1=bookType.book_type//选择的书籍类型
     var page1=page//第几页
@@ -184,10 +189,11 @@ Page({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getSpecificBooksList',
       method:"GET",
       data:{
-        // open_id:"wxid_6j6ff0aaplne11"
+        //book_type,page,limit,local_id
         book_type:bookType1,
         page:page1, //默认第一页
-        limit:limit1 //默认10个
+        limit:limit1, //默认10个
+        local_id:localID
       },
       success:function(res){
         console.log("获得所选书籍类型的书籍信息：")
@@ -216,7 +222,35 @@ Page({
     this.setData({
       searchContent1:""
     })
+
+    this.showBookWishNumber()
   },
+    //展示用户的愿望清单
+    showBookWishNumber(){
+      console.log("进入showBookWishNumber")
+      var that=this
+      var userID=wx.getStorageSync('userID')
+      wx.request({
+        url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getBorrowingBookNum',
+        method:"POST",
+        data:{
+          user_id:userID
+        },
+        success(res){
+          console.log("showBookWishNumber",res)
+          console.log("bookWishNum:",res.data.data.book_count)
+          var theBookWishNum=res.data.data.book_count
+          
+          if(res.data.code==1){
+            //保存数据
+            //设置num
+            that.setData({
+              bookWishNum:theBookWishNum
+            })
+          }
+        }
+      })
+    },
   
 
   /**

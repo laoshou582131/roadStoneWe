@@ -74,13 +74,30 @@
 .container .borrowBtnArea text {
   margin-left: 25rpx;
 }
+.container .borrowBtnArea .btnsArea {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
 .container .borrowBtnArea .btnOK {
-  margin: 0;
+  margin: 0 0 0 15rpx;
   padding: 15rpx 0 0 0;
-  width: 255rpx;
+  width: 200rpx;
   height: 120rpx;
   background-color: #B0C080;
   color: white;
+  display: inline-block;
+  border-radius: 0;
+  text-align: center;
+}
+.container .borrowBtnArea .btnCancel {
+  margin: 0 0 0 15rpx;
+  padding: 15rpx 0 0 0;
+  width: 200rpx;
+  height: 120rpx;
+  background-color: #c08080;
+  color: white;
+  display: inline-block;
   border-radius: 0;
   text-align: center;
 }

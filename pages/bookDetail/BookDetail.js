@@ -98,14 +98,15 @@ Page({
     // console.log(options)
   },
   //根据bookID获得书籍详情
-  getBookDetailById(bookID){
+  getBookDetailById(bookID,localID){
     const that=this
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getBookDetailFromSearch',
       method:"GET",
       data:{
         //传递bookID 或bookCode给后台
-        book_id:bookID
+        book_id:bookID,
+        local_id:localID
       },
       success:function(res){
         //获得该书的详情信息。
@@ -178,9 +179,9 @@ Page({
 
     //获取用户的userID
     this.getUserID()
-
+    var localID=wx.getStorageSync('localID')
     //获得书籍的详情页面
-    this.getBookDetailById(bookID1)
+    this.getBookDetailById(bookID1,localID)
   },
   //获取用户的userID
   getUserID(){

@@ -1,8 +1,8 @@
 <view class="container">
-  <view class="management">
+  <!-- <view class="management">
     <button class="managementBtn" bindtap="goDeleteManage"><image src="../BorrowingBook/images/Setting2.png" mode="widthFix" style="width: 50rpx;"></image><text style="color: white;">管理</text></button>
     
-  </view>
+  </view> -->
   <checkbox-group class="ItemsGroup" bindchange="getSelectedBook">
     <view class="borrowingNoBook" wx:if="{{booksList.length==0}}"><text>暂无待借书籍</text></view>
     <scroll-view scroll-y="true"
@@ -23,6 +23,10 @@
   <view class="borrowBtnArea">
     <!--显示当前选了多少本书-->
     <text>选了 {{selectedBookList.length}} 本</text>
-    <button class="btnOK" bindtap="goBorrowTheseBook">预约</button>
+    <view class="btnsArea">
+      <button class="btnCancel" bindtap="goCancelTheseBook">删除</button>
+      <button class="btnOK" bindtap="goBorrowTheseBook">预约</button>
+    </view>
+    
   </view>
 </view>

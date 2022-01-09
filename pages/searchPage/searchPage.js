@@ -22,7 +22,9 @@ Page({
       {
         if(searchContent1!="")
         {
-          this.goSearching(searchContent1,this.data.searchPage,this.data.limit)
+          //获得localID
+          var theLocalID=wx.getStorageSync('localID')
+          this.goSearching(searchContent1,this.data.searchPage,this.data.limit,theLocalID)
         }else{
           wx.showToast({
             title: '搜索不能为空...',
@@ -41,16 +43,17 @@ Page({
       })
     }
   },
-  goSearching(search,page,limit){
+  goSearching(search,page,limit,localID){
     const that=this
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getSearchBookName',
       method:"GET",
       data:{
-        // open_id:"wxid_6j6ff0aaplne11"
+        //search,page,limit,local_id
         search:search,
         page:page, //新的页面
-        limit:limit //默认10个
+        limit:limit, //默认10个
+        local_id:localID
       },
       success:function(res){
         console.log(res.data)

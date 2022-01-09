@@ -23,7 +23,9 @@ Page({
     userVipState:0,
 
     //是否绑定了手机
-    phoneIsBinded:false
+    phoneIsBinded:false,
+
+    bookWishNum:0
   },
   //去绑定手机的页面
   goBindingPhone:function(){
@@ -162,8 +164,7 @@ Page({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getPersonalInfo',
       method:"POST",
       data:{
-        user_id:userID//"wxid_6j6ff0aaplne11",
-        // open_id:"wxid_6j6ff0aaplne11"
+        user_id:userID
       },
       success:function(res){
         if(res.data.code==1){
@@ -219,6 +220,35 @@ Page({
     this.getUserID()
     this.getUserNickName()
     this.getUserIcon()
+
+    this.showBookWishNumber()
+  },
+
+  //获得bookWishNum
+  showBookWishNumber(){
+    console.log("进入showBookWishNumber")
+    var that=this
+    var userID=wx.getStorageSync('userID')
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getBorrowingBookNum',
+      method:"POST",
+      data:{
+        user_id:userID
+      },
+      success(res){
+        console.log("showBookWishNumber",res)
+        console.log("bookWishNum:",res.data.data.book_count)
+        var theBookWishNum=res.data.data.book_count
+        
+        if(res.data.code==1){
+          //保存数据
+          //设置num
+          that.setData({
+            bookWishNum:theBookWishNum
+          })
+        }
+      }
+    })
   },
 
   /**

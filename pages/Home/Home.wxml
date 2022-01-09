@@ -71,7 +71,7 @@
 </view>
 <!--底部导航栏-->
 <view class="naviContainer">
-  <myTabBar id="middleNum" theSelected="0"></myTabBar>
+  <myTabBar id="middleNum" theSelected="{{bookWishNum}}"></myTabBar>
 </view>
 
 

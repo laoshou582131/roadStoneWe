@@ -92,7 +92,7 @@ Page({
             console.log("isCheck!")
             if(userName!=""){
               //若金额不为0且名字不为空，则可以捐款
-              console.log("成功捐款")
+              console.log("捐款金额数合法")
               //获取openID，传入moneyValue，并获得result，然后执行wx.requestPayment.
               this.getUserPermmission()
             }else{
@@ -187,22 +187,26 @@ Page({
   },
   //获取捐赠信息 成功并触发doDonate方法。
   getDonateSignInfoAndDonate:function(){
+    console.log("进入getDonateSignInfoAndDonate")
     var that =this
     var openID=this.data.openID
     var moneyValue=this.data.moneyAmount
+    var theLocalID=wx.getStorageSync('localID')
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/doDonation',
       method:"POST",
       data:{
-        // "wxid_6j6ff0aaplne11"
+        // open_id,money_value,local_id
         open_id:openID,
         // money_value:0.1
-        money_value:moneyValue
+        money_value:moneyValue,
+        local_id:theLocalID
+        
       },
       success:function(res){
         console.log(res)
         //获取信息成功
-        if(res.data.data.result.code==1){
+        if(res.data.code==1){
           //成功
           var theResult=res.data.data.result
           //获取到捐赠前的信息准备，时间戳，签名等信息。
@@ -212,7 +216,10 @@ Page({
           //去捐赠
           that.doDonate()
           
-        }else{
+        }else if(res.data.code==2){
+          console.log(res.data.msg)
+        }
+        else{
           //result的code为0，失败
           console.log("捐赠前的验证信息获取失败")
         }

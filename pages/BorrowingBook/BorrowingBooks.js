@@ -27,15 +27,6 @@ Page({
     var userID=this.data.userID
     //若合法则借书，否则提示不可借书之原因。
     this.checkUserBorrowingRight(userID)
-
-    //
-    // var userID=that.data.userID
-    // var bookIDs=that.data.selectedBookList.toString()
-    // console.log(userID,bookIDs)
-    // //生成二维码
-    // wx.navigateTo({
-    //   url: '../QRCodeProduce/QRCodeProduce?userID='+userID+'?bookIDs='+bookIDs,
-    // })
     
   },
   //判断用户是否能够借书
@@ -53,15 +44,44 @@ Page({
         if(res.data.code==1){
           //允许借书，将userID和bookIDs生成二维码
           var userID=that.data.userID
-          var bookIDs=that.data.selectedBookList.toString()
-          console.log(userID,bookIDs)
-          // var list=[{"userID":userID},{"bookList":bookIDs}]
-          // //生成二维码
-          // wx.navigateTo({
-          //   url: '../QRCodeProduce/QRCodeProduce?list='+list,
-          // })
-          
-          
+          var bookIDs=that.data.selectedBookList
+          var limit=that.data.limit
+          console.log("允许借书")
+          // console.log(userID,bookIDs)
+          //组装JSON格式
+          var BookingJson={"user_id":userID,"book_list":bookIDs}
+          var BookingJsonStr=JSON.stringify(BookingJson)
+          console.log("BookingJSON:")
+          console.log(BookingJson)
+          console.log(BookingJsonStr)
+          //
+          wx.request({
+            url: 'https://qjnqrmlhidqj4nv8.jtabc.net/bookingBook',
+            method:"POST",
+            data:{
+              // BookingJson,
+              user_id:userID,
+              book_list:bookIDs
+            },
+            success:function(res){
+              console.log(res)
+              if(res.data.code==1){
+                //设置page的初始值
+                that.setData({
+                  page:1
+                })
+                //刷新页面
+                that.getReadyBorrowingBooks(1,userID,limit)
+                wx.showToast({
+                  title: '借阅成功！',
+                  icon:"success",
+                  duration:1000
+                })
+              }else{
+                console.log("借阅失败")
+              }
+            }
+          })
         }else if(res.data.code==2)
         {
           //有图书超期未还，不允许借书
@@ -118,6 +138,51 @@ Page({
       }
     })
   },
+  //删除愿望清单
+  goCancelTheseBook(){
+    var userID=this.data.userID
+    var bookIDs=this.data.selectedBookList
+    var limit=this.data.limit
+    var that=this
+
+    wx.showModal({
+      title:"提示",
+      content:"确定要删除所选书籍？",
+      success(res){
+        console.log(res)
+        if(res.confirm){
+          console.log("确定删除")
+          //删除所选书籍
+          wx.request({
+            url: 'https://qjnqrmlhidqj4nv8.jtabc.net/cancelBooking',
+            method:"POST",
+            data:{
+              user_id:userID,
+              book_list:bookIDs
+            },
+            success(res){
+              console.log(res)
+              if(res.data.code==1){
+                //删除成功
+                //设置page的初始值
+                that.setData({
+                  page:1
+                })
+                 //刷新页面
+                that.getReadyBorrowingBooks(1,userID,limit)
+
+              }else{
+                console.log("删除失败")
+              }
+            }
+          })
+        }else{
+          console.log("点击取消")
+        }
+      }
+    })
+  },
+
   //scroll-view的paging方法
   paging:function(){
     console.log("paging")
@@ -191,7 +256,7 @@ Page({
   onLoad: function (options) {
 
   },
-  //获取用户当前所选，准备要借阅的书籍
+  //获取用户当前所选，准备要借阅的书籍列表
   getReadyBorrowingBooks(page,userID,limit){
     const that=this
     wx.request({

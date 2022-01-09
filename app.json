@@ -2,19 +2,26 @@
   "pages": [
     "pages/Home/Home",
     "pages/BorrowingBook/BorrowingBooks",
+    
+    "pages/ReturningBook/ReturningBook",
+    "pages/Donation/Donation",
+    
+    "pages/BookClassification/BookClassification",
+    
+    
    
     "pages/UserInfo/UserInfo",
-    "pages/Donation/Donation",
+    
     
     "pages/DonationDetail/DonationDetail",
     
     "pages/contactUs/contactUs",
-    "pages/BookClassification/BookClassification",
+    
     "pages/showUserQRCode/showUserQRcode",
     "pages/Ranking/Ranking",
     "pages/Test/Test",
     "pages/QRCodeProduce/QRCodeProduce",
-    "pages/ReturningBook/ReturningBook",
+    
     "pages/phoneCertification/phoneCertification",
     
     
@@ -22,12 +29,6 @@
     "pages/ReturningBookInDate/ReturningBookInDate",
     
     "pages/ReturningBookOutDate/ReturningBookOutDate",
-
-    
-    
-    
-    
-    
     "pages/bookDetail/BookDetail",
     "pages/DonationBookDetail/DonationBookDetail",
     

@@ -53,6 +53,20 @@ Component({
     borrowingBookNum:0,
     // selected:0, //下方选择栏0-4。
   },
+  lifetimes:{
+    // attached:function(){
+    //   var bookWishNUm=wx.getStorageSync('bookWishNum')
+    //   this.setData({
+    //     borrowingBookNum:bookWishNUm
+    //   })
+    // },
+    // moved:function(){
+    //   var bookWishNUm=wx.getStorageSync('bookWishNum')
+    //   this.setData({
+    //     borrowingBookNum:bookWishNUm
+    //   })
+    // }
+  },
     
   
 

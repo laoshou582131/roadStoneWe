@@ -8,6 +8,9 @@ Page({
     userNickName:"",
     userAvatarUrl:"",
 
+    //愿望清单的书籍数量
+    bookWishNum:0,
+
     //是否绑定了手机号码
     phoneIsBinded:false,
 
@@ -25,15 +28,14 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success (res) {
-        var latitude = res.latitude //经度
-        var longitude = res.longitude //维度
-
-        // //保存经纬度信息
-        // that.setData({
-        //   latitude:latitude,
-        //   longitude:longitude
-        // })
-        console.log(latitude,longitude)
+        var latitude1 = res.latitude //纬度
+        var longitude1 = res.longitude //经度
+        console.log("经纬度：",latitude1,longitude1)
+        //保存用户的经纬度信息
+        that.setData({
+          latitude:latitude1, //纬度
+          longitude:longitude1//经度
+        })
       }
      })
   },
@@ -47,8 +49,7 @@ Page({
         console.log("获取临时凭证成功，")
         console.log(res.code)//获取登入的临时凭证
         var tempCode=res.code
-        // var appID="wx33672cd0c62cd3cb"
-        // var secret="eb92a6fe12159ab1fe0b2fcd41533d8e"
+
         wx.request({
           url: "https://qjnqrmlhidqj4nv8.jtabc.net/getLogin",
           method:"POST",
@@ -67,9 +68,11 @@ Page({
             // wx.setStorageSync('userOpenID', theOpenID)
             var theNickName=that.data.userNickName
             var theUserAvatarUrl=that.data.userAvatarUrl
+            var theLatitude=that.data.latitude
+            var theLongitude=that.data.longitude
             
             //将用户的昵称，ICON以及用户的openID保存近数据库。
-            that.checkAndSaveUserInfo(theOpenID,theNickName,theUserAvatarUrl)
+            that.checkAndSaveUserInfo(theOpenID,theNickName,theUserAvatarUrl,theLatitude,theLongitude)
 
           },
           fail(res){
@@ -82,24 +85,34 @@ Page({
   },
   //保存或更新旧用户信息
   //保存或更新用户的openID,昵称以及用户的头像。
-  checkAndSaveUserInfo(openID,nickName,picUrl){
+  checkAndSaveUserInfo(openID,nickName,picUrl,latitude,longitude){
+    var that=this
     wx.request({
       url: 'https://qjnqrmlhidqj4nv8.jtabc.net/checkNewUser',
       method:"POST",
       data:{
+        //open_id,nickname,pic_url,longitude,latitude
         open_id:openID,
         nickname:nickName,
-        pic_url:picUrl
+        pic_url:picUrl,
+        latitude:latitude,
+        longitude:longitude,
       },
       success(res){
-        console.log("保存用户信息成功")
-        console.log(openID+","+nickName+","+picUrl)
+        console.log("checkNewUser,保存用户信息成功")
+        console.log("获取userid以及localID")
+        // console.log(openID+","+nickName+","+picUrl)
         console.log(res)
 
-        var theUserID=res.data.data.user_id
+        var theUserID=res.data.data.data.user_id
+        var theLocalID=res.data.data.data.local_id
+        console.log("userID以及localID",theUserID,theLocalID)
         //保存返回回来的user_id
         wx.setStorageSync('userID', theUserID)
+        wx.setStorageSync('localID',theLocalID)
 
+        //展示愿望清单中所借阅的书籍数量
+        that.showBookWishNumber()
       }
     })
   },
@@ -144,6 +157,8 @@ Page({
           console.log("允许了")
           //获取用户的昵称和头像
           that.getUserNNameAndIcon()
+          //获取用户的经纬度
+          that.getUserPosition()
         }else{
           console.log("不允许")
         }
@@ -349,12 +364,11 @@ Page({
 
     //询问是否可以获取用户的信息使用权。
     this.askUserGetPermission()
+    //刷新愿望清单书籍数量
+    // this.showBookWishNumber()
 
     //获取轮播图
     this.getPics()
-
-    //获取用户的经纬度信息
-    this.getUserPosition()
   },
   //获取轮播图的图片
   getPics:function(){
@@ -395,8 +409,36 @@ Page({
    */
   onShow: function () {
     // this.useComponentFn()
-
+    //展示用户的愿望清单
+    this.showBookWishNumber()
   },
+  //展示用户的愿望清单
+  showBookWishNumber(){
+    console.log("进入showBookWishNumber")
+    var that=this
+    var userID=wx.getStorageSync('userID')
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getBorrowingBookNum',
+      method:"POST",
+      data:{
+        user_id:userID
+      },
+      success(res){
+        console.log("showBookWishNumber",res)
+        console.log("bookWishNum:",res.data.data.book_count)
+        var theBookWishNum=res.data.data.book_count
+        
+        if(res.data.code==1){
+          //保存数据
+          //设置num
+          that.setData({
+            bookWishNum:theBookWishNum
+          })
+        }
+      }
+    })
+  },
+
   //使用组件中的方法。
   useComponentFn(){
     this.myTabBar.getBorrowingBookNum();

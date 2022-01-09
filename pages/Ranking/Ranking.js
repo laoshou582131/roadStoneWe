@@ -22,7 +22,8 @@ Page({
     userRankingList:[],
 
     //底部导航栏设置
-    theSelected:1
+    theSelected:1,
+    bookWishNum:0
   },
   //翻页
   paging:function(){
@@ -185,6 +186,9 @@ Page({
     
     //获取初始默认的排行榜
     this.getUserInfo(this.data.rankType,this.data.page,this.data.limit)
+
+    //获取bookWIshNUM
+    this.showBookWishNumber()
   },
 
   //获得用户的nickName
@@ -214,6 +218,31 @@ Page({
         that.setData({
           userIcon:userIcon
         })
+      }
+    })
+  },
+  showBookWishNumber(){
+    console.log("进入showBookWishNumber")
+    var that=this
+    var userID=wx.getStorageSync('userID')
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getBorrowingBookNum',
+      method:"POST",
+      data:{
+        user_id:userID
+      },
+      success(res){
+        console.log("showBookWishNumber",res)
+        console.log("bookWishNum:",res.data.data.book_count)
+        var theBookWishNum=res.data.data.book_count
+        
+        if(res.data.code==1){
+          //保存数据
+          //设置num
+          that.setData({
+            bookWishNum:theBookWishNum
+          })
+        }
       }
     })
   },
