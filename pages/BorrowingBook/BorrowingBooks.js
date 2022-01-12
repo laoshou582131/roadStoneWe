@@ -14,12 +14,16 @@ Page({
     //准备借阅的书籍列表
     booksList:[],
     bookID:"",
+    bookingList:[],//正在被预约的书籍
+    inCartBooks:[],//仍在购物车中的书籍
 
     //选中的准备要借阅的书籍
     selectedBookList:[],
+    isBooking:false,
 
     //滚动页面
     isTriggered:true
+
   },
   //准备借一堆书
   goBorrowTheseBook:function(e){
@@ -54,7 +58,8 @@ Page({
           console.log("BookingJSON:")
           console.log(BookingJson)
           console.log(BookingJsonStr)
-          //
+          
+          //准备借阅书籍
           wx.request({
             url: 'https://qjnqrmlhidqj4nv8.jtabc.net/bookingBook',
             method:"POST",
@@ -79,6 +84,10 @@ Page({
                 })
               }else{
                 console.log("借阅失败")
+                wx.showModal({
+                  title:"借阅失败",
+                  content:res.data.msg
+                })
               }
             }
           })
@@ -144,6 +153,7 @@ Page({
     var bookIDs=this.data.selectedBookList
     var limit=this.data.limit
     var that=this
+    console.log(userID,bookIDs)
 
     wx.showModal({
       title:"提示",
@@ -154,7 +164,7 @@ Page({
           console.log("确定删除")
           //删除所选书籍
           wx.request({
-            url: 'https://qjnqrmlhidqj4nv8.jtabc.net/cancelBooking',
+            url: 'https://qjnqrmlhidqj4nv8.jtabc.net/delBook',
             method:"POST",
             data:{
               user_id:userID,
@@ -173,6 +183,10 @@ Page({
 
               }else{
                 console.log("删除失败")
+                wx.showModal({
+                  title:"删除失败",
+                  content:res.data.msg
+                })
               }
             }
           })
@@ -182,6 +196,33 @@ Page({
       }
     })
   },
+  //删除正在预约中的书籍
+  goCancelBookingBooks(){
+    let that=this
+    let userID=wx.getStorageSync('userID')
+    let limit=that.data.limit
+    wx.request({
+      url: 'https://qjnqrmlhidqj4nv8.jtabc.net/cancelBooking',
+      method:'POST',
+      data:{
+        user_id:userID
+      },
+      success(res){
+        if(res.data.code==1){
+          console.log("删除预约中的书籍成功",res)
+          //刷新页面
+          //设置page的初始值
+          that.setData({
+            page:1,
+            isBooking:false //重新设置默认页面
+          })
+          //刷新页面
+          that.getReadyBorrowingBooks(1,userID,limit)
+        }
+      }
+    })
+  },
+
 
   //scroll-view的paging方法
   paging:function(){
@@ -211,12 +252,24 @@ Page({
         console.log(res.data)
         if(res.data.code==1){
           //将第新页的内容给加进来
-          var newBookItems=res.data.data.book_list
+          // var newBookItems=res.data.data.book_list
+          var newBookItems=[]
+          var newInCartBooks=res.data.data.book_list.in_cart_book_list
+          var newBookingList=res.data.data.book_list.boking_book_list
+
+          //全部的书籍
+          newBookItems=newBookItems.concat(newBookingList)
+          newBookItems=newBookItems.concat(newInCartBooks)
+
           var tempCurrentBookItems=that.data.booksList
+          let tempCurrentBookingList=that.data.bookingList
+          let tempCurrentInCartBooks=that.data.inCartBooks
           tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
           // console.log(tempCurrentBookItems)
           that.setData({
-            booksList:tempCurrentBookItems
+            booksList:tempCurrentBookItems,
+            bookingList:tempCurrentBookingList,
+            inCartBooks:tempCurrentInCartBooks
           })
         }else if(res.data.code==2){
           console.log(res.data.msg)
@@ -270,10 +323,33 @@ Page({
       },
       success:function(res){
         console.log(res.data)
-        that.setData({
-          booksList:res.data.data.book_list
-        })
-        console.log("待借书籍："+that.data.booksList)
+        if(res.data.code==1){
+          //获得正在预约的书籍和在购物车中的书籍
+          let wholeBookList=[]
+          let bookingList=res.data.data.book_list.boking_book_list
+          let inCartBooks=res.data.data.book_list.in_cart_book_list
+          wholeBookList=wholeBookList.concat(bookingList)
+          wholeBookList=wholeBookList.concat(inCartBooks)
+          //判断是否有预约的书籍，若有，则改变button的样式和功能。
+          if(bookingList.length!=0){
+            //改变样式
+            that.setData({
+              isBooking:true
+            })
+          }
+
+          that.setData({
+            booksList:wholeBookList,
+            bookingList:bookingList,
+            inCartBooks:inCartBooks
+
+          })
+
+        }
+        // that.setData({
+        //   booksList:res.data.data.book_list
+        // })
+        // console.log("待借书籍："+that.data.booksList)
       },
       fail:function(res){
         console.log("fail, "+res.data)

@@ -28,7 +28,10 @@ Page({
       },
       success:function(res){
         console.log(res)
-        
+        wx.showToast({
+          title: '已加入书单',
+          icon:"success"
+        })
       }
     })
   },

@@ -11,11 +11,31 @@
     refresher-enabled="true" refresher-default-style="none" 
     refresher-triggered="{{isTriggered}}" bindrefresherrefresh="bindRefresherRefresh"
     enhanced="true" fast-deceleration="true">
+    <!--1. 购物车有数，且不存在正在预约的书籍-->
+    <view wx:if="{{!isBooking}}">
       <view class="borrowingBooks" wx:for="{{booksList}}" wx:key="index">
         <text class="itemIndex">{{index+1}}</text>
         <view class="bookPic"><image class="bookPicType" src="{{item.book_url}}" mode="widthFix"></image></view>
         <text class="bookNameType">{{item.book_main_title}}</text>
         <checkbox class="checkBoxType" value="{{item.book_id}}"></checkbox>
+      </view>
+    </view>
+    <!--2. 购物车书，且存在正在预约的书籍-->
+      <view wx:else>
+      <!--正在被预约的书籍-->
+        <view class="borrowingBooksBooking" wx:for="{{bookingList}}" wx:key="index">
+          <text class="itemIndex">{{index+1}}</text>
+          <view class="bookPic"><image class="bookPicType" src="{{item.book_url}}" mode="widthFix"></image></view>
+          <text class="bookNameType">{{item.book_main_title}}</text>
+          <checkbox class="checkBoxType" disabled="true" checked="true" value="{{item.book_id}}"></checkbox>
+        </view>
+        <!--未被预约的书籍-->
+        <view class="borrowingBooks" wx:for="{{inCartBooks}}" wx:key="index">
+          <!-- <text class="itemIndex">{{index+1}}</text> -->
+          <view class="bookPic"><image class="bookPicType" src="{{item.book_url}}" mode="widthFix"></image></view>
+          <text class="bookNameType">{{item.book_main_title}}</text>
+          <checkbox class="checkBoxType" disabled="false" checked="false" value="{{item.book_id}}"></checkbox>
+        </view>
       </view>
     </scroll-view>
   </checkbox-group>
@@ -23,9 +43,13 @@
   <view class="borrowBtnArea">
     <!--显示当前选了多少本书-->
     <text>选了 {{selectedBookList.length}} 本</text>
-    <view class="btnsArea">
+    <view wx:if="{{!isBooking}}"class="btnsArea">
       <button class="btnCancel" bindtap="goCancelTheseBook">删除</button>
       <button class="btnOK" bindtap="goBorrowTheseBook">预约</button>
+    </view>
+    <view wx:else class="btnsArea">
+      <!-- <button class="btnCancel" bindtap="goCancelTheseBook">删除</button> -->
+      <button class="btnCancel" bindtap="goCancelBookingBooks">取消预约</button>
     </view>
     
   </view>

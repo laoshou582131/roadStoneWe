@@ -62,6 +62,35 @@
   width: 75rpx;
   flex-grow: 0;
 }
+.container .borrowingBooksBooking {
+  margin: 10rpx 15rpx 15rpx 15rpx;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 25rpx;
+  box-shadow: 0 0 10px 2px #dfdfdf;
+  background-color: #C7D8AC;
+}
+.container .borrowingBooksBooking .itemIndex {
+  width: 100rpx;
+  flex-grow: 0;
+  text-align: center;
+}
+.container .borrowingBooksBooking .bookPic {
+  width: 125rpx;
+  flex-grow: 0;
+}
+.container .borrowingBooksBooking .bookPic .bookPicType {
+  width: 100rpx;
+}
+.container .borrowingBooksBooking .bookNameType {
+  width: 100rpx;
+  flex-grow: 1;
+}
+.container .borrowingBooksBooking .checkBoxType {
+  width: 75rpx;
+  flex-grow: 0;
+}
 .container .borrowBtnArea {
   margin: 15rpx 0 0 0;
   padding: 0;
