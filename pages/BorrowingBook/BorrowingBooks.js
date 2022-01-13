@@ -214,7 +214,8 @@ Page({
           //设置page的初始值
           that.setData({
             page:1,
-            isBooking:false //重新设置默认页面
+            isBooking:false, //重新设置默认页面
+            selectedBookList:[]
           })
           //刷新页面
           that.getReadyBorrowingBooks(1,userID,limit)

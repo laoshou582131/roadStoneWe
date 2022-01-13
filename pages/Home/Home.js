@@ -4,7 +4,7 @@ Page({
     //用户的基本信息
     UserBorrowingState:"",
     res:"",
-    openID:"wxid_6j6ff0aaplne11",
+    openID:"",
     userNickName:"",
     userAvatarUrl:"",
 
@@ -36,6 +36,12 @@ Page({
           latitude:latitude1, //纬度
           longitude:longitude1//经度
         })
+      },
+      fail(res){
+        wx.showModal({
+          title:"失败",
+          content:"获取地址失败"
+        })
       }
      })
   },
@@ -59,21 +65,27 @@ Page({
           success(res){
             console.log("获取用户openID成功")
             console.log(res) //获得用户的openID
-            var theOpenID=res.data.data.user_login.open_id
-            console.log("id是："+theOpenID)
-            that.setData({
-              openID:theOpenID
-            })
-            //缓存openID
-            // wx.setStorageSync('userOpenID', theOpenID)
-            var theNickName=that.data.userNickName
-            var theUserAvatarUrl=that.data.userAvatarUrl
-            var theLatitude=that.data.latitude
-            var theLongitude=that.data.longitude
-            
-            //将用户的昵称，ICON以及用户的openID保存近数据库。
-            that.checkAndSaveUserInfo(theOpenID,theNickName,theUserAvatarUrl,theLatitude,theLongitude)
-
+            if(res.data.code==1){
+              var theOpenID=res.data.data.user_login.open_id
+              console.log("id是："+theOpenID)
+              that.setData({
+                openID:theOpenID
+              })
+              //缓存openID
+              // wx.setStorageSync('userOpenID', theOpenID)
+              var theNickName=that.data.userNickName
+              var theUserAvatarUrl=that.data.userAvatarUrl
+              var theLatitude=that.data.latitude
+              var theLongitude=that.data.longitude
+              
+              //将用户的昵称，ICON以及用户的openID保存近数据库。
+              that.checkAndSaveUserInfo(theOpenID,theNickName,theUserAvatarUrl,theLatitude,theLongitude)
+            }else{
+              wx.showModal({
+                title:"失败",
+                content:res.data.msg
+              })
+            }
           },
           fail(res){
             console.log("获取用户openID失败")
@@ -103,16 +115,24 @@ Page({
         console.log("获取userid以及localID")
         // console.log(openID+","+nickName+","+picUrl)
         console.log(res)
+        if(res.data.code==1)
+        {
+          var theUserID=res.data.data.data.user_id
+          var theLocalID=res.data.data.data.local_id
+          console.log("userID以及localID",theUserID,theLocalID)
+          //保存返回回来的user_id
+          wx.setStorageSync('userID', theUserID)
+          wx.setStorageSync('localID',theLocalID)
 
-        var theUserID=res.data.data.data.user_id
-        var theLocalID=res.data.data.data.local_id
-        console.log("userID以及localID",theUserID,theLocalID)
-        //保存返回回来的user_id
-        wx.setStorageSync('userID', theUserID)
-        wx.setStorageSync('localID',theLocalID)
-
-        //展示愿望清单中所借阅的书籍数量
-        that.showBookWishNumber()
+          //展示愿望清单中所借阅的书籍数量
+          that.showBookWishNumber()
+        }else{
+          wx.showModal({
+            title:"失败",
+            content:res.data.msg
+          })
+        }
+        
       }
     })
   },
@@ -433,6 +453,11 @@ Page({
           //设置num
           that.setData({
             bookWishNum:theBookWishNum
+          })
+        }else{
+          wx.showModal({
+            title:"失败",
+            content:res.data.msg
           })
         }
       }

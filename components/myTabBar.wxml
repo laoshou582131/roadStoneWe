@@ -5,7 +5,7 @@
     <button class="middle" wx:if="{{item.isSpecial==true}}" open-type="navigate" style="border: none;" bindtap="goBorrow" plain="true">
       <image class="plusIcon" src="{{item.iconPath}}" mode="widthFix" style="width: 100rpx;"></image>
        <!--中间按钮右上角的数字，显示当前借阅栏中有多少书籍-->
-      <text class="badge">{{theSelected}}</text>
+      <text class="badge">{{inCartBooks}}</text>
       <!-- {{item.text}} -->
     </button>
 

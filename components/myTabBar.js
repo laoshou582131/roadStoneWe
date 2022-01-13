@@ -2,9 +2,15 @@
 Component({
   properties: {
     //page向component传递的theSelected
+    //选中时，改变icon颜色
     theSelected:{
       type:String,
       value:"0" //默认值
+    },
+    //获得在清单中的书籍数量
+    inCartBooks:{
+      type:Number,
+      value:0
     },
 
     tabBar:{
@@ -39,7 +45,7 @@ Component({
             "iconPath": "../components/images/User.png",
             "selectedIconPath": "../components/images/User_fill.png",
             "text": "我的"
-          },
+          }
         ]
       }
     }

@@ -28,10 +28,18 @@ Page({
       },
       success:function(res){
         console.log(res)
-        wx.showToast({
-          title: '已加入书单',
-          icon:"success"
-        })
+        if(res.data.code==1){
+          wx.showToast({
+            title: '已加入书单',
+            icon:"success"
+          })
+        }else{
+          wx.showToast({
+            title: '加入失败',
+            icon:"success"
+          })
+        }
+       
       }
     })
   },
@@ -123,40 +131,44 @@ Page({
           })
         }else{
           console.log("获取书籍详情信息失败")
+          wx.showModal({
+            title:"失败",
+            content:res.data.msg
+          })
         }
       }
     })
   },
   //
     //根据bookID获得书籍详情
-    getBookDetailByCode(bookCode){
-      wx.showToast({
-        title: '获取'+bookCode,
-      })
-      const that=this
-      wx.request({
-        url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getBookDetailFromScan',
-        method:"GET",
-        data:{
-          //传递bookID 或bookCode给后台
-          book_code:bookCode
-        },
-        success:function(res){
-          //获得该书的详情信息。
-          console.log(res.data)
-          if(res.data.code==1){
-            var theBook1=res.data.data.book
-            // console.log(theBook.book_author)
-            that.setData({
-              theBook:theBook1 //获得书的所有内容
-            })
-          }else{
-            console.log("获取书籍详情信息失败")
-          }
+    // getBookDetailByCode(bookCode){
+    //   wx.showToast({
+    //     title: '获取'+bookCode,
+    //   })
+    //   const that=this
+    //   wx.request({
+    //     url: 'https://qjnqrmlhidqj4nv8.jtabc.net/getBookDetailFromScan',
+    //     method:"GET",
+    //     data:{
+    //       //传递bookID 或bookCode给后台
+    //       book_code:bookCode
+    //     },
+    //     success:function(res){
+    //       //获得该书的详情信息。
+    //       console.log(res.data)
+    //       if(res.data.code==1){
+    //         var theBook1=res.data.data.book
+    //         // console.log(theBook.book_author)
+    //         that.setData({
+    //           theBook:theBook1 //获得书的所有内容
+    //         })
+    //       }else{
+    //         console.log("获取书籍详情信息失败")
+    //       }
   
-        }
-      })
-    },
+    //     }
+    //   })
+    // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

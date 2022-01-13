@@ -13,7 +13,7 @@
         <image class="picBType" src="../../images/icons/backP.png" mode="widthFix"></image>
         <text class="TextMyCredit">我的积分</text>
       </view>
-      <text class="creditPoint">X 11</text>
+      <text class="creditPoint">X 0</text>
       <!--分享海报button-->
       <button class="sharePoster" type="default" plain="true" style="border: none;">分享海报</button>
     </view>
@@ -54,6 +54,6 @@
 </view>
  <!--底部导航栏-->
 <view class="naviContainer">
-  <myTabBar theSelected="{{bookWishNum}}"></myTabBar>
+  <myTabBar theSelected="{{theSelected}}" inCartBooks="{{bookWishNum}}"></myTabBar>
 </view>
 

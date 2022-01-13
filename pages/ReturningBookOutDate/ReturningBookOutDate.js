@@ -63,16 +63,23 @@ Page({
         limit:limit //默认10个
       },
       success:function(res){
-        console.log("getMoreBooksInfo:")
-        console.log(res.data)
-        //将第新页的内容给加进来
-        var newBookItems=res.data.data.book_list
-        var tempCurrentBookItems=that.data.bookItemList
-        tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
-        // console.log(tempCurrentBookItems)
-        that.setData({
-          bookItemList:tempCurrentBookItems
-        })
+        console.log("getMoreBooksInfo:",res)
+        if(res.data.code==1){
+          //将第新页的内容给加进来
+          var newBookItems=res.data.data.book_list
+          var tempCurrentBookItems=that.data.bookItemList
+          tempCurrentBookItems=tempCurrentBookItems.concat(newBookItems) //与之前获取的书籍列表累加
+          // console.log(tempCurrentBookItems)
+          that.setData({
+            bookItemList:tempCurrentBookItems
+          })
+        }else{
+          wx.showModal({
+            title:"失败",
+            content:res.data.msg
+          })
+        }
+
 
       }
     })
@@ -155,19 +162,26 @@ Page({
         limit:limit
       },
       success:function(res){
+        console.log("getUserBorrowOutData",res)
         if(res.data.code==1){
-          console.log(res.data)
           var BookList=res.data.data.book_list
-          console.log(BookList)
           //赋值给bookItemList
           that.setData({
             bookItemList:BookList
           })
         }else if(res.data.code==2){
           console.log(res.data.msg)
+          wx.showModal({
+            title:"失败",
+            content:res.data.msg
+          })
         }else
         {
           console.log("获取待还书籍内容错误")
+          wx.showModal({
+            title:"失败",
+            content:res.data.msg
+          })
         }
         
       }

@@ -1,17 +1,19 @@
 /* components/myTabBar.wxss */
 .barContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 25rpx;
   margin: 55rpx 0 0 0;
   box-shadow: 0 0 5rpx 2rpx #c4c4c4;
   padding-top: 10rpx;
+  width: 700rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .barItems {
   position: relative;
   width: 145rpx;
   height: 100rpx;
+  display: flex;
 }
 .barItems text {
   color: #2D3220;
@@ -32,11 +34,13 @@
 .middle {
   margin: 0;
   padding: 0;
+  width: 150rpx;
+  flex-grow: 0;
   height: 150rpx;
   width: 110rpx;
   position: absolute;
   top: -50rpx;
-  left: 20rpx;
+  left: 0rpx;
 }
 .middle image {
   position: absolute;

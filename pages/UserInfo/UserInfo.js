@@ -168,7 +168,7 @@ Page({
       },
       success:function(res){
         if(res.data.code==1){
-          console.log(res.data)
+          console.log("user basicInfo",res.data)
           // console.log(donateSumMoney)
           var borrowBookCount=res.data.data.user_info.borrow_book_count
           var donateBookCount=res.data.data.user_info.donate_book_count
@@ -199,6 +199,7 @@ Page({
         }else{
           wx.showToast({
             title: '信息错误',
+            content:res.data.msg
           })
         }
       }
@@ -245,6 +246,12 @@ Page({
           //设置num
           that.setData({
             bookWishNum:theBookWishNum
+          })
+        }
+        else{
+          wx.showModal({
+            title:"失败",
+            content:"获取书单书籍数量失败"
           })
         }
       }

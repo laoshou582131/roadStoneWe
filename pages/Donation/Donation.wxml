@@ -41,10 +41,10 @@
         <text class="textType">您的电话：</text>
         <input class="inputType" name="userPhone" value="{{userPhone}}" type="number" />
       </view> -->
-      <view class="email">
+      <!-- <view class="email">
         <text class="textType">您的邮箱：</text>
         <input class="inputType" name="userEmail" placeholder="（可选填）" value="{{userEmail}}" type="text" />
-      </view>
+      </view> -->
       <!-- <view class="receipt">
         <text class="textType">是否需要电子票据：</text>
         <radio-group bindchange="needNoteOrNot">

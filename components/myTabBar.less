@@ -2,19 +2,16 @@
 @textColor:#2D3220;
 
 .barContainer{
-    // flex: 1;
-    display: flex;
-    
-    align-items: center;
-    justify-content: center;
-
     // border: 1px solid green;
     border-radius: 25rpx;
     margin: 55rpx 0 0 0;
     box-shadow: 0 0 5rpx 2rpx rgb(196, 196, 196);
     padding-top: 10rpx;
 
-    // height: 170rpx;
+    width: 700rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 
 }
 
@@ -24,6 +21,9 @@
 
     width: 145rpx;
     height: 100rpx;
+    display: flex;
+    // justify-content: space-around;
+    // align-items: stretch;
 
     text{
         color: @textColor;
@@ -51,11 +51,14 @@
     margin: 0;
     padding: 0;
 
+    width: 150rpx;
+    flex-grow: 0;
+
     height: 150rpx;
     width: 110rpx;
     position: absolute;
     top: -50rpx;
-    left: 20rpx;
+    left: 0rpx;
 
     image{
         position: absolute;

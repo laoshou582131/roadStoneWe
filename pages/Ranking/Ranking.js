@@ -154,6 +154,10 @@ Page({
           })
         }else{
           console.log("列表获取失败")
+          wx.showModal({
+            title:"失败",
+            content:"用户列表获取失败"
+          })
           that.setData({
             userRankingList:[]
           })
@@ -177,7 +181,7 @@ Page({
       rankType:"rank_reading",
       page:1 //默认设置为第一页
     })
-    console.log(this.data.rankType)
+    // console.log(this.data.rankType)
 
     //获取用户nickName
     this.getUserNickName()
@@ -198,7 +202,7 @@ Page({
       key:"userNickName",
       success(res){
         console.log("通过key拿到了其value:")
-        console.log(res)
+        // console.log(res)
         var userNickName=res.data
         that.setData({
           nickName:userNickName
@@ -213,7 +217,7 @@ Page({
       key:"userIcon",
       success(res){
         console.log("通过key拿到了其value:")
-        console.log(res)
+        // console.log(res)
         var userIcon=res.data
         that.setData({
           userIcon:userIcon
@@ -232,7 +236,7 @@ Page({
         user_id:userID
       },
       success(res){
-        console.log("showBookWishNumber",res)
+        console.log("showBookWishNumber")
         console.log("bookWishNum:",res.data.data.book_count)
         var theBookWishNum=res.data.data.book_count
         

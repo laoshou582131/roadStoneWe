@@ -153,23 +153,30 @@ Page({
         //无参数
       },
       success:function(res){
-        console.log("获取书籍分类数据,") 
-        console.log(res.data)
+        console.log("1获取书籍分类数据,") 
+        console.log(res)
         if(res.data.code==1){
           that.setData({
             bookClassification:res.data.data.book_type_list,
             currentClass:res.data.data.book_type_list[0], //设置当前所选的默认分类类型，为第一个。
             value:[0]//设置左侧的选择器，默认第一个。
           })
+
+          //获取当前书籍类型的书本信息
+          var currentClass=that.data.currentClass
+          var page=that.data.currentPage
+          var limit=that.data.limit
+          var localID=wx.getStorageSync("localID")
+          console.log("获得localID"+localID)
+          that.getClassBooks(currentClass,page,limit,localID)
+        }else{
+          wx.showModal({
+            title:"失败",
+            content:res.data.msg
+          })
         }
-        // console.log("currentclass:"+that.data.currentClass) //Good
-        //获取当前书籍类型的书本信息
-        var currentClass=that.data.currentClass
-        var page=that.data.currentPage
-        var limit=that.data.limit
-        var localID=wx.getStorageSync("localID")
-        console.log("获得localID"+localID)
-        that.getClassBooks(currentClass,page,limit,localID)
+        
+        
         
       },
       fail:function(res){
@@ -204,8 +211,16 @@ Page({
           })
         }else if(res.data.code==2){
           console.log("获取书籍信息失败")
+          wx.showToast({
+            title: '获取书籍信息失败',
+            icon:"error"
+          })
         }else{
           console.log("获取书籍信息失败")
+          wx.showToast({
+            title: '获取书籍信息失败',
+            icon:"error"
+          })
         }
       },
       fail:function(res){
